@@ -47,7 +47,7 @@
 <meta property="og:image" content="https://histevehu.com/2018/10/26/VisualStudio-Code-Configuration-C/img_2.jpg">
 <meta property="og:image" content="https://histevehu.com/2018/10/26/VisualStudio-Code-Configuration-C/img_3.jpg">
 <meta property="og:image" content="https://histevehu.com/2018/10/26/VisualStudio-Code-Configuration-C/img_4.jpg">
-<meta property="og:updated_time" content="2018-10-28T12:52:16.636Z">
+<meta property="og:updated_time" content="2018-10-28T12:56:49.399Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VisualStudio Code Configuration (C)">
 <meta name="twitter:description" content="IntroductionVSCode is a lightweight, open source and popular editor which support for mainstream programming languages. Of course, C language is also supported. Just need to do some configuration befo">
@@ -168,12 +168,12 @@
 </li>
 <li><p>Open the <strong>Tasks.json</strong> file, then replace the file with the code below:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"2.0.0"</span>,</span><br><span class="line">    <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">    <span class="attr">"args"</span>: [<span class="string">"-g"</span>,<span class="string">"$&#123;file&#125;"</span>,<span class="string">"-o"</span>,<span class="string">"$&#123;fileBasenameNoExtension&#125;.exe"</span>],</span><br><span class="line">    <span class="attr">"problemMatcher"</span>: &#123;</span><br><span class="line">        <span class="attr">"owner"</span>: <span class="string">"cpp"</span>,</span><br><span class="line">        <span class="attr">"fileLocation"</span>: [<span class="string">"relative"</span>, <span class="string">"$&#123;workspaceRoot&#125;"</span>],</span><br><span class="line">        <span class="attr">"pattern"</span>: &#123;</span><br><span class="line">            <span class="attr">"regexp"</span>: <span class="string">"^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$"</span>,</span><br><span class="line">            <span class="attr">"file"</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">"line"</span>: <span class="number">2</span>,</span><br><span class="line">            <span class="attr">"column"</span>: <span class="number">3</span>,</span><br><span class="line">            <span class="attr">"severity"</span>: <span class="number">4</span>,</span><br><span class="line">            <span class="attr">"message"</span>: <span class="number">5</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
 <h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a><strong>Tips</strong></h3><ol>
 <li>Because VS needs to be configured separately for each folder, it is recommended to put the <strong>.vscode</strong> folder on top of your favorite folders so that you don’t have to reconfigure it.</li>
 <li>You don’t need a new configuration for each new cpp file. These configurations can be used in all subfolders and files in your configured folder.</li>
 <li>It is recommended to back up the <strong>.vscode folder</strong> (containing the configuration file you just created) so that when you are in a new path, you can just copy the backup .vscode folder into the root directory of the path then start working quickly.</li>
-</ol>
-</li>
 </ol>
 
             </div>
