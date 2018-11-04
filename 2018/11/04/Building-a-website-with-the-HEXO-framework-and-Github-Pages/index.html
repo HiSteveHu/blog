@@ -35,23 +35,23 @@
 <link rel="canonical" href="https://histevehu.com/2018/11/04/Building-a-website-with-the-HEXO-framework-and-Github-Pages/">
 
 
-<meta name="description" content="Index[TOC] IntroductionHere’s how to build a website using the Hexo framework and the Github Pages service.  Hexo framework Fast, simple and efficient blog framework Hexo Github Pages service Github P">
+<meta name="description" content="IntroductionHere’s how to build a website using the Hexo framework and the Github Pages service.  Hexo framework Fast, simple and efficient blog framework Hexo Github Pages service Github Pages  Steps">
 <meta name="keywords" content="Hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Building a website with the HEXO framework and Github Pages">
 <meta property="og:url" content="https://histevehu.com/2018/11/04/Building-a-website-with-the-HEXO-framework-and-Github-Pages/index.html">
 <meta property="og:site_name" content="HiSteveHu">
-<meta property="og:description" content="Index[TOC] IntroductionHere’s how to build a website using the Hexo framework and the Github Pages service.  Hexo framework Fast, simple and efficient blog framework Hexo Github Pages service Github P">
+<meta property="og:description" content="IntroductionHere’s how to build a website using the Hexo framework and the Github Pages service.  Hexo framework Fast, simple and efficient blog framework Hexo Github Pages service Github Pages  Steps">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://histevehu.com/img_3.JPG">
 <meta property="og:image" content="https://histevehu.com/2018/11/04/Building-a-website-with-the-HEXO-framework-and-Github-Pages/img_4.JPG">
 <meta property="og:image" content="https://histevehu.com/2018/11/04/Building-a-website-with-the-HEXO-framework-and-Github-Pages/img_1.JPG">
 <meta property="og:image" content="https://histevehu.com/2018/11/04/Building-a-website-with-the-HEXO-framework-and-Github-Pages/img_2.JPG">
 <meta property="og:image" content="https://histevehu.com/2018/11/04/Building-a-website-with-the-HEXO-framework-and-Github-Pages/img_5.JPG">
-<meta property="og:updated_time" content="2018-11-04T12:39:06.718Z">
+<meta property="og:updated_time" content="2018-11-04T12:42:40.073Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Building a website with the HEXO framework and Github Pages">
-<meta name="twitter:description" content="Index[TOC] IntroductionHere’s how to build a website using the Hexo framework and the Github Pages service.  Hexo framework Fast, simple and efficient blog framework Hexo Github Pages service Github P">
+<meta name="twitter:description" content="IntroductionHere’s how to build a website using the Hexo framework and the Github Pages service.  Hexo framework Fast, simple and efficient blog framework Hexo Github Pages service Github Pages  Steps">
 <meta name="twitter:image" content="https://histevehu.com/img_3.JPG">
 
 
@@ -139,8 +139,7 @@
 
     
             <div class="post-content">
-            <h3 id="Index"><a href="#Index" class="headerlink" title="Index"></a><strong>Index</strong></h3><p>[TOC]</p>
-<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><strong>Introduction</strong></h3><p>Here’s how to build a website using the Hexo framework and the Github Pages service.</p>
+            <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><strong>Introduction</strong></h3><p>Here’s how to build a website using the Hexo framework and the Github Pages service.</p>
 <blockquote>
 <p><strong>Hexo framework</strong></p>
 <p>Fast, simple and efficient blog framework</p>
@@ -243,24 +242,32 @@
 <h4 id="2-Common-Hexo-instructions"><a href="#2-Common-Hexo-instructions" class="headerlink" title="2.Common Hexo instructions"></a>2.Common Hexo instructions</h4><blockquote>
 <p><strong>hexo -g</strong></p>
 <p>Generate the site.</p>
+</blockquote>
+<blockquote>
 <p><strong>hexo -d</strong></p>
 <p>Deploy the site.</p>
+</blockquote>
+<blockquote>
 <p><strong>hexo g -d</strong></p>
 <p>Generate the site, then deploy it.</p>
+</blockquote>
+<blockquote>
 <p><strong>hexo server</strong></p>
 <p>Turn on local service, allowing users to preview the site locally.</p>
-<p>​    <strong>P.S</strong>: If the default local port is occupied, you can modify it in <strong>_config.yml</strong> in the <strong>root     directory</strong></p>
-<p>​    E.g: Modify the local port to 9090</p>
-<p>​    Add this code blocks in  <strong>_config.yml</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;     server:</span><br><span class="line">&gt;       port: 9090</span><br><span class="line">&gt;       compress: true</span><br><span class="line">&gt;       header: true</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>P.S</strong>: If the default local port is occupied, you can modify it in <strong>_config.yml</strong> in the <strong>root     directory</strong></p>
+<p>E.g: Modify the local port to 9090</p>
+<p>Add this code blocks in  <strong>_config.yml</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; server:</span><br><span class="line">&gt;   port: 9090</span><br><span class="line">&gt;   compress: true</span><br><span class="line">&gt;   header: true</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
-<pre><code>Then test it. Input the command in **Git Terminal**
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; 	hexo server</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p> Then test it. Input the command in <strong>Git Terminal</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; hexo server</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
-<p>​    If the terminal displays this, it means the default local modification is successful.</p>
+<p>If the terminal displays this, it means the default local modification is successful.</p>
 <p>​    <img src="img_5.JPG" alt="ERROR_WRONG_IMG_PATH"></p>
+</blockquote>
+<blockquote>
 <p><strong>hexo clean</strong></p>
 <p>Clean up the site cache, especially if you change the theme you should use this command</p>
 </blockquote>
