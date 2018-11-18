@@ -48,7 +48,7 @@
 <meta property="og:image" content="https://histevehu.com/2018/11/04/building-a-website-with-the-hexo-framework-and-github-pages/img_1.JPG">
 <meta property="og:image" content="https://histevehu.com/2018/11/04/building-a-website-with-the-hexo-framework-and-github-pages/img_2.JPG">
 <meta property="og:image" content="https://histevehu.com/2018/11/04/building-a-website-with-the-hexo-framework-and-github-pages/img_5.JPG">
-<meta property="og:updated_time" content="2018-11-04T12:44:31.235Z">
+<meta property="og:updated_time" content="2018-11-18T08:09:25.955Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Building a website with the HEXO framework and Github Pages">
 <meta name="twitter:description" content="IntroductionHere’s how to build a website using the Hexo framework and the Github Pages service.  Hexo framework Fast, simple and efficient blog framework Hexo Github Pages service Github Pages  Steps">
@@ -155,7 +155,7 @@
 <blockquote>
 <p><strong>Verify that the installation was successful:</strong></p>
 <p>Right click on the desktop, click on “Git Bash”, and pull out a similar command line window, indicating that Git is installed successfully</p>
-<p><img src="img_3.JPG" alt="ERROR_WRONG_IMG_PATH"></p>
+<p><img src="img_3.JPG" alt=""></p>
 </blockquote>
 </li>
 <li><p>Git basic settings</p>
@@ -172,7 +172,7 @@
 <blockquote>
 <p><strong>Verify that the installation was successful:</strong></p>
 <p><strong>Win+R </strong> &gt; “cmd” &gt; “node –version”, if you could see the version information, indicating that Git is installed successfully.</p>
-<p><img src="img_4.JPG" alt="ERROR_WRONG_IMG_PATH"></p>
+<p><img src="img_4.JPG" alt=""></p>
 </blockquote>
 </li>
 </ol>
@@ -200,8 +200,8 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-renderer-scss --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">git clone https://gitee.com/xiuxiuing/hexo-theme-even themes/even</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Find the <strong>_config.yml</strong> file in the <strong>root directory</strong> and open it. Change the contents of the <strong>deploy</strong> and <strong>#URL</strong> section of the file to the following:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy: </span><br><span class="line">  type: git </span><br><span class="line">  repo: https://github/username/website_repository_name.git </span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#URL</span><br><span class="line">url:  https://username.github.io/website_repository_name</span><br><span class="line">root: /blog</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">deploy:</span> </span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span> </span><br><span class="line"><span class="attr">  repo:</span> <span class="attr">https://github/username/website_repository_name.git</span> </span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#URL</span></span><br><span class="line"><span class="attr">url:</span>  <span class="attr">https://username.github.io/website_repository_name</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/blog</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Eg: If your username is “histevehu” and your website repository is “hi”, then your repo item and url item should be this:</p>
 <p>repo: <a href="https://github/histevehu/hi.git" target="_blank" rel="noopener">https://github/histevehu/hi.git</a> </p>
@@ -219,10 +219,10 @@
 </ol>
 <h4 id="6-Configure-the-Github-Pages-Service"><a href="#6-Configure-the-Github-Pages-Service" class="headerlink" title="6. Configure the Github Pages Service"></a>6. Configure the Github Pages Service</h4><ol>
 <li><p>Enter the your website repository page on Github, turn to the <strong>Settings</strong> tab, find the <strong>Github Pages</strong> item, enable the service.</p>
-<p><img src="img_1.JPG" alt="ERROR_WRONG_IMG_PATH"></p>
+<p><img src="img_1.JPG" alt=""></p>
 </li>
 <li><p>You can also bind a custom domain name. Like:</p>
-<p><img src="img_2.JPG" alt="ERROR_WRONG_IMG_PATH"></p>
+<p><img src="img_2.JPG" alt=""></p>
 </li>
 </ol>
 <h3 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a><strong>Tips</strong></h3><h4 id="1-Change-the-theme"><a href="#1-Change-the-theme" class="headerlink" title="1.Change the theme"></a>1.Change the theme</h4><ol>
@@ -233,7 +233,7 @@
 <li><p>Configure themes as the theme name in <strong>_config.yml</strong> in the <strong>root directory</strong></p>
 <blockquote>
 <p>Eg. If you change the theme named “polarbear”, then you should configure the <strong>theme</strong> item in <strong>_config.yml</strong> like this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; theme: polarbear</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&gt; theme: polarbear</span></span><br><span class="line"><span class="string">&gt;</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
 <li><p>Excute command “<strong>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</strong>“</p>
@@ -257,7 +257,7 @@
 <p><strong>P.S</strong>: If the default local port is occupied, you can modify it in <strong>_config.yml</strong> in the <strong>root     directory</strong></p>
 <p>E.g: Modify the local port to 9090</p>
 <p>Add this code blocks in  <strong>_config.yml</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; server:</span><br><span class="line">&gt;   port: 9090</span><br><span class="line">&gt;   compress: true</span><br><span class="line">&gt;   header: true</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&gt; server:</span></span><br><span class="line"><span class="string">&gt;   port: 9090</span></span><br><span class="line"><span class="string">&gt;   compress: true</span></span><br><span class="line"><span class="string">&gt;   header: true</span></span><br><span class="line"><span class="string">&gt;</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <blockquote>
 <p> Then test it. Input the command in <strong>Git Terminal</strong></p>
@@ -265,7 +265,7 @@
 </blockquote>
 <blockquote>
 <p>If the terminal displays this, it means the default local modification is successful.</p>
-<p>​    <img src="img_5.JPG" alt="ERROR_WRONG_IMG_PATH"></p>
+<p>​    <img src="img_5.JPG" alt=""></p>
 </blockquote>
 <blockquote>
 <p><strong>hexo clean</strong></p>
@@ -288,6 +288,12 @@
         
         
   <nav class="post-nav">
+    
+      <a class="prev" href="/2018/11/18/how-to-control-applications-network-behavior/">
+        <i class="iconfont icon-left"></i>
+        <span class="prev-text nav-default">How To: Control Applications Network Permissions Behavior</span>
+        <span class="prev-text nav-mobile">Prev</span>
+      </a>
     
     
       <a class="next" href="/2018/10/27/how-to-screenshot-the-full-page-with-google-chrome-native-feature/">
