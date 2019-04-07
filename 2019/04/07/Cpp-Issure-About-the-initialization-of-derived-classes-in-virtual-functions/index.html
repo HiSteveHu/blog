@@ -43,7 +43,7 @@
 <meta property="og:site_name" content="HiSteveHu">
 <meta property="og:description" content="Issure: Here is a program that shows virtual functions, consisting of class.h, class.cpp, main.cpp. Class.h is used to declare the class, class.cpp is used to define the class, and main.cpp is the mai">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-07T02:45:19.360Z">
+<meta property="og:updated_time" content="2019-04-07T14:45:26.343Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cpp Issure: About the initialization of derived classes in virtual functions">
 <meta name="twitter:description" content="Issure: Here is a program that shows virtual functions, consisting of class.h, class.cpp, main.cpp. Class.h is used to declare the class, class.cpp is used to define the class, and main.cpp is the mai">
@@ -146,7 +146,15 @@
 <blockquote>
 <p>Since class cylinder is a derived class public inherited from class circle, and the radius in the class circle is declared as protected , why can’t use the <strong>radius(r)</strong> of initializing the radius when initializing the class cylinder (error display: Radius” is not a nonstatic data member or base class of class “cylinder”), but to use <strong>circle(r)</strong> ?</p>
 </blockquote>
-<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h2>
+<h2 id="Answer"><a href="#Answer" class="headerlink" title="Answer:"></a>Answer:</h2><p><strong>Here are a few important rules</strong></p>
+<ol>
+<li><strong>The C++ language specifies that initialization of base class data members must be done in the member initialization list in the constructor of the derived class.</strong></li>
+<li><strong>The base class constructor must be used in the derived class initialization list to initialize the base class member</strong></li>
+<li><strong>Constructors are not inherited. Therefore, the constructor of the derived class must initialize the base class member by calling the constructor of the base class. The member of the base class cannot be initialized directly in the derived class initialization list. This is called “leap-level initialization.”</strong></li>
+</ol>
+<p>The general format of a derived class’s constructor is:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Derived class name (parameter table): base class name 1 (form table 1), base class name 2 (form table 2) ···</span><br><span class="line">&#123;···&#125;</span><br></pre></td></tr></table></figure>
+
             </div>
           
 
