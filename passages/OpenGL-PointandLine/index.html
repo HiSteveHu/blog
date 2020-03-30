@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="Dong Yuanxin">
+  
+  
+  <title>OpenGL-3:点和直线 | HiSteveHu</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="OpenGL,教程,">
+  
+
+  
+  <meta name="description" content="导言在之前的教程中，我们已经实现了空窗口以及三角形的渲染。然而只是略知一二，对于渲染的具体细节，比如三角形边的绘制，我们还不太清楚。从这节开始，我们将更加深入、系统地入门图形学，先从点和直线开始">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"Hyq9wkH495DgNHWhDQCOfQSp-gzGzoHsz","appkey":"WaR7nrzhliHj9aVwdQzkdlGd","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2018-02-10",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "Dong Yuanxin",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  <script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">GODBMW</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 安静写些东西</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/dongyuanxin/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2020-01-20
+    </span>
+    
+      <span>
+        | <a href="/categories/OpenGL/"><i class="fa fa-bookmark"></i>OpenGL</a>
+      </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    OpenGL-3:点和直线
+  </h1>
+  
+  <article class="passage-article">
+    <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a><strong>概念</strong></h3><h4 id="光栅化（扫描转换）"><a href="#光栅化（扫描转换）" class="headerlink" title="光栅化（扫描转换）"></a><strong>光栅化（扫描转换）</strong></h4><p>分为两步(以三角形为例)：</p>
+<ol>
+<li><p>输入三角形的定义:（1）几何信息：三个顶点的坐标（2）属性信息：颜色、光照、纹理等。</p>
+</li>
+<li><p>根据图形的定义在点阵单元上确定最佳逼近于图形的像素集。逼近的过程本质可以认为是连续量向离散量的转换</p>
+</li>
+<li><p>给像素指定合适的颜色值</p>
+<p><img src="0.jpg" style="zoom:50%;"></p>
+</li>
+</ol>
+<h3 id="直线扫描转换算法分类"><a href="#直线扫描转换算法分类" class="headerlink" title="直线扫描转换算法分类"></a><strong>直线扫描转换算法分类</strong></h3><p>逐点比较法、正负法、<strong>数值微分算法、Bresenham算法</strong></p>
+<p>接下来，我们主要了解数值微分算法</p>
+<h3 id="数值微分法（Digital-Differential-Analyzer-DDA）"><a href="#数值微分法（Digital-Differential-Analyzer-DDA）" class="headerlink" title="数值微分法（Digital Differential Analyzer,DDA）"></a><strong>数值微分法（Digital Differential Analyzer,DDA）</strong></h3><h4 id="理论"><a href="#理论" class="headerlink" title="理论"></a><strong>理论</strong></h4><p><img src="1.jpg" style="zoom:50%;"><br>$$<br>\begin{cases} x_{i+1}=x_i+\varepsilon\cdot\Delta_x \\y_{i+1}=y_i+\varepsilon\cdot\Delta_y\end{cases}<br>,精度无限高：\varepsilon无限小<br>$$</p>
+<p>$$<br>令\varepsilon=\frac{1}{max(|\Delta_x|,|\Delta_y|)}<br>$$</p>
+<p>使得ε△x或ε△y中会有一个变成<strong>单位步长</strong>。算法在<strong>最大位移方向</strong>上，<strong>每次总是走一步：</strong></p>
+<ul>
+<li><p>情况一：斜率绝对值小于1：<strong>ε=1/|△x|,其中对y(i+1)结果四舍五入</strong></p>
+<p><img src="2.jpg" style="zoom:50%;"></p>
+<blockquote>
+<p>$$<br>\because\varepsilon\cdot\Delta_x=1<br>\therefore \varepsilon=\frac{1}{\Delta_x}\<br>\therefore y_{i+1}=y_i+\varepsilon\cdot\Delta_y=y_i+\frac{\Delta_y}{\Delta_x}=y_i\pm k<br>$$</p>
+</blockquote>
+</li>
+<li><p>情况二：斜率绝对值大于1：<strong>ε=1/|△y|,其中对x(i+1)结果四舍五入</strong></p>
+<p><img src="3.jpg" style="zoom:50%;"></p>
+<blockquote>
+<p>$$<br>\because\varepsilon\cdot\Delta_y=1<br>\therefore \varepsilon=\frac{1}{\Delta_y}\<br>\therefore x_{i+1}=x_i+\varepsilon\cdot\Delta_x=x_i+\frac{\Delta_x}{\Delta_y}=x_i\pm \frac{1}{k}<br>$$</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DDALine</span><span class="params">(<span class="keyword">int</span> x0,<span class="keyword">int</span> y0,<span class="keyword">int</span> x1,<span class="keyword">int</span> y1)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> dx,dy,eps1,k;</span><br><span class="line">    <span class="keyword">float</span> x,y,xIncre,yIncre;</span><br><span class="line">    dx=x1-x0; dy=y1-y0;</span><br><span class="line">    x=x0; y=y0;</span><br><span class="line">    <span class="comment">//最大位移方向判断,即得max(|Δx|,|Δy|)</span></span><br><span class="line">    If (<span class="built_in">abs</span>(dx)&gt;<span class="built_in">abs</span>(dy)) eps1=<span class="built_in">abs</span>(dx);</span><br><span class="line">    <span class="keyword">else</span> eps1=<span class="built_in">abs</span>(dy);</span><br><span class="line">    <span class="comment">//x、y方向上增量的计算，即得ε×Δd</span></span><br><span class="line">    xIncre=(<span class="keyword">float</span>)dx/(<span class="keyword">float</span>)eps1;</span><br><span class="line">    yIncre=(<span class="keyword">float</span>)dy/(<span class="keyword">float</span>)eps1;</span><br><span class="line">    <span class="comment">//输出最佳逼近的像素点</span></span><br><span class="line">    <span class="keyword">for</span> (k=<span class="number">0</span>;k&lt;=eps1;k++)</span><br><span class="line">    &#123;</span><br><span class="line">        putpixel((<span class="keyword">int</span>)(x+<span class="number">0.5</span>),(<span class="keyword">int</span>)(y+<span class="number">0.5</span>));<span class="comment">//在对应坐标处输出像素点</span></span><br><span class="line">        x+=xIncre;</span><br><span class="line">        y+=yIncre;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#概念"><span class="toc-text">概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#光栅化（扫描转换）"><span class="toc-text">光栅化（扫描转换）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#直线扫描转换算法分类"><span class="toc-text">直线扫描转换算法分类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数值微分法（Digital-Differential-Analyzer-DDA）"><span class="toc-text">数值微分法（Digital Differential Analyzer,DDA）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#理论"><span class="toc-text">理论</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码"><span class="toc-text">代码</span></a></li></ol></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: 董沅鑫</div>
+      
+        <div>
+          原文链接: 
+          <a href="" target="_blank">https://histevehu.com/passages/OpenGL-PointandLine/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/tags/教程/"><i class="fa fa-tags"></i>教程</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">博客推荐</h5>
+          
+            <span class="site-footer-item">
+              <a href="https://godbmw.com/" target="_blank">GodBMW</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">系列教程</h5>
+          
+            <span class="site-footer-item">
+              <a href="https://godbmw.com/categories/webpack4%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B/" target="_blank">webpack4系列教程</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="https://godbmw.com/design-patterns/" target="_blank">设计模式手册</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">抓到我</h5>
+          
+            <span class="site-footer-item">
+              <a href="https://juejin.im/user/5b91fcf06fb9a05d3c7fd4a5" target="_blank">掘金</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="https://segmentfault.com/" target="_blank">思否</a>
+            </span>
+          
+        </div>
+      
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: yuanxin.me@gmail.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <div class="site-layer-input-choose">
+          <a href="javascript:void(0);" title="Change Search Engine">Google</a>
+        </div>
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      
+        <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+          
+            <div>
+              <img src="/images/wechat.png" alt="WeChat">
+              
+                <p>WeChat</p>
+              
+            </div>
+          
+            <div>
+              <img src="/images/alipay.png" alt="AliPay">
+              
+                <p>AliPay</p>
+              
+            </div>
+          
+        </div>
+      
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/passages/Unity-Create-Ball-Game/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/passages/OpenGL-RenderTriangle/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    
+      <a href="javascript:void(0);" id="site-reward">
+        <i class="fa fa-thumbs-up"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>

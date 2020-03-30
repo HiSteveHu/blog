@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+
+  <!-- PACE Progress Bar START -->
+
+  
+  <title>unity:playground框架入门 | HiSteveHu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="histevehu,stevehu,blog">
+  
+  
+  
+  
+  <meta name="description" content="Unity的Playground是一个用来制作拥有物理引擎的2D游戏开发框架，非常适合初学者。在这里，我们将用它来制作一个简单的飞船小游戏以快速入门。">
+<meta name="keywords" content="教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unity:Playground框架入门">
+<meta property="og:url" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/index.html">
+<meta property="og:site_name" content="HiSteveHu">
+<meta property="og:description" content="Unity的Playground是一个用来制作拥有物理引擎的2D游戏开发框架，非常适合初学者。在这里，我们将用它来制作一个简单的飞船小游戏以快速入门。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/17.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/0.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/1.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/2.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/4.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/5.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/6.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/7.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/8.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/10.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/9.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/11.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/12.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/13.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/14.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/15.jpg">
+<meta property="og:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/16.jpg">
+<meta property="og:updated_time" content="2020-02-09T07:34:59.961Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unity:Playground框架入门">
+<meta name="twitter:description" content="Unity的Playground是一个用来制作拥有物理引擎的2D游戏开发框架，非常适合初学者。在这里，我们将用它来制作一个简单的飞船小游戏以快速入门。">
+<meta name="twitter:image" content="https://histevehu.com/2020/02/08/Unity-Playground-Practice/17.jpg">
+  
+  <link rel="icon" href="/logo-1.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
+
+  themeMenus["/"] = "首页"; 
+
+  themeMenus["/archives"] = "归档"; 
+
+  themeMenus["/categories"] = "分类"; 
+
+  themeMenus["/tags"] = "标签"; 
+
+  themeMenus["/about"] = "关于"; 
+
+</script>
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="HiSteveHu" rel="home"> HiSteveHu </a>
+            
+          </h1>
+
+          
+            <div class="site-description">SteveHu&#39;s Personal Official Website - 史蒂夫个人官方网站</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">首页</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">归档</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">分类</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">标签</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">关于</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
+
+
+
+
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-Unity-Playground-Practice" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
+        
+
+<h1 class="thumb" itemprop="name">
+  Unity:Playground框架入门
+</h1>
+
+
+      </header>
+    
+    <div class="article-meta">
+      
+	Posted on <a href="/2020/02/08/Unity-Playground-Practice/" class="article-date">
+	  <time datetime="2020-02-08T02:04:18.000Z" itemprop="datePublished">二月 8, 2020</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Unity的Playground是一个用来制作拥有物理引擎的2D游戏开发框架，非常适合初学者。在这里，我们将用它来制作一个简单的飞船小游戏以快速入门。</p>
+<a id="more"></a>
+<h3 id="前导教程"><a href="#前导教程" class="headerlink" title="前导教程"></a><strong>前导教程</strong></h3><p><em>如果你第一次阅读本文且之前无相关Unity使用经验，建议阅读以下前导教程后再开始着手开始此教程。</em></p>
+<blockquote>
+<ol>
+<li><a href="https://histevehu.com/2020/02/02/Unity-Create-Ball-Game/">Unity:制作小球滚动游戏</a></li>
+</ol>
+</blockquote>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><hr>
+<p>游戏构思是，通过键盘操作键盘方向键操控飞船移动，躲避或者按空格键发射激光以摧毁小行星，同时收集星星。撞击小行星会丢失生命值。当生命值为0时，游戏失败。当收集到所有星星时（即分数满分时），游戏胜利。</p>
+<p><img src="17.jpg" alt=""></p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a><strong>准备</strong></h3><hr>
+<h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a><strong>创建项目</strong></h4><p>创建游戏的过程和上一节中的创建方式一样，只是要将游戏设置为2D，这里我们创建一个名为Playground2D的游戏项目。</p>
+<h4 id="引入Playground框架"><a href="#引入Playground框架" class="headerlink" title="引入Playground框架"></a><strong>引入Playground框架</strong></h4><p>为了使用Playground框架，需要在Asset Store中搜索Unity Playground并下载引入其资源包。</p>
+<p>在顶部菜单栏的Window中选择Asset Store即可进入资源商店，搜索找到Unity Playground选择下载（Download）然后引入（Import）。</p>
+<p>引入成功后，可以看到Playground框架已经为我们准备了很多资源，主要的资源集中在Scripts，打开这个文件夹可以发现很多已经写好的可以直接使用的脚本。</p>
+<h3 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a><strong>正式开始</strong></h3><hr>
+<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h4><p>将SampleScene重命名为MainScene并保存于Scenes目录下，保留Main Camera。</p>
+<p>选择Assets-&gt;Images-&gt;Backgrounds下的BG_Space背景图，拖动到Hierarchy面板中。在Inspector面板中的Sprite Renderer（着色器）中将起Draw Mode（绘制模式）改为Tiled（平铺），还可以扩大它的大小，这里将其X、Y的Size值均设置为100。然后展开Visibility Options（可视化选项），将Sorting Layer（排布布局）设置为Background（背景），这样可以使得其他所有的GameObject均在其上方。</p>
+<p><img src="0.jpg" style="zoom:50%;"></p>
+<h4 id="添加飞船"><a href="#添加飞船" class="headerlink" title="添加飞船"></a><strong>添加飞船</strong></h4><p>选择Assets-&gt;Images-&gt;Spaceships下的一个图像作为Player，这里选择了一个红色的飞船，并将其拖动到Hierarchy面板中。在Inspector面板中，为了让飞船实现碰撞等物理效果，为其添加刚体属性，只不过这里我们选择添加Rigidbody 2D，即选择Add Component，找到或者搜索该Component之后添加。<br> 显然，我们需要将它的Gravity（重力）置零，为了不让其在受到一小点点的力后运动起来停不下来，将其Friction（摩擦力）设置一个合理的值，这里设置为2，Angular Friction（角摩擦）可以保持0.05的预设值。</p>
+<p><img src="1.jpg" style="zoom:50%;"></p>
+<p>接下来就可以体会到Playground框架的强大之处，因为它预先为我们准备了各种各样的脚本。运用这些脚本可以直接实现很多游戏情景，而我们要做的只是将对应的脚本添加给对应的GameObject，并且设置脚本需要的public属性的值，也就是在Inspector面板中设置这些值即可。</p>
+<p>首先，为了让飞船能够运动起来，为其添加一个推动力的脚本：Move With Arrows，你可以选择从Assets中的Scirpts目录下找到这个脚本拖动到Inspector面板中，也可以在Add Component中直接搜索添加该脚本。然后更改控制方式为Arrow Keys（方向键），Push Strength（推力大小）为适当的值，这里置为3，勾选 Orient to direction。此时运行游戏可以通过按方向键（↑↓←→）使飞船运动起来。</p>
+<p><img src="2.jpg" style="zoom:50%;"></p>
+<p>这里还给飞船增加了一点儿可爱的属性，找到Assets-&gt;Prefabs-&gt;Particles下的P_Flame，拖动到Hierarchy成为飞船的子物体，让其跟随飞船运动，然后通过选择和平移调整一个合适的位置加到飞船的尾部。</p>
+<p><img src="4.jpg" style="zoom:50%;"></p>
+<h4 id="设置Camera"><a href="#设置Camera" class="headerlink" title="设置Camera"></a><strong>设置Camera</strong></h4><p>设置Camera，调整Size，改变其视野范围，并添加一个Follow脚本使其固定跟随一个物体，直接点击Camera中的Add Camera Follow script即可添加，然后将我们的Player也就是飞船拖动到Target作为其参数即可。</p>
+<p><img src="5.jpg" style="zoom:50%;"></p>
+<p><img src="6.jpg" style="zoom:50%;"></p>
+<h4 id="添加小行星"><a href="#添加小行星" class="headerlink" title="添加小行星"></a><strong>添加小行星</strong></h4><p>选择Assets-&gt;Images-&gt;Asteroids下的一个小行星图像作为障碍物，同样需要为其添加Rigidbody 2D属性，修改其中的值</p>
+<p>在物理学中我们知道，如果一个物体没有受到任何摩擦力，在其受到一个力从而获得一个初速度后会一直以这个速度运动下去，所以为了避免这种情况的发生，我们还是需要为其Friction（摩擦力）赋予一个合理的值</p>
+<p><img src="7.jpg" style="zoom:50%;"></p>
+<h4 id="添加Collider"><a href="#添加Collider" class="headerlink" title="添加Collider"></a><strong>添加Collider</strong></h4><p>为了有碰撞效果，为飞船和石头均添加 Polygon Collider 2D 属性。此时运行游戏，会发现飞船可以碰撞石头</p>
+<p><img src="8.jpg" style="zoom:50%;"></p>
+<h4 id="添加生命值"><a href="#添加生命值" class="headerlink" title="添加生命值"></a><strong>添加生命值</strong></h4><p>为飞船添加一个Health System（健康系统），直接添加Health System脚本即可，可以看到，我们可以预设生命值。</p>
+<p><img src="10.jpg" style="zoom:50%;"></p>
+<p>飞船碰撞到了石头，飞船的生命值就减少一，这需要我们为石头添加Modify Health脚本，然后看到有两个可选参数，第一个Destroy When Activated（起作用时销毁）如果选中的话就会在石头起到“减血”作用后销毁石头，这里不选中，第二个Health Change即为对生命值的变化，这里设置为-1很合理。</p>
+<p><img src="9.jpg" style="zoom:50%;"></p>
+<h4 id="添加UI"><a href="#添加UI" class="headerlink" title="添加UI"></a><strong>添加UI</strong></h4><p>为了让生命值和分数显示出来，我们为Hierarchy目录添加Assets下的Prefabs下的UserInterface，UI自动显示在了游戏界面中。</p>
+<p>为了让Untiy清楚生命值和分数都记录的是谁的，这里需要为飞船添加一个Player的Tag，添加Tag详见前导教程。</p>
+<p><img src="11.jpg" style="zoom:50%;"></p>
+<h4 id="添加激光武器"><a href="#添加激光武器" class="headerlink" title="添加激光武器"></a><strong>添加激光武器</strong></h4><p>为了不让我们的飞船显得太过于脆弱，为其添加发射激光的功能。</p>
+<p>这里选择Assets-&gt;Images-&gt;Projectiles下的LasersMid作为发射的激光，拖动到Hierarchy下。</p>
+<p>为其添加Rigidbody 2D和capsule Collider 2D（胶囊状的碰撞器）使其拥有碰撞属性，正如前导教程中所提到的，还需要选中Is Trigger一项。</p>
+<p><img src="12.jpg" style="zoom:50%;"></p>
+<p>Playground框架为我们准备了Bullet（子弹）脚本使其在特定条件下产生一个该对象的引用，即发射一发子弹。<br> 添加了Bullet脚本后的激光束，将其拖动回Assets下的Prefabs目录下成为一个预设体。</p>
+<p><img src="13.jpg" style="zoom:50%;"></p>
+<p>有了激光，还需要一个发射的枪口，我们在飞船下新建一个空的子物体，将其命名为Gun，将其拖动至飞船的顶部也就是发射的地方。</p>
+<p><img src="14.jpg" style="zoom:50%;"></p>
+<p>为刚创建的Gun添加一个Object Shooter的脚本，在Inspector面板中设置其参数。Prefab To Spawn（要发射的预设体）里拖动我们已有的Prefab下的子弹预设体到这里作为参数，Key To Press是发射的按键，这里设置为空格键，Creation Rate是产生的速度，这里设置为0.1，Shoot Speed为发射速度，这里设置为17，shoot Direction为发射方向，显然是沿Y方向发射，所以将X设为0，Y设为1。勾选 Relative to Rotation。</p>
+<p>射击中石头时石头就需要消失并且我们要得分，所以为石头再添加一个脚本：Destory For Points，这个脚本使得物体被击中时销毁并为我们的Player增加分数，Points Worth即其所价值的分数，这里我们设置为0，因为并不想在击中石头后得到分数。</p>
+<h4 id="添加星星"><a href="#添加星星" class="headerlink" title="添加星星"></a><strong>添加星星</strong></h4><p>为游戏添加一些在太空中漂浮的星星，用我们驾驶的飞船去收集这些星星，收集到的外星人就进入飞船（消失）</p>
+<p>选择Assets-&gt;Images-&gt;GameElements下的Star，它需要拥有以下的Component：</p>
+<p><img src="15.jpg" style="zoom:50%;"></p>
+<p>再添加一个Collectable（可收集的）脚本，这个脚本表示这是一个可以被收集的物体，Points Worth表示收集到后得到的分数，这里默认1不变。</p>
+<p><img src="16.jpg" style="zoom:80%;"></p>
+<h4 id="完善场景"><a href="#完善场景" class="headerlink" title="完善场景"></a><strong>完善场景</strong></h4><p>对小行星和星星进行复制（Duplicate），然后任意摆放。</p>
+<h4 id="添加胜利条件"><a href="#添加胜利条件" class="headerlink" title="添加胜利条件"></a><strong>添加胜利条件</strong></h4><p>到什么时候才算胜利呢？选择UserInterface，在Inspector中的UI Script处可以设置，比如这里默认的为一个玩家、计分制、满分为胜利。以10个星星为例，每个星星我们前面设置为1分，则满分为10分。</p>
+<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a><strong>大功告成</strong></h3><hr>
+<p>运行游戏，完美！</p>
+<p>至此游戏的制作大功告成，你可以选择打包生成可执行文件分享给你的好友。打包生成详见前导教程中的分享一节。</p>
+<p><strong>另附上游戏的完整工程文件，如果你中途遇到困难可供参考：</strong><a href="https://github.com/histevehu/blog/raw/master/2020/02/08/Unity-Playground-Practice/Playground2D.zip" target="_blank" rel="noopener">Playground2D.zip</a></p>
+
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Unity/">Unity</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/13/Ubuntu-Common-Instruction-Collection/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Ubuntu 常用指令操作&amp;问题解决方案收集
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/02/Unity-Create-Ball-Game/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Unity:制作小球滚动游戏</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
+    <strong class="toc-title">导航</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前导教程"><span class="nav-number">1.</span> <span class="nav-text">前导教程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备"><span class="nav-number">3.</span> <span class="nav-text">准备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建项目"><span class="nav-number">3.1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引入Playground框架"><span class="nav-number">3.2.</span> <span class="nav-text">引入Playground框架</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正式开始"><span class="nav-number">4.</span> <span class="nav-text">正式开始</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">4.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加飞船"><span class="nav-number">4.2.</span> <span class="nav-text">添加飞船</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置Camera"><span class="nav-number">4.3.</span> <span class="nav-text">设置Camera</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加小行星"><span class="nav-number">4.4.</span> <span class="nav-text">添加小行星</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加Collider"><span class="nav-number">4.5.</span> <span class="nav-text">添加Collider</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加生命值"><span class="nav-number">4.6.</span> <span class="nav-text">添加生命值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加UI"><span class="nav-number">4.7.</span> <span class="nav-text">添加UI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加激光武器"><span class="nav-number">4.8.</span> <span class="nav-text">添加激光武器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加星星"><span class="nav-number">4.9.</span> <span class="nav-text">添加星星</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完善场景"><span class="nav-number">4.10.</span> <span class="nav-text">完善场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加胜利条件"><span class="nav-number">4.11.</span> <span class="nav-text">添加胜利条件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大功告成"><span class="nav-number">5.</span> <span class="nav-text">大功告成</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2020 HiSteveHu All Rights Reserved.
+          
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+            <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
+</html>

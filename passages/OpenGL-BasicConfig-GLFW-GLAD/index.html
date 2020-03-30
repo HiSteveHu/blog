@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="Dong Yuanxin">
+  
+  
+  <title>OpenGL-1:基本配置(GLFW+GLAD) | HiSteveHu</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="OpenGL,教程,">
+  
+
+  
+  <meta name="description" content="这里我们将帮助你入门OpenGL第一步——基于GLFW、GLAD库的开发环境搭建配置">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"Hyq9wkH495DgNHWhDQCOfQSp-gzGzoHsz","appkey":"WaR7nrzhliHj9aVwdQzkdlGd","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2018-02-10",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "Dong Yuanxin",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  <script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">GODBMW</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 安静写些东西</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/dongyuanxin/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2020-01-19
+    </span>
+    
+      <span>
+        | <a href="/categories/OpenGL/"><i class="fa fa-bookmark"></i>OpenGL</a>
+      </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    OpenGL-1:基本配置(GLFW+GLAD)
+  </h1>
+  
+  <article class="passage-article">
+    <h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a><strong>开始</strong></h3><hr>
+<h4 id="GLFW-准备"><a href="#GLFW-准备" class="headerlink" title="GLFW 准备"></a><strong>GLFW</strong> 准备</h4><p>GLFW是一个 OpenGL的 C语言库，它提供了渲染物体所需要的最低限度的接口，它允许用户创建 OpenGL上下文，定义窗口参数以及用户的输入。 是对之前固定管线常用的 GLUT的一种改进。</p>
+<ol>
+<li><p>下载GLFW源代码包，解压缩</p>
+<p><a href="https://www.glfw.org" target="_blank" rel="noopener">https://www.glfw.org</a></p>
+<blockquote>
+<p>从源代码编译库可以保证生成的库是兼容你的操作系统和硬件的，而预编译的二进制文件可能会出现兼容问题。提供源代码所产生的一个问题在于不是每个人都用相同的 IDE开发程序，因而提供的工程/解决方案文件可能和一些人的 IDE不兼容。所以人们只能从.c/.cpp和.h/.hpp文件来自己建立工程/解决方案，这是一项枯燥的工作。但因此也诞生了一个叫做 CMake的工具。</p>
+<p>CMake是一个工程文件生成工具。用户可以使用预定义好的 CMake脚本，根据自己的需求生成对应IDE（Visual Studio, Eclipse…）的工程文件。</p>
+</blockquote>
+</li>
+<li><p>下载CMake <a href="https://cmake.org/download" target="_blank" rel="noopener">https://cmake.org/download</a></p>
+</li>
+<li><p>当 CMake安装成功后，你可以选择从命令行或者 GUI启动 CMake，由于我们不想让事情变得太过复杂，我们选择用 GUI。(GUI版本CMake位于安装路径根下的bin目录中)</p>
+</li>
+<li><p>CMake需要一个源代码目录和一个存放编译结果的目标文件目录。源代码目录我们选择 GLFW的源代码的根目录，然后我们新建一个 build 文件夹作为目标目录</p>
+<p><img src="0.jpg"></p>
+</li>
+<li><p>点击”Configure”，只需选择目标的IDE版本，其他保持默认即可。这里以Visual Studio 2019为例</p>
+<p><img src="1.jpg" style="zoom:50%;"></p>
+</li>
+<li><p>点击”Generate”生成，期间会出现红色提示，再依次点击”Configure”和”Generate”，生成成功</p>
+</li>
+<li><p>在 build文件夹里找到生成的 GLFW.sln 文件，用 Visual Studio 2019 打开。因为CMake已经配置好了项目，所以直接点击生成解决方案，然后编译的库 glfw3.lib（注意版本为第 3版）就会出现在 src/Debug文件夹内</p>
+</li>
+<li><p>库文件生成完毕，但我们需要进行需要一些配置让 IDE知道库和头文件的位置。</p>
+<blockquote>
+<p>推荐的方式是建立一个新的单独的目录，里面包含 libs 和 include文件夹，用以包含所有OpenGL工程用到的第三方库和头文件，然后在你的 IDE 中指定这些文件夹路径。这样的好处是所有第三方库都在同一个位置 （并且可以共享至多台电脑）；缺点是需要每次新建一个工程时都配置这些目录路径。</p>
+</blockquote>
+<p>这里以这种方法为例</p>
+</li>
+<li><p>新建一个文件夹，作为工程根目录。再在其中新建 libs 和 include文件夹。</p>
+</li>
+<li><p>进入GLFW解压缩源代码目录下的include文件夹，将其中的 GLFW 整个文件夹复制到工程根目录下的 include 文件夹中。再将刚在编译生成的库文件 glfw3.lib 复制到工程根目录下的 libs 文件夹中。</p>
+</li>
+</ol>
+<h4 id="GLAD-准备"><a href="#GLAD-准备" class="headerlink" title="GLAD 准备"></a><strong>GLAD 准备</strong></h4><p>到这里还没有结束，我们仍然还有一件事要做。因为 OpenGL只是一个标准/规范，具体的实现是由驱动开发商针对特定显卡实现的。由于 OpenGL驱动版本众多，它大多数函数的位置都无法在编译时确定下来，需要在运行时查询。所以任务就落在了开发者身上，开发者需要在运行时获取函数地址并将其保存在一个函数指针中供以后使用。取得地址的方法因平台而异，代码非常复杂繁琐，幸运的是有些库能简化此过程，其中 GLAD是目前最新，也是最流行的库。 </p>
+<ol>
+<li><p>进入 GLAD 的在线服务 <a href="https://glad.dav1d.de/" target="_blank" rel="noopener">https://glad.dav1d.de/</a>   将语言(Language)设置为 C/C++，规范(Specification)设置为OpenGL。在 API 选项中，选择 3.3以上的 OpenGL(gl)版本，将模式(Profile)设置为 Core，先暂时忽略拓展(Extensions)中的内容。选中生成加载器(Generate a loader)。最后点击生成(Generate)按钮来生成库文件。</p>
+<p><img src="2.png" style="zoom: 50%;"></p>
+</li>
+<li><p>随后会跳转到一个结果生成页面，点击下载 glad.zip ，解压缩</p>
+<p><img src="3.jpg" alt=""></p>
+</li>
+<li><p>解压缩后得到其中两个目录：include 和 src。将include目录下两个文件夹（glad 和 KHR）复制到工程根目录下的 include 文件夹内。将 src 目录下的 glad.c 复制到工程根目录下。</p>
+</li>
+</ol>
+<h4 id="确认"><a href="#确认" class="headerlink" title="确认"></a><strong>确认</strong></h4><p>如果一切顺利，现在工程根目录下有include、libs两个目录以及glad.c。</p>
+<p>在 include 文件夹中有 GLFW、KHR、glad 三个文件夹。在 libs 文件夹中有 glfw3.lib。</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a><strong>配置</strong></h4><p>库和头文件准备就绪，最后只需要在工程中配置这些文件路径即可。</p>
+<ol>
+<li><p>打开 Visual Studio 2019，创建新项目（C++空项目），将位置设置为前文的工程根目录。</p>
+</li>
+<li><p>打开工程属性（解决方案窗口里右键项目，属性）</p>
+</li>
+<li><p>点击 VC++目录选项卡，在包含目录一项添加工程根目录下 include 文件夹的路径，在库目录一项添加工程根目录下 libs 文件夹的路径</p>
+<p><img src="4.jpg" style="zoom: 50%;"></p>
+</li>
+</ol>
+<ol start="4">
+<li><p>点击选项卡 链接器-&gt;输入，添加依赖项，添加 glfw3.lib ，点击确定保存</p>
+<p><img src="5.jpg" style="zoom:50%;"></p>
+</li>
+<li><p>在结局方案窗口，右键项目的源文件文件夹，添加现有项，将工程根目录的 glad.c 添加进工程</p>
+<p><img src="6.jpg" style="zoom:50%;"></p>
+</li>
+</ol>
+<h3 id="完成！"><a href="#完成！" class="headerlink" title="完成！"></a><strong>完成！</strong></h3><hr>
+<p>如果一切顺利，至此OpenGL开发环境配置完毕。</p>
+<p>在下一节中，我们将会实现一个空窗口的渲染，借此也得以验证你是否正确配置OpenGL的开发环境。</p>
+<p><a href="https://histevehu.com/2020/01/19/OpenGL-RenderEmptyWindow/">OpenGL-2:渲染窗体</a></p>
+<p>当然，我们也会将示例代码提交至Github，如果你遇到问题可供参考：</p>
+<p><a href="https://github.com/histevehu/OpenGL-Learning" target="_blank" rel="noopener">HiSteveHu::OpenGL-Learning</a></p>
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#开始"><span class="toc-text">开始</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GLFW-准备"><span class="toc-text">GLFW 准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GLAD-准备"><span class="toc-text">GLAD 准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#确认"><span class="toc-text">确认</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置"><span class="toc-text">配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#完成！"><span class="toc-text">完成！</span></a></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: 董沅鑫</div>
+      
+        <div>
+          原文链接: 
+          <a href="" target="_blank">https://histevehu.com/passages/OpenGL-BasicConfig-GLFW-GLAD/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/tags/教程/"><i class="fa fa-tags"></i>教程</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">博客推荐</h5>
+          
+            <span class="site-footer-item">
+              <a href="https://godbmw.com/" target="_blank">GodBMW</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">系列教程</h5>
+          
+            <span class="site-footer-item">
+              <a href="https://godbmw.com/categories/webpack4%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B/" target="_blank">webpack4系列教程</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="https://godbmw.com/design-patterns/" target="_blank">设计模式手册</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">抓到我</h5>
+          
+            <span class="site-footer-item">
+              <a href="https://juejin.im/user/5b91fcf06fb9a05d3c7fd4a5" target="_blank">掘金</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="https://segmentfault.com/" target="_blank">思否</a>
+            </span>
+          
+        </div>
+      
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: yuanxin.me@gmail.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <div class="site-layer-input-choose">
+          <a href="javascript:void(0);" title="Change Search Engine">Google</a>
+        </div>
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      
+        <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+          
+            <div>
+              <img src="/images/wechat.png" alt="WeChat">
+              
+                <p>WeChat</p>
+              
+            </div>
+          
+            <div>
+              <img src="/images/alipay.png" alt="AliPay">
+              
+                <p>AliPay</p>
+              
+            </div>
+          
+        </div>
+      
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/passages/OpenGL-RenderEmptyWindow/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/passages/ESP8266-SmartConfig/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    
+      <a href="javascript:void(0);" id="site-reward">
+        <i class="fa fa-thumbs-up"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>

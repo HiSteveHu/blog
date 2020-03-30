@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="Dong Yuanxin">
+  
+  
+  <title>Unity:Playground框架入门 | HiSteveHu</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="Unity,教程,">
+  
+
+  
+  <meta name="description" content="Unity的Playground是一个用来制作拥有物理引擎的2D游戏开发框架，非常适合初学者。在这里，我们将用它来制作一个简单的飞船小游戏以快速入门。">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"Hyq9wkH495DgNHWhDQCOfQSp-gzGzoHsz","appkey":"WaR7nrzhliHj9aVwdQzkdlGd","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2018-02-10",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "Dong Yuanxin",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  <script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">GODBMW</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 安静写些东西</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/dongyuanxin/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2020-02-08
+    </span>
+    
+      <span>
+        | <a href="/categories/Unity/"><i class="fa fa-bookmark"></i>Unity</a>
+      </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    Unity:Playground框架入门
+  </h1>
+  
+  <article class="passage-article">
+    <h3 id="前导教程"><a href="#前导教程" class="headerlink" title="前导教程"></a><strong>前导教程</strong></h3><p><em>如果你第一次阅读本文且之前无相关Unity使用经验，建议阅读以下前导教程后再开始着手开始此教程。</em></p>
+<blockquote>
+<ol>
+<li><a href="https://histevehu.com/2020/02/02/Unity-Create-Ball-Game/">Unity:制作小球滚动游戏</a></li>
+</ol>
+</blockquote>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><hr>
+<p>游戏构思是，通过键盘操作键盘方向键操控飞船移动，躲避或者按空格键发射激光以摧毁小行星，同时收集星星。撞击小行星会丢失生命值。当生命值为0时，游戏失败。当收集到所有星星时（即分数满分时），游戏胜利。</p>
+<p><img src="17.jpg" alt=""></p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a><strong>准备</strong></h3><hr>
+<h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a><strong>创建项目</strong></h4><p>创建游戏的过程和上一节中的创建方式一样，只是要将游戏设置为2D，这里我们创建一个名为Playground2D的游戏项目。</p>
+<h4 id="引入Playground框架"><a href="#引入Playground框架" class="headerlink" title="引入Playground框架"></a><strong>引入Playground框架</strong></h4><p>为了使用Playground框架，需要在Asset Store中搜索Unity Playground并下载引入其资源包。</p>
+<p>在顶部菜单栏的Window中选择Asset Store即可进入资源商店，搜索找到Unity Playground选择下载（Download）然后引入（Import）。</p>
+<p>引入成功后，可以看到Playground框架已经为我们准备了很多资源，主要的资源集中在Scripts，打开这个文件夹可以发现很多已经写好的可以直接使用的脚本。</p>
+<h3 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a><strong>正式开始</strong></h3><hr>
+<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h4><p>将SampleScene重命名为MainScene并保存于Scenes目录下，保留Main Camera。</p>
+<p>选择Assets-&gt;Images-&gt;Backgrounds下的BG_Space背景图，拖动到Hierarchy面板中。在Inspector面板中的Sprite Renderer（着色器）中将起Draw Mode（绘制模式）改为Tiled（平铺），还可以扩大它的大小，这里将其X、Y的Size值均设置为100。然后展开Visibility Options（可视化选项），将Sorting Layer（排布布局）设置为Background（背景），这样可以使得其他所有的GameObject均在其上方。</p>
+<p><img src="0.jpg" style="zoom:50%;"></p>
+<h4 id="添加飞船"><a href="#添加飞船" class="headerlink" title="添加飞船"></a><strong>添加飞船</strong></h4><p>选择Assets-&gt;Images-&gt;Spaceships下的一个图像作为Player，这里选择了一个红色的飞船，并将其拖动到Hierarchy面板中。在Inspector面板中，为了让飞船实现碰撞等物理效果，为其添加刚体属性，只不过这里我们选择添加Rigidbody 2D，即选择Add Component，找到或者搜索该Component之后添加。<br> 显然，我们需要将它的Gravity（重力）置零，为了不让其在受到一小点点的力后运动起来停不下来，将其Friction（摩擦力）设置一个合理的值，这里设置为2，Angular Friction（角摩擦）可以保持0.05的预设值。</p>
+<p><img src="1.jpg" style="zoom:50%;"></p>
+<p>接下来就可以体会到Playground框架的强大之处，因为它预先为我们准备了各种各样的脚本。运用这些脚本可以直接实现很多游戏情景，而我们要做的只是将对应的脚本添加给对应的GameObject，并且设置脚本需要的public属性的值，也就是在Inspector面板中设置这些值即可。</p>
+<p>首先，为了让飞船能够运动起来，为其添加一个推动力的脚本：Move With Arrows，你可以选择从Assets中的Scirpts目录下找到这个脚本拖动到Inspector面板中，也可以在Add Component中直接搜索添加该脚本。然后更改控制方式为Arrow Keys（方向键），Push Strength（推力大小）为适当的值，这里置为3，勾选 Orient to direction。此时运行游戏可以通过按方向键（↑↓←→）使飞船运动起来。</p>
+<p><img src="2.jpg" style="zoom:50%;"></p>
+<p>这里还给飞船增加了一点儿可爱的属性，找到Assets-&gt;Prefabs-&gt;Particles下的P_Flame，拖动到Hierarchy成为飞船的子物体，让其跟随飞船运动，然后通过选择和平移调整一个合适的位置加到飞船的尾部。</p>
+<p><img src="4.jpg" style="zoom:50%;"></p>
+<h4 id="设置Camera"><a href="#设置Camera" class="headerlink" title="设置Camera"></a><strong>设置Camera</strong></h4><p>设置Camera，调整Size，改变其视野范围，并添加一个Follow脚本使其固定跟随一个物体，直接点击Camera中的Add Camera Follow script即可添加，然后将我们的Player也就是飞船拖动到Target作为其参数即可。</p>
+<p><img src="5.jpg" style="zoom:50%;"></p>
+<p><img src="6.jpg" style="zoom:50%;"></p>
+<h4 id="添加小行星"><a href="#添加小行星" class="headerlink" title="添加小行星"></a><strong>添加小行星</strong></h4><p>选择Assets-&gt;Images-&gt;Asteroids下的一个小行星图像作为障碍物，同样需要为其添加Rigidbody 2D属性，修改其中的值</p>
+<p>在物理学中我们知道，如果一个物体没有受到任何摩擦力，在其受到一个力从而获得一个初速度后会一直以这个速度运动下去，所以为了避免这种情况的发生，我们还是需要为其Friction（摩擦力）赋予一个合理的值</p>
+<p><img src="7.jpg" style="zoom:50%;"></p>
+<h4 id="添加Collider"><a href="#添加Collider" class="headerlink" title="添加Collider"></a><strong>添加Collider</strong></h4><p>为了有碰撞效果，为飞船和石头均添加 Polygon Collider 2D 属性。此时运行游戏，会发现飞船可以碰撞石头</p>
+<p><img src="8.jpg" style="zoom:50%;"></p>
+<h4 id="添加生命值"><a href="#添加生命值" class="headerlink" title="添加生命值"></a><strong>添加生命值</strong></h4><p>为飞船添加一个Health System（健康系统），直接添加Health System脚本即可，可以看到，我们可以预设生命值。</p>
+<p><img src="10.jpg" style="zoom:50%;"></p>
+<p>飞船碰撞到了石头，飞船的生命值就减少一，这需要我们为石头添加Modify Health脚本，然后看到有两个可选参数，第一个Destroy When Activated（起作用时销毁）如果选中的话就会在石头起到“减血”作用后销毁石头，这里不选中，第二个Health Change即为对生命值的变化，这里设置为-1很合理。</p>
+<p><img src="9.jpg" style="zoom:50%;"></p>
+<h4 id="添加UI"><a href="#添加UI" class="headerlink" title="添加UI"></a><strong>添加UI</strong></h4><p>为了让生命值和分数显示出来，我们为Hierarchy目录添加Assets下的Prefabs下的UserInterface，UI自动显示在了游戏界面中。</p>
+<p>为了让Untiy清楚生命值和分数都记录的是谁的，这里需要为飞船添加一个Player的Tag，添加Tag详见前导教程。</p>
+<p><img src="11.jpg" style="zoom:50%;"></p>
+<h4 id="添加激光武器"><a href="#添加激光武器" class="headerlink" title="添加激光武器"></a><strong>添加激光武器</strong></h4><p>为了不让我们的飞船显得太过于脆弱，为其添加发射激光的功能。</p>
+<p>这里选择Assets-&gt;Images-&gt;Projectiles下的LasersMid作为发射的激光，拖动到Hierarchy下。</p>
+<p>为其添加Rigidbody 2D和capsule Collider 2D（胶囊状的碰撞器）使其拥有碰撞属性，正如前导教程中所提到的，还需要选中Is Trigger一项。</p>
+<p><img src="12.jpg" style="zoom:50%;"></p>
+<p>Playground框架为我们准备了Bullet（子弹）脚本使其在特定条件下产生一个该对象的引用，即发射一发子弹。<br> 添加了Bullet脚本后的激光束，将其拖动回Assets下的Prefabs目录下成为一个预设体。</p>
+<p><img src="13.jpg" style="zoom:50%;"></p>
+<p>有了激光，还需要一个发射的枪口，我们在飞船下新建一个空的子物体，将其命名为Gun，将其拖动至飞船的顶部也就是发射的地方。</p>
+<p><img src="14.jpg" style="zoom:50%;"></p>
+<p>为刚创建的Gun添加一个Object Shooter的脚本，在Inspector面板中设置其参数。Prefab To Spawn（要发射的预设体）里拖动我们已有的Prefab下的子弹预设体到这里作为参数，Key To Press是发射的按键，这里设置为空格键，Creation Rate是产生的速度，这里设置为0.1，Shoot Speed为发射速度，这里设置为17，shoot Direction为发射方向，显然是沿Y方向发射，所以将X设为0，Y设为1。勾选 Relative to Rotation。</p>
+<p>射击中石头时石头就需要消失并且我们要得分，所以为石头再添加一个脚本：Destory For Points，这个脚本使得物体被击中时销毁并为我们的Player增加分数，Points Worth即其所价值的分数，这里我们设置为0，因为并不想在击中石头后得到分数。</p>
+<h4 id="添加星星"><a href="#添加星星" class="headerlink" title="添加星星"></a><strong>添加星星</strong></h4><p>为游戏添加一些在太空中漂浮的星星，用我们驾驶的飞船去收集这些星星，收集到的外星人就进入飞船（消失）</p>
+<p>选择Assets-&gt;Images-&gt;GameElements下的Star，它需要拥有以下的Component：</p>
+<p><img src="15.jpg" style="zoom:50%;"></p>
+<p>再添加一个Collectable（可收集的）脚本，这个脚本表示这是一个可以被收集的物体，Points Worth表示收集到后得到的分数，这里默认1不变。</p>
+<p><img src="16.jpg" style="zoom:80%;"></p>
+<h4 id="完善场景"><a href="#完善场景" class="headerlink" title="完善场景"></a><strong>完善场景</strong></h4><p>对小行星和星星进行复制（Duplicate），然后任意摆放。</p>
+<h4 id="添加胜利条件"><a href="#添加胜利条件" class="headerlink" title="添加胜利条件"></a><strong>添加胜利条件</strong></h4><p>到什么时候才算胜利呢？选择UserInterface，在Inspector中的UI Script处可以设置，比如这里默认的为一个玩家、计分制、满分为胜利。以10个星星为例，每个星星我们前面设置为1分，则满分为10分。</p>
+<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a><strong>大功告成</strong></h3><hr>
+<p>运行游戏，完美！</p>
+<p>至此游戏的制作大功告成，你可以选择打包生成可执行文件分享给你的好友。打包生成详见前导教程中的分享一节。</p>
+<p><strong>另附上游戏的完整工程文件，如果你中途遇到困难可供参考：</strong><a href="https://github.com/histevehu/blog/raw/master/2020/02/08/Unity-Playground-Practice/Playground2D.zip" target="_blank" rel="noopener">Playground2D.zip</a></p>
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前导教程"><span class="toc-text">前导教程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-text">准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建项目"><span class="toc-text">创建项目</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#引入Playground框架"><span class="toc-text">引入Playground框架</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正式开始"><span class="toc-text">正式开始</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#背景"><span class="toc-text">背景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加飞船"><span class="toc-text">添加飞船</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置Camera"><span class="toc-text">设置Camera</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加小行星"><span class="toc-text">添加小行星</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加Collider"><span class="toc-text">添加Collider</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加生命值"><span class="toc-text">添加生命值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加UI"><span class="toc-text">添加UI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加激光武器"><span class="toc-text">添加激光武器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加星星"><span class="toc-text">添加星星</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#完善场景"><span class="toc-text">完善场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加胜利条件"><span class="toc-text">添加胜利条件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大功告成"><span class="toc-text">大功告成</span></a></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: 董沅鑫</div>
+      
+        <div>
+          原文链接: 
+          <a href="" target="_blank">https://histevehu.com/passages/Unity-Playground-Practice/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/tags/教程/"><i class="fa fa-tags"></i>教程</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">博客推荐</h5>
+          
+            <span class="site-footer-item">
+              <a href="https://godbmw.com/" target="_blank">GodBMW</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">系列教程</h5>
+          
+            <span class="site-footer-item">
+              <a href="https://godbmw.com/categories/webpack4%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B/" target="_blank">webpack4系列教程</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="https://godbmw.com/design-patterns/" target="_blank">设计模式手册</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">抓到我</h5>
+          
+            <span class="site-footer-item">
+              <a href="https://juejin.im/user/5b91fcf06fb9a05d3c7fd4a5" target="_blank">掘金</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="https://segmentfault.com/" target="_blank">思否</a>
+            </span>
+          
+        </div>
+      
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: yuanxin.me@gmail.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <div class="site-layer-input-choose">
+          <a href="javascript:void(0);" title="Change Search Engine">Google</a>
+        </div>
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      
+        <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+          
+            <div>
+              <img src="/images/wechat.png" alt="WeChat">
+              
+                <p>WeChat</p>
+              
+            </div>
+          
+            <div>
+              <img src="/images/alipay.png" alt="AliPay">
+              
+                <p>AliPay</p>
+              
+            </div>
+          
+        </div>
+      
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/passages/Ubuntu-Common-Instruction-Collection/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/passages/Unity-Create-Ball-Game/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    
+      <a href="javascript:void(0);" id="site-reward">
+        <i class="fa fa-thumbs-up"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>

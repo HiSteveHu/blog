@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html>
+  
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta name="author" content="Dong Yuanxin">
+  
+  
+  <title>OpenGL-3:渲染三角形 | HiSteveHu</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta name="keywords" content="OpenGL,教程,">
+  
+
+  
+  <meta name="description" content="在这里我们将实现一个三角形的渲染">
+
+  
+
+  
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.1/dist/av-min.js" async></script>
+  
+
+  
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+
+  
+    <script src="//unpkg.com/valine/dist/Valine.min.js" async></script>
+  
+
+  
+
+  <script>
+  // theme-ad's config script
+  // it can be used in every script
+  
+  window.AD_CONFIG = {
+    leancloud: {"appid":"Hyq9wkH495DgNHWhDQCOfQSp-gzGzoHsz","appkey":"WaR7nrzhliHj9aVwdQzkdlGd","comment":true,"count":true},
+    welcome: {"enable":false,"interval":30},
+    start_time: "2018-02-10",
+    passwords: ["efe07af7441da2b69c4a41e42e73be4db47f66010a56900788a458354a7373ec", ],
+    is_post: true,
+    lock: false,
+    author: "Dong Yuanxin",
+    share: {"twitter":true,"facebook":true,"weibo":true,"qq":true,"wechat":true},
+    mathjax: true,
+    page_type: "",
+    root: "/"
+  };
+</script>
+
+  <script src="/vendor/sha256.min.js"></script>
+<script src="/js/auth.js"></script>
+<script src="/js/index.js"></script>
+<script src="/vendor/qrcode.min.js"></script>
+
+  
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/touch-icon.png">
+  
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/index.css">
+<link rel="stylesheet" href="/styles/components/highlight/highlight.css">
+
+  
+</head>
+  <body>
+    <header class="site-header">
+  <div class="site-header-brand">
+    
+      <span class="site-header-brand-title">
+        <a href="/">GODBMW</a>
+      </span>
+    
+    
+      <span class="site-header-brand-motto"> | 安静写些东西</span>
+    
+  </div>
+  <div class="site-header-right">
+    <nav class="site-header-navigation">
+      
+        <a href="/" target="_self">首页</a>
+      
+        <a href="/archives/" target="_self">归档</a>
+      
+        <a href="/tags/" target="_self">标签</a>
+      
+        <a href="/categories/" target="_self">分类</a>
+      
+        <a href="/friends/" target="_self">友链</a>
+      
+        <a href="/about/" target="_self">关于</a>
+      
+    </nav>
+    <div class="site-header-btn">
+      
+        <a href="https://github.com/dongyuanxin/" target="_blank" id="site-github">
+          <i class="fa fa-github-alt"></i>
+        </a>
+      
+      <a href="javascript:void(0);" id="site-search">
+        <i class="fa fa-search"></i>
+      </a>
+      <a href="javascript:void(0);" id="site-nav-btn">
+        <i class="fa fa-ellipsis-v"></i>
+      </a>
+    </div>
+  </div>
+</header>
+<nav class="table-content" id="site-nav">
+  <div class="table-content-title">
+    <span>导航</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc">
+      
+        <li class="toc-item">
+          <a href="/" target="_self">
+            首页
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/archives/" target="_self">
+            归档
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/tags/" target="_self">
+            标签
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/categories/" target="_self">
+            分类
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/friends/" target="_self">
+            友链
+          </a>
+        </li>
+      
+        <li class="toc-item">
+          <a href="/about/" target="_self">
+            关于
+          </a>
+        </li>
+      
+    </ol>
+  </div>
+</nav>
+<div id="site-process"></div>
+    <main>
+      
+  <div class="passage">
+  <div class="passage-meta">
+    <span>
+      <i class="fa fa-calendar"></i>2020-01-20
+    </span>
+    
+      <span>
+        | <a href="/categories/OpenGL/"><i class="fa fa-bookmark"></i>OpenGL</a>
+      </span>
+    
+    
+      <span>
+        | <i class="fa fa-unlock-alt"></i>UNLOCK
+      </span>
+    
+  </div>
+  <h1 class="passage-title">
+    OpenGL-3:渲染三角形
+  </h1>
+  
+  <article class="passage-article">
+    <h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a><strong>开始</strong></h3><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a><strong>初始化</strong></h4><p>在代码的开始部分，我们依然需要对 OpenGL 进行一个初始化。正如上一节所说的，初始化阶段包括初始化GLFW，窗口， GLAD，视口这四个部分。代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//窗口尺寸调节视口适应回调函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">int</span> width, <span class="keyword">int</span></span></span></span><br><span class="line"><span class="function"><span class="params">    height)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//指定当前视口尺寸(前两个参数为左下角位置，后两个参数是渲染窗口宽、高)</span></span><br><span class="line">    glViewport(<span class="number">0</span>, <span class="number">0</span>, width, height);    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"> 	<span class="comment">//初始化GLFW</span></span><br><span class="line">    <span class="keyword">int</span> Major, Minor, Rev;</span><br><span class="line">    glfwInit();</span><br><span class="line">    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);  <span class="comment">// OpenGL版本为3.3，主次版本号均设为3</span></span><br><span class="line">    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">    <span class="comment">//使用核心模式(无需向后兼容性)</span></span><br><span class="line">    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); </span><br><span class="line">    <span class="comment">//获取版本信息并打印</span></span><br><span class="line">    glfwGetVersion(&amp;Major, &amp;Minor, &amp;Rev);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"GLFW %d.%d.%d initialized\n"</span>, Major, Minor, Rev);</span><br><span class="line">    <span class="comment">//创建窗口(宽、高、窗口名称)</span></span><br><span class="line">    <span class="keyword">auto</span> window = glfwCreateWindow(<span class="number">800</span>, <span class="number">600</span>, <span class="string">"CG_1_helloworld"</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span> (window == <span class="literal">nullptr</span>)  <span class="comment">//如果窗口创建失败，输出信息并退出</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to create GLFW window"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        glfwTerminate();</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    glfwMakeContextCurrent(window); <span class="comment">//将窗口的上下文设置为当前线程的主上下文</span></span><br><span class="line">    <span class="comment">//初始化GLAD，加载OpenGL函数指针地址的函数</span></span><br><span class="line">    <span class="keyword">if</span> (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))    </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to initialize GLAD"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//设置视口大小适应回调函数</span></span><br><span class="line">    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="顶点输入"><a href="#顶点输入" class="headerlink" title="顶点输入"></a><strong>顶点输入</strong></h4><p>初始化之后，我们需要给出我们三角形的顶点数据，并对数据做出一些处理，包括生成绑定 VAO、VBO和属性设置，最后将其解绑</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//三角形顶点位置数组</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">float</span> triangle[] = &#123;</span><br><span class="line">    <span class="number">-0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>, <span class="comment">// 左下</span></span><br><span class="line">    <span class="number">0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,  <span class="comment">// 右下</span></span><br><span class="line">    <span class="number">0.0f</span>, <span class="number">0.5f</span>, <span class="number">0.0f</span>    <span class="comment">//正上</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>由于我们绘制的是一个三角形，因此我们的顶点数据由三个顶点 组成。这里的顶点数据是标准化的设备坐标，也就是 x,y,z 轴坐标均映射到[-1,1]之间。</p>
+</blockquote>
+<h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a><strong>数据处理</strong></h4><h5 id="VAO、VBO"><a href="#VAO、VBO" class="headerlink" title="VAO、VBO"></a><strong>VAO、VBO</strong></h5><p>我们有了顶点数据，接下来就是要将这些顶点数据发送到 GPU中去处理，这里我们生成了一个顶点缓冲对象 VBO，并且将其绑定到顶点缓冲对象上，使用这个顶点缓冲对象的好处是我们不用将顶点数据一个一个的发送到显卡，而是可以借助 VBO一次性的发送一大批数据过去，然后使用 glBufferData 将顶点数据绑定到当前默认的缓冲上</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成VBO </span></span><br><span class="line">GLuint vertex_buffer_object;  </span><br><span class="line">glGenBuffers(<span class="number">1</span>, &amp;vertex_buffer_object); </span><br><span class="line"><span class="comment">//绑定VBO</span></span><br><span class="line">glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_object); </span><br><span class="line"><span class="comment">//将顶点数据绑定至当前默认的缓冲中</span></span><br><span class="line"><span class="comment">//GL_STATIC_DRAW 表示三角形位置数据不会被改变。 </span></span><br><span class="line">glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(triangle), triangle, GL_STATIC_DRAW);</span><br></pre></td></tr></table></figure>
+<p>这里我们还需要生成了一个顶点数组对象 VAO，使用 VAO的原因是：首先我们使用的核心模式要求我们需要使用 VAO，其次使用 VAO的好处在于我们在渲染的时候只需要调用一次 VAO 就可以了，之前的数据都对应存储在了 VAO 中，不用再调用 VBO。那么 VAO的生成过程也跟 VBO一样，需要生成再绑定，等到这些操作都完毕，我们可以解绑我们的 VAO，VBO</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//生成VAO </span></span><br><span class="line">GLuint vertex_array_object; </span><br><span class="line">glGenVertexArrays(<span class="number">1</span>, &amp;vertex_array_object); </span><br><span class="line"><span class="comment">//绑定VAO</span></span><br><span class="line">glBindVertexArray(vertex_array_object);</span><br></pre></td></tr></table></figure>
+<h5 id="顶点属性"><a href="#顶点属性" class="headerlink" title="顶点属性"></a><strong>顶点属性</strong></h5><p>发送到 GPU之后我们还需要告诉 OpenGL 我们如何解释这些顶点数据。因此我们用 glVertexAttribPointer 这个函数告诉 OpenGL我们如何解释这些顶点数据。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置顶点属性指针</span></span><br><span class="line">glVertexAttribPointer(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE,<span class="number">3</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>), (<span class="keyword">void</span>*)<span class="number">0</span>);</span><br><span class="line">glEnableVertexAttribArray(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>这个函数第一个参数是我们后面会用到的顶点着色器的位置值，3 表示的是顶点属性是一个三分量的向量，第三个参数表示的是我们顶点的类型，第四个是我们是否希望数据被标准化，就是映射到 0-1 之间，第五个参数叫做步长，它表示连续顶点属性之间的间隔，因为我们这里只有顶点的位置，所以我们将步长设置为这个，表示下组数据在 3个 float之后。最后一个是数据的偏移量，这里我们的位置属性是在数组的开头，因此这里是 0，并且由于参数类型的限制，我们需要将其进行强制类型转换。而下面 Enable的函数则是表明我们开启了 0 的这个通道，默认状态下是关闭的，因此我们在这里需要开启</p>
+<p>等到设置属性指针完成之后，我们这里需要解绑 VAO和 VBO。我们可以思考一下，为什么我们在这里要解绑 VAO和 VBO呢？<br>一个原因是因为在防止之后再继续绑定 VAO的时候会影响当前的 VAO，另一个原因是为了使代码更加灵活规范，在渲染需要的时候我们会再绑定 VAO</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 解绑VAO和VBO</span></span><br><span class="line">glBindVertexArray(<span class="number">0</span>);</span><br><span class="line">glBindBuffer(GL_ARRAY_BUFFER, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="顶点着色器和片段着色器"><a href="#顶点着色器和片段着色器" class="headerlink" title="顶点着色器和片段着色器 "></a><strong>顶点着色器和片段着色器 </strong></h4><p>这里我们给出的这两段分别是顶点着色器的源码和片段着色器的源码，这个是用 GLSL 语言来编写的，与 C 语言的风格类似。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//顶点着色器源码</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *vertex_shader_source =</span><br><span class="line">    <span class="string">"#version 330 core\n"</span>                           </span><br><span class="line">    <span class="string">"layout (location = 0) in vec3 aPos;\n"</span>	<span class="comment">// 位置变量的属性位置值为0</span></span><br><span class="line">    <span class="string">"void main()\n"</span></span><br><span class="line">    <span class="string">"&#123;\n"</span></span><br><span class="line">    <span class="string">"    gl_Position = vec4(aPos, 1.0);\n"</span></span><br><span class="line">    <span class="string">"&#125;\n\0"</span>;</span><br><span class="line"><span class="comment">//片段着色器源码</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *fragment_shader_source =</span><br><span class="line">    <span class="string">"#version 330 core\n"</span></span><br><span class="line">    <span class="string">"out vec4 FragColor;\n"</span>	<span class="comment">// 输出的颜色向量</span></span><br><span class="line">    <span class="string">"void main()\n"</span></span><br><span class="line">    <span class="string">"&#123;\n"</span></span><br><span class="line">    <span class="string">"    FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"</span></span><br><span class="line">    <span class="string">"&#125;\n\0"</span>;</span><br></pre></td></tr></table></figure>
+<p>先看顶点着色器，第一行表示我们使用的是 OpenGL3.3的核心模式，第二行就是我们之前说到的位置值。Main函数中的部分就是将我们之前的顶点数据直接输出到 GLSL已经定义好的一个内建变量 gl_Position中，这个就是我们顶点着色器的输出，也就是说我们在顶点着色器这里什么都没做，就只是将顶点位置作为顶点着色器的输出</p>
+<p>接下来是片段着色器，前面两行类似，这里的 out表示输出变量，就像之前的 in表示输入变量。然后我们这里的四分量向量就是我们之前看到的三角形是红色的来源，是一个四分量的 RGBA，那么我们也可以将其更改一下，我们输出的三角形颜色就会发生变化</p>
+<p>有了顶点和片段着色器的源码，我们还需要编译着色器。这里我们先编译了顶点着色器，然后我们这里对其进行检测，是否成功编译，如果编译不成功就打印错误信息。片段着色器同理</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> success;</span><br><span class="line"><span class="keyword">char</span> info_log[<span class="number">512</span>];</span><br><span class="line"><span class="comment">//顶点着色器</span></span><br><span class="line"><span class="keyword">int</span> vertex_shader = glCreateShader(GL_VERTEX_SHADER);</span><br><span class="line">glShaderSource(vertex_shader, <span class="number">1</span>, &amp;vertex_shader_source, <span class="literal">NULL</span>);</span><br><span class="line">glCompileShader(vertex_shader);</span><br><span class="line"><span class="comment">//检查顶点着色器是否成功编译，如果编译失败，打印错误信息</span></span><br><span class="line">glGetShaderiv(vertex_shader, GL_COMPILE_STATUS, &amp;success);</span><br><span class="line"><span class="keyword">if</span> (!success)</span><br><span class="line">&#123;</span><br><span class="line">    glGetShaderInfoLog(vertex_shader, <span class="number">512</span>, <span class="literal">NULL</span>, info_log);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ERROR::SHADER::VERTEX::COMPILATION_FAILED\n"</span>&lt;&lt; info_log &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//片段着色器</span></span><br><span class="line"><span class="keyword">int</span> fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);</span><br><span class="line">glShaderSource(fragment_shader, <span class="number">1</span>, &amp;fragment_shader_source,<span class="literal">NULL</span>);</span><br><span class="line">glCompileShader(fragment_shader);</span><br><span class="line"><span class="comment">//检查片段着色器是否成功编译，如果编译失败，打印错误信息</span></span><br><span class="line">glGetShaderiv(fragment_shader, GL_COMPILE_STATUS, &amp;success);</span><br><span class="line"><span class="keyword">if</span> (!success)</span><br><span class="line">&#123;</span><br><span class="line">    glGetShaderInfoLog(fragment_shader, <span class="number">512</span>, <span class="literal">NULL</span>, info_log);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt;<span class="string">"ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n"</span> &lt;&lt; info_log&lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后我们将顶点和片段着色器链接到一个着色器程序中，这样我们在渲染时只需要调用一个着色器程序就可以了，同样最后我们需要检测一下链接是否成功 ，若成功则删除掉顶点和片段着色器。因为在后面渲染的时候我们只需要用那个我们之前链接好的着色器程序即可，不再需要单独使用顶点和片段着色器</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//链接顶点和片段着色器至一个着色器程序</span></span><br><span class="line"><span class="keyword">int</span> shader_program = glCreateProgram();</span><br><span class="line">glAttachShader(shader_program, vertex_shader);</span><br><span class="line">glAttachShader(shader_program, fragment_shader);</span><br><span class="line">glLinkProgram(shader_program);</span><br><span class="line"><span class="comment">//检查着色器是否成功链接，如果链接失败，打印错误信息</span></span><br><span class="line">glGetProgramiv(shader_program, GL_LINK_STATUS, &amp;success);</span><br><span class="line"><span class="keyword">if</span> (!success) &#123;</span><br><span class="line">    glGetProgramInfoLog(shader_program, <span class="number">512</span>, <span class="literal">NULL</span>, info_log);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ERROR::SHADER::PROGRAM::LINKING_FAILED\n"</span> &lt;&lt; info_log &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//删除着色器</span></span><br><span class="line">glDeleteShader(vertex_shader);</span><br><span class="line">glDeleteShader(fragment_shader);</span><br></pre></td></tr></table></figure>
+<h4 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a><strong>渲染</strong></h4><p>接下来我们进入我们的渲染阶段，当窗口没有关闭的时候我们就一直进行循环渲染。</p>
+<p>首先我们先清空颜色缓冲，我们这里用的是上次的蓝色背景色来清空屏幕颜色缓冲，当然这里我们可以更换颜色。接下来我们使用我们之前已经链接好的着色器程序，和 VAO，来绘制三角形。绘制三角形其实只要一句话，就是这个glDrawArrays。这里的第一个参数表示我们是要绘制三角形，第二个参数表示我们顶点数组的起始索引值，第三个参数表示我们要绘制的顶点数量，这里绘制三角形我们要绘制三个顶点。绘制结束后解除绑定。最后我们会交换一下缓冲，这里我们使用的是一个双缓冲的做法，前缓冲保存着输出的图像，而渲染指令都在后缓冲中进行，当指令执行完毕后我们交换前后缓冲，最后我们还会检测是否有触发一些回调函数。 </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 渲染循环</span></span><br><span class="line"><span class="keyword">while</span> (!glfwWindowShouldClose(window)) &#123;</span><br><span class="line">    <span class="comment">//清空颜色缓冲</span></span><br><span class="line">    glClearColor(<span class="number">0.0f</span>, <span class="number">0.34f</span>, <span class="number">0.57f</span>, <span class="number">1.0f</span>);</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">    <span class="comment">//使用着色器程序</span></span><br><span class="line">    glUseProgram(shader_program);</span><br><span class="line">    <span class="comment">//绘制三角形</span></span><br><span class="line">    glBindVertexArray(vertex_array_object);	<span class="comment">//绑定VAO</span></span><br><span class="line">    glDrawArrays(GL_TRIANGLES, <span class="number">0</span>, <span class="number">3</span>);	<span class="comment">//绘制三角形</span></span><br><span class="line">    glBindVertexArray(<span class="number">0</span>);	<span class="comment">//解除绑定</span></span><br><span class="line">    <span class="comment">//交换缓冲并且检查是否有触发事件(比如键盘输入、鼠标移动等）</span></span><br><span class="line">    glfwSwapBuffers(window);</span><br><span class="line">    glfwPollEvents();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="善后"><a href="#善后" class="headerlink" title="善后"></a><strong>善后</strong></h4><p>当我们的窗口关闭之后，我们还会进行一些善后工作，这里包括删除我们之前所创建的 VAO、VBO，以及调用 GLFW 的函数来清理所有的资源并退出程序。 </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除VAO和VBO</span></span><br><span class="line">glDeleteVertexArrays(<span class="number">1</span>, &amp;vertex_array_object);</span><br><span class="line">glDeleteBuffers(<span class="number">1</span>, &amp;vertex_buffer_object);</span><br><span class="line"><span class="comment">//清理所有的资源并正确退出程序</span></span><br><span class="line">glfwTerminate();</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="大功告成！"><a href="#大功告成！" class="headerlink" title="大功告成！"></a><strong>大功告成！</strong></h3><p>整个绘制三角形的程序就到此为止。 </p>
+<p>如果一切顺利，点击编译运行你会看到：</p>
+<p><img src="0.jpg" style="zoom:50%;"></p>
+<h3 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a><strong>回顾</strong></h3><p>我们回头再来梳理一遍绘制三角形流程</p>
+<p>刚开始我们先初始化 OpenGL，接下来对我们的数据进行处理，通过 VAO、VBO将其发送至 GPU中，并设置<br>属性指针告诉 GPU我们会如何解释这些数据，然后在着色器中通过顶点和片段着色器对数据进行处理，最后进行渲染，渲染之后做好我们的善后工作，一个三角形就绘制成功了</p>
+  </article>
+  <aside class="table-content" id="site-toc">
+  <div class="table-content-title">
+    <i class="fa fa-arrow-right fa-lg" id="site-toc-hide-btn"></i>
+    <span>目录</span>
+  </div>
+  <div class="table-content-main">
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#开始"><span class="toc-text">开始</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化"><span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#顶点输入"><span class="toc-text">顶点输入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据处理"><span class="toc-text">数据处理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#VAO、VBO"><span class="toc-text">VAO、VBO</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#顶点属性"><span class="toc-text">顶点属性</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#顶点着色器和片段着色器"><span class="toc-text">顶点着色器和片段着色器 </span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#渲染"><span class="toc-text">渲染</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#善后"><span class="toc-text">善后</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#大功告成！"><span class="toc-text">大功告成！</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#回顾"><span class="toc-text">回顾</span></a></li></ol>
+  </div>
+</aside>
+  
+    <aside class="passage-copyright">
+      <div>本文作者: 董沅鑫</div>
+      
+        <div>
+          原文链接: 
+          <a href="" target="_blank">https://histevehu.com/passages/OpenGL-RenderTriangle/</a>
+        </div>
+      
+      <div>
+        版权声明: 本博客所有文章除特别声明外, 均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议. 转载请注明出处!
+      </div>
+    </aside>
+  
+  
+    <div class="passage-tags">
+     
+      <a href="/tags/教程/"><i class="fa fa-tags"></i>教程</a>
+    
+    </div>
+  
+</div>
+
+    </main>
+    
+      
+<div class="site-comment-contanier" data-plateform="leancloud">
+  
+    <p id="site-comment-info">
+      <i class="fa fa-spinner fa-spin"></i> 评论加载中
+    </p>
+    <div id="site-comment"></div>
+  
+</div>
+    
+    <div class="site-footer-wrapper">
+  <footer class="site-footer">
+    
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">博客推荐</h5>
+          
+            <span class="site-footer-item">
+              <a href="https://godbmw.com/" target="_blank">GodBMW</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="http://ruanyifeng.com/" target="_blank">阮一峰的个人网站</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">系列教程</h5>
+          
+            <span class="site-footer-item">
+              <a href="https://godbmw.com/categories/webpack4%E7%B3%BB%E5%88%97%E6%95%99%E7%A8%8B/" target="_blank">webpack4系列教程</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="https://godbmw.com/design-patterns/" target="_blank">设计模式手册</a>
+            </span>
+          
+        </div>
+      
+        <div class="site-footer-col">
+          <h5 class="site-footer-title">抓到我</h5>
+          
+            <span class="site-footer-item">
+              <a href="https://juejin.im/user/5b91fcf06fb9a05d3c7fd4a5" target="_blank">掘金</a>
+            </span>
+          
+            <span class="site-footer-item">
+              <a href="https://segmentfault.com/" target="_blank">思否</a>
+            </span>
+          
+        </div>
+      
+    
+    <div class="site-footer-info">
+      <i class="fa fa-clock-o"></i> 本站已稳定运行<span id="site-time"></span>
+    </div>
+    
+      <div class="site-footer-info">
+        <i class="fa fa-paw"></i> 您是本站第 <span id="site-count"></span> 位访客
+      </div>
+    
+    
+      <div class="site-footer-info">
+        <i class="fa fa-at"></i> Email: yuanxin.me@gmail.com
+      </div>
+    
+    <div class="site-footer-info">
+      <i class="fa fa-copyright"></i> 
+      2019 <a href="https://github.com/dongyuanxin/theme-ad/" target="_blank">Theme-AD</a>.
+      Created by <a href="https://godbmw.com/" target="_blank">GodBMW</a>.
+      All rights reserved.
+    </div>
+  </footer>
+</div>
+    <div id="site-layer" style="display:none;">
+  <div class="site-layer-content">
+    <div class="site-layer-header">
+      <span class="site-layer-header-title" id="site-layer-title"></span>
+      <i class="fa fa-close" id="site-layer-close"></i>
+    </div>
+    <div class="site-layer-body" id="site-layer-container">
+      <div class="site-layer-input" id="site-layer-search" style="display: none;">
+        <div class="site-layer-input-choose">
+          <a href="javascript:void(0);" title="Change Search Engine">Google</a>
+        </div>
+        <input type="text">
+        <i class="fa fa-search"></i>
+      </div>
+      
+        <div class="site-layer-reward" id="site-layer-reward" style="display: none;">
+          
+            <div>
+              <img src="/images/wechat.png" alt="WeChat">
+              
+                <p>WeChat</p>
+              
+            </div>
+          
+            <div>
+              <img src="/images/alipay.png" alt="AliPay">
+              
+                <p>AliPay</p>
+              
+            </div>
+          
+        </div>
+      
+      <div id="site-layer-welcome" style="display:none;"></div>
+    </div>
+  </div>
+</div>
+    
+
+<div class="bottom-bar">
+  <div class="bottom-bar-left">
+    <a href="/passages/OpenGL-PointandLine/" data-enable="true">
+      <i class="fa fa-arrow-left"></i>
+    </a>
+    <a href="/passages/OpenGL-RenderEmptyWindow/" data-enable="true">
+      <i class="fa fa-arrow-right"></i>
+    </a>
+  </div>
+  <div class="bottom-bar-right">
+    <a href="javascript:void(0);" data-enable="true" id="site-toc-show-btn">
+      <i class="fa fa-bars"></i>
+    </a>
+    
+      <a href="#site-comment" data-enable="true">
+        <i class="fa fa-commenting"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="site-toggle-share-btn">
+      <i class="fa fa-share-alt"></i>
+    </a>
+    
+      <a href="javascript:void(0);" id="site-reward">
+        <i class="fa fa-thumbs-up"></i>
+      </a>
+    
+    <a href="javascript:void(0);" id="back-top-btn">
+      <i class="fa fa-chevron-up"></i>
+    </a>
+  </div>
+</div>
+    <div id="share-btn">
+  
+    <a id="share-btn-twitter" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-twitter"></i>
+    </a>
+  
+  
+    <a id="share-btn-facebook" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-facebook"></i>
+    </a>
+  
+  
+    <a id="share-btn-weibo" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-weibo"></i>
+    </a>
+  
+  
+    <a id="share-btn-qq" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-qq"></i>
+    </a>
+  
+  
+    <a id="share-btn-wechat" href="javascript:void(0);" target="_blank">
+      <i class="fa fa-wechat"></i>
+    </a>
+  
+</div>
+    
+
+
+
+
+
+    
+  </body>
+</html>
