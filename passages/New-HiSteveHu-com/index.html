@@ -6,7 +6,7 @@
   <!-- PACE Progress Bar START -->
   
     <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
-    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+    <link rel="stylesheet" href="/css/pace.css">
   
   
 
@@ -72,7 +72,7 @@
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
       (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-0123456789ABCDEF",
+          google_ad_client: "",
           enable_page_level_ads: true
       });
   </script>
@@ -149,7 +149,7 @@ var themeMenus = {};
 
   <script>
   function setAboutIMG(){
-      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var imgUrls = "css/images/pose.jpg".split(",");
       var random = Math.floor((Math.random() * imgUrls.length ));
       if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
         document.getElementById("originBg").src=imgUrls[random];
