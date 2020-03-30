@@ -4,12 +4,19 @@
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
 
   
   <title>opengl-1:基本配置(glfw+glad) | HiSteveHu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    <meta name="keywords" content="histevehu,stevehu,blog">
+  <meta name="keywords" content="教程">
   
   
   
@@ -35,7 +42,9 @@
 <meta name="twitter:description" content="这里我们将帮助你入门OpenGL第一步——基于GLFW、GLAD库的开发环境搭建配置">
 <meta name="twitter:image" content="https://histevehu.com/passages/OpenGL-BasicConfig-GLFW-GLAD/0.jpg">
   
-  <link rel="icon" href="/logo-1.ico">
+    <link rel="alternate" href="/atom.xml" title="HiSteveHu" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -58,6 +67,8 @@
   <link rel="stylesheet" href="/css/hiero.css">
   <link rel="stylesheet" href="/css/glyphs.css">
   
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/my.css">
@@ -66,7 +77,7 @@
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
       (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "",
+          google_ad_client: "ca-pub-0123456789ABCDEF",
           enable_page_level_ads: true
       });
   </script>
@@ -133,6 +144,33 @@ var themeMenus = {};
 </header>
 
 
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
 
 
   <div id="container">
@@ -146,11 +184,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  OpenGL-1:基本配置(GLFW+GLAD)
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      OpenGL-1:基本配置(GLFW+GLAD)
+    </h1>
+  
 
       </header>
     
@@ -255,7 +293,44 @@ var themeMenus = {};
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
 
       
+        <div id="donation_div"></div>
+
+<script src="/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: 'Donate', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/WeChanQR.png',
+  alipayImage: 'https://raw.githubusercontent.com/iTimeTraveler/iTimeTraveler.github.io/site/source/about/donate/images/AliPayQR.jpg'
+});
+</script>
+      
             
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
       
     </footer>
   </div>
@@ -375,6 +450,9 @@ var themeMenus = {};
 
 
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
 
 <script src="/js/scripts.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -384,6 +462,11 @@ var themeMenus = {};
 
 
 
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
 
 
 

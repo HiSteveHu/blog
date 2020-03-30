@@ -4,12 +4,17 @@
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
 
   
   <title>HiSteveHu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-    <meta name="keywords" content="histevehu,stevehu,blog">
   
   
   
@@ -25,7 +30,9 @@
 <meta name="twitter:title" content="HiSteveHu">
 <meta name="twitter:description" content="SteveHu&apos;s Personal Official Website">
   
-  <link rel="icon" href="/logo-1.ico">
+    <link rel="alternate" href="/atom.xml" title="HiSteveHu" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -48,6 +55,8 @@
   <link rel="stylesheet" href="/css/hiero.css">
   <link rel="stylesheet" href="/css/glyphs.css">
   
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/my.css">
@@ -56,7 +65,7 @@
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
       (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "",
+          google_ad_client: "ca-pub-0123456789ABCDEF",
           enable_page_level_ads: true
       });
   </script>
@@ -123,6 +132,33 @@ var themeMenus = {};
 </header>
 
 
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
 
 
   <div id="container">
@@ -138,11 +174,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/Read-Me/">READ ME</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/Read-Me/">READ ME</a>
+    </h1>
+  
 
       </header>
     
@@ -161,6 +197,33 @@ var themeMenus = {};
           
             <div class="entry-summary" style="margin-left:0;">
             简介此页面将说明网站上基本常见内容的含义。
+
+标签
+声明
+网站事项，项目、工程事项，描述，备忘录
+
+教程
+实用有趣的课程，适合需要的人
+
+
+
+整理
+实用知识的总结归纳
+
+配置
+软件，开发环境等配置的备忘录
+
+实验
+空余时间进行的一些小活动记录
+
+追踪
+持续更新以展示一些长期计划的实施进度
+
+问题
+展示一些经典问题并给出解答
+
+
+
           
 
         
@@ -198,11 +261,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/Hello-World/">你好，世界！</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/Hello-World/">你好，世界！</a>
+    </h1>
+  
 
       </header>
     
@@ -224,6 +287,11 @@ var themeMenus = {};
 致歉前段时间暂停运行的具体原因是由于中国工业和信息化部的启动所有在中国设置的网站都应该注册的要求。 由于我们之前没有这样做，我们被迫停止运行。
 解决方案为了确保网站内容和信息的自由，我们没有注册的计划。
 幸运的是，我们找到了解决当前问题的出色解决方案。
+
+
+我们已将网站从FQIDC移至Github Page进行托管。
+GitHub是世界领先的代码托管平台。我们相信它将为我们的网站带来更好的访问体验。
+值得注意的是，由于GitHub服务器没有在中国大陆设置，中国用户在访问网站时可能会遇到稳定性和速度问题。但是，由于Github采用了CDN加速服务，这些缺...
           
 
         
@@ -316,27 +384,39 @@ var themeMenus = {};
     	<ul class="clearfix widget-social-icons">   
     	
           
-            <li><a href="mailto:histevehu@outlook.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
+     			  <li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://github.com/HiSteveHu" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+     			  <li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://weibo.com/3487139180/profile" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://www.facebook.com/profile.php?id=100010496835680" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://twitter.com/histevehu" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://www.instagram.com/histevehu/" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+            <li><a href="mailto:?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
           
    		
    		</ul>
@@ -564,6 +644,9 @@ var themeMenus = {};
 
 
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
 
 <script src="/js/scripts.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -573,6 +656,11 @@ var themeMenus = {};
 
 
 
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
 
 
 

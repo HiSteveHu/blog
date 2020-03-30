@@ -4,12 +4,17 @@
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
 
   
   <title>Categories | HiSteveHu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-    <meta name="keywords" content="histevehu,stevehu,blog">
   
   
   
@@ -26,7 +31,9 @@
 <meta name="twitter:title" content="Categories">
 <meta name="twitter:description" content="SteveHu&apos;s Personal Official Website">
   
-  <link rel="icon" href="/logo-1.ico">
+    <link rel="alternate" href="/atom.xml" title="HiSteveHu" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -49,6 +56,8 @@
   <link rel="stylesheet" href="/css/hiero.css">
   <link rel="stylesheet" href="/css/glyphs.css">
   
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/my.css">
@@ -57,7 +66,7 @@
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
       (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "",
+          google_ad_client: "ca-pub-0123456789ABCDEF",
           enable_page_level_ads: true
       });
   </script>
@@ -124,6 +133,33 @@ var themeMenus = {};
 </header>
 
 
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
 
 
   <div id="container">
@@ -157,11 +193,11 @@ var themeMenus = {};
 		  <time datetime="2019-08-13T16:17:30.000Z" itemprop="datePublished">Aug 14, 2019</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/New-HiSteveHu-com/">新的HiSteveHu.com!</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/New-HiSteveHu-com/">新的HiSteveHu.com!</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -176,11 +212,11 @@ var themeMenus = {};
 		  <time datetime="2018-10-18T12:51:35.000Z" itemprop="datePublished">Oct 18, 2018</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/Read-Me/">READ ME</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/Read-Me/">READ ME</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -195,11 +231,11 @@ var themeMenus = {};
 		  <time datetime="2018-10-17T12:51:35.000Z" itemprop="datePublished">Oct 17, 2018</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/Hello-World/">你好，世界！</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/Hello-World/">你好，世界！</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -223,11 +259,11 @@ var themeMenus = {};
 		  <time datetime="2020-02-08T02:04:18.000Z" itemprop="datePublished">Feb 08, 2020</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/Unity-Playground-Practice/">Unity:Playground框架入门</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/Unity-Playground-Practice/">Unity:Playground框架入门</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -242,11 +278,11 @@ var themeMenus = {};
 		  <time datetime="2020-02-02T13:48:08.000Z" itemprop="datePublished">Feb 02, 2020</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/Unity-Create-Ball-Game/">Unity:制作小球滚动游戏</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/Unity-Create-Ball-Game/">Unity:制作小球滚动游戏</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -270,11 +306,11 @@ var themeMenus = {};
 		  <time datetime="2018-11-03T16:24:28.000Z" itemprop="datePublished">Nov 04, 2018</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/Building-a-Website-with-the-Hexo-Framework-and-Github-Pages/">如何使用Hexo和Github Pages搭建网站</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/Building-a-Website-with-the-Hexo-Framework-and-Github-Pages/">如何使用Hexo和Github Pages搭建网站</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -298,11 +334,11 @@ var themeMenus = {};
 		  <time datetime="2019-04-07T10:59:46.000Z" itemprop="datePublished">Apr 07, 2019</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/CppToolBox-Original-CToolBox-Ver-0-0-0-3-Update/">CppToolBox(原CToolBox) Ver.0.0.0.3 更新</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/CppToolBox-Original-CToolBox-Ver-0-0-0-3-Update/">CppToolBox(原CToolBox) Ver.0.0.0.3 更新</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -317,11 +353,11 @@ var themeMenus = {};
 		  <time datetime="2018-11-23T08:21:30.000Z" itemprop="datePublished">Nov 23, 2018</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/CToolBox-Project-Establishment/">CToolBox: 项目建立</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/CToolBox-Project-Establishment/">CToolBox: 项目建立</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -345,11 +381,11 @@ var themeMenus = {};
 		  <time datetime="2019-11-13T01:44:41.000Z" itemprop="datePublished">Nov 13, 2019</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/ESP8266-SmartConfig/">ESP8266：SmartConfig</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/ESP8266-SmartConfig/">ESP8266：SmartConfig</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -364,11 +400,11 @@ var themeMenus = {};
 		  <time datetime="2019-09-13T01:44:37.000Z" itemprop="datePublished">Sep 13, 2019</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/ESP8266-BasicConfiguration/">ESP8266:基本配置</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/ESP8266-BasicConfiguration/">ESP8266:基本配置</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -392,11 +428,11 @@ var themeMenus = {};
 		  <time datetime="2019-04-07T02:17:09.000Z" itemprop="datePublished">Apr 07, 2019</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/Cpp-Issure-About-the-initialization-of-derived-classes-in-virtual-functions/">Cpp 问题：派生类初始化时构造函如何处理基类数据成员</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/Cpp-Issure-About-the-initialization-of-derived-classes-in-virtual-functions/">Cpp 问题：派生类初始化时构造函如何处理基类数据成员</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -420,11 +456,11 @@ var themeMenus = {};
 		  <time datetime="2018-10-26T16:49:54.000Z" itemprop="datePublished">Oct 27, 2018</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/How-to-Screenshot-the-Full-Page-with-Google-Chrome-Native-Feature/">如何使用Google Chrome原生功能对整个网页截图</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/How-to-Screenshot-the-Full-Page-with-Google-Chrome-Native-Feature/">如何使用Google Chrome原生功能对整个网页截图</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -448,11 +484,11 @@ var themeMenus = {};
 		  <time datetime="2020-01-20T09:52:35.000Z" itemprop="datePublished">Jan 20, 2020</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/OpenGL-PointandLine/">OpenGL-3:点和直线</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/OpenGL-PointandLine/">OpenGL-3:点和直线</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -467,11 +503,11 @@ var themeMenus = {};
 		  <time datetime="2020-01-20T00:32:05.000Z" itemprop="datePublished">Jan 20, 2020</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/OpenGL-RenderTriangle/">OpenGL-3:渲染三角形</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/OpenGL-RenderTriangle/">OpenGL-3:渲染三角形</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -486,11 +522,11 @@ var themeMenus = {};
 		  <time datetime="2020-01-19T15:42:47.000Z" itemprop="datePublished">Jan 19, 2020</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/OpenGL-RenderEmptyWindow/">OpenGL-2:渲染窗体</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/OpenGL-RenderEmptyWindow/">OpenGL-2:渲染窗体</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -505,11 +541,11 @@ var themeMenus = {};
 		  <time datetime="2020-01-19T11:25:36.000Z" itemprop="datePublished">Jan 19, 2020</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/OpenGL-BasicConfig-GLFW-GLAD/">OpenGL-1:基本配置(GLFW+GLAD)</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/OpenGL-BasicConfig-GLFW-GLAD/">OpenGL-1:基本配置(GLFW+GLAD)</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -533,11 +569,11 @@ var themeMenus = {};
 		  <time datetime="2020-02-13T08:22:11.000Z" itemprop="datePublished">Feb 13, 2020</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/Ubuntu-Common-Instruction-Collection/">Ubuntu 常用指令操作&amp;问题解决方案收集</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/Ubuntu-Common-Instruction-Collection/">Ubuntu 常用指令操作&amp;问题解决方案收集</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -561,11 +597,11 @@ var themeMenus = {};
 		  <time datetime="2018-10-26T05:52:30.000Z" itemprop="datePublished">Oct 26, 2018</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/Visualstudio-Code-Configuration-C/">VSCode C语言开发环境配置 (C)</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/Visualstudio-Code-Configuration-C/">VSCode C语言开发环境配置 (C)</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -589,11 +625,11 @@ var themeMenus = {};
 		  <time datetime="2019-08-23T15:16:49.000Z" itemprop="datePublished">Aug 23, 2019</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/Algorithm-Search/">算法：查找（Java实现）</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/Algorithm-Search/">算法：查找（Java实现）</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -608,11 +644,11 @@ var themeMenus = {};
 		  <time datetime="2019-08-14T13:31:03.000Z" itemprop="datePublished">Aug 14, 2019</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/Algorithm-Sorting/">算法：排序（Java实现）</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/Algorithm-Sorting/">算法：排序（Java实现）</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -627,11 +663,11 @@ var themeMenus = {};
 		  <time datetime="2019-03-15T15:29:54.000Z" itemprop="datePublished">Mar 15, 2019</time>
 	  </a>
       
-
-<h1 class="thumb" itemprop="name">
-  <a class="archive-article-title" href="/passages/A-simple-comparison-of-three-commonly-used-sorting-algorithms/">三种常用排序算法的简单比较（冒泡，选择，快速）</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="archive-article-title" href="/passages/A-simple-comparison-of-three-commonly-used-sorting-algorithms/">三种常用排序算法的简单比较（冒泡，选择，快速）</a>
+    </h1>
+  
 
     </header>
   </div>
@@ -695,27 +731,39 @@ var themeMenus = {};
     	<ul class="clearfix widget-social-icons">   
     	
           
-            <li><a href="mailto:histevehu@outlook.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
+     			  <li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://github.com/HiSteveHu" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+     			  <li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://weibo.com/3487139180/profile" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://www.facebook.com/profile.php?id=100010496835680" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://twitter.com/histevehu" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://www.instagram.com/histevehu/" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+            <li><a href="mailto:?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
           
    		
    		</ul>
@@ -943,6 +991,9 @@ var themeMenus = {};
 
 
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
 
 <script src="/js/scripts.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -952,6 +1003,11 @@ var themeMenus = {};
 
 
 
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
 
 
 

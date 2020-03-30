@@ -4,12 +4,17 @@
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
 
   
   <title>HiSteveHu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-    <meta name="keywords" content="histevehu,stevehu,blog">
   
   
   
@@ -25,7 +30,9 @@
 <meta name="twitter:title" content="HiSteveHu">
 <meta name="twitter:description" content="SteveHu&apos;s Personal Official Website">
   
-  <link rel="icon" href="/logo-1.ico">
+    <link rel="alternate" href="/atom.xml" title="HiSteveHu" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -48,6 +55,8 @@
   <link rel="stylesheet" href="/css/hiero.css">
   <link rel="stylesheet" href="/css/glyphs.css">
   
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/my.css">
@@ -56,7 +65,7 @@
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
       (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "",
+          google_ad_client: "ca-pub-0123456789ABCDEF",
           enable_page_level_ads: true
       });
   </script>
@@ -123,6 +132,33 @@ var themeMenus = {};
 </header>
 
 
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
 
 
   <div id="container">
@@ -138,11 +174,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/Ubuntu-Common-Instruction-Collection/">Ubuntu 常用指令操作&amp;问题解决方案收集</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/Ubuntu-Common-Instruction-Collection/">Ubuntu 常用指令操作&amp;问题解决方案收集</a>
+    </h1>
+  
 
       </header>
     
@@ -161,6 +197,23 @@ var themeMenus = {};
           
             <div class="entry-summary" style="margin-left:0;">
             长期收集更新关于Ubuntu的常用指令操作和问题解决方案
+
+常用指令操作
+文件操作
+进入目录    cd PATH
+进入根目录    cd /进入当前用户身份所在的主目录    cd ~返回上级目录    cd ..
+
+
+查看当前路径    pwd
+查看目录内容    ls
+查看全部内容（包含隐藏文件）    ls -a
+
+
+新建文件    touch FILENAME
+新建文件夹    mkdir FOLDERNAME
+使用 vi 打开文件    vi FILENAME
+复制    cp ORIPATH TARGETPATH
+移动    mv ORIPATH TARGETPATH注意：必须在要移动的文件的目录下执行该命令，而且该文件夹下不能有文件夹，我的part2文件夹放在home目...
           
 
         
@@ -198,11 +251,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/Unity-Playground-Practice/">Unity:Playground框架入门</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/Unity-Playground-Practice/">Unity:Playground框架入门</a>
+    </h1>
+  
 
       </header>
     
@@ -221,6 +274,19 @@ var themeMenus = {};
           
             <div class="entry-summary" style="margin-left:0;">
             Unity的Playground是一个用来制作拥有物理引擎的2D游戏开发框架，非常适合初学者。在这里，我们将用它来制作一个简单的飞船小游戏以快速入门。
+
+前导教程如果你第一次阅读本文且之前无相关Unity使用经验，建议阅读以下前导教程后再开始着手开始此教程。
+
+
+Unity:制作小球滚动游戏
+
+
+前言
+游戏构思是，通过键盘操作键盘方向键操控飞船移动，躲避或者按空格键发射激光以摧毁小行星，同时收集星星。撞击小行星会丢失生命值。当生命值为0时，游戏失败。当收集到所有星星时（即分数满分时），游戏胜利。
+
+准备
+创建项目创建游戏的过程和上一节中的创建方式一样，只是要将游戏设置为2D，这里我们创建一个名为Playground2D的游戏项目。
+引入Playground框架为了使用Playgroun...
           
 
         
@@ -258,11 +324,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/Unity-Create-Ball-Game/">Unity:制作小球滚动游戏</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/Unity-Create-Ball-Game/">Unity:制作小球滚动游戏</a>
+    </h1>
+  
 
       </header>
     
@@ -281,6 +347,25 @@ var themeMenus = {};
           
             <div class="entry-summary" style="margin-left:0;">
             这里我们将以制作一个小球滚动的游戏为例，以快速熟悉Unity的常用界面操作概念、入门Unity。
+
+前言
+游戏构思很简单，在一个平面内，通过键盘操作小球滚动击中上面的立方体以获得分数并显示在左上角。当玩家击中全部的立方体之后，跳转到另一个界面提示游戏完成，玩家胜利，并附有重新开始游戏的按钮。
+
+
+通过这个学习，你将会主要掌握：
+
+Unity中一些基本知识
+常用组件的控制（移动、旋转、设定颜色及材质）
+摄像机的简单跟踪
+简单碰撞判断原理
+
+注意：
+
+本文需要基本C#语言基础，如果你没有学习过这门语言可以事先学习一下再开始这个教程。别担心，很简单
+本文基于Unity 2019.3.0f6 ，外部代码编辑器为 Visual Studio 2019
+
+让我们开始吧！
+Unity中的一些基本知识...
           
 
         
@@ -318,11 +403,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/OpenGL-PointandLine/">OpenGL-3:点和直线</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/OpenGL-PointandLine/">OpenGL-3:点和直线</a>
+    </h1>
+  
 
       </header>
     
@@ -341,6 +426,20 @@ var themeMenus = {};
           
             <div class="entry-summary" style="margin-left:0;">
             导言在之前的教程中，我们已经实现了空窗口以及三角形的渲染。然而只是略知一二，对于渲染的具体细节，比如三角形边的绘制，我们还不太清楚。从这节开始，我们将更加深入、系统地入门图形学，先从点和直线开始
+
+概念光栅化（扫描转换）分为两步(以三角形为例)：
+
+输入三角形的定义:（1）几何信息：三个顶点的坐标（2）属性信息：颜色、光照、纹理等。
+
+根据图形的定义在点阵单元上确定最佳逼近于图形的像素集。逼近的过程本质可以认为是连续量向离散量的转换
+
+给像素指定合适的颜色值
+
+
+
+直线扫描转换算法分类逐点比较法、正负法、数值微分算法、Bresenham算法
+接下来，我们主要了解数值微分算法
+数值微分法（Digital Differential Analyzer,DDA）理论$$\begin{cases...
           
 
         
@@ -378,11 +477,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/OpenGL-RenderTriangle/">OpenGL-3:渲染三角形</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/OpenGL-RenderTriangle/">OpenGL-3:渲染三角形</a>
+    </h1>
+  
 
       </header>
     
@@ -401,6 +500,9 @@ var themeMenus = {};
           
             <div class="entry-summary" style="margin-left:0;">
             在这里我们将实现一个三角形的渲染
+
+开始初始化在代码的开始部分，我们依然需要对 OpenGL 进行一个初始化。正如上一节所说的，初始化阶段包括初始化GLFW，窗口， GLAD，视口这四个部分。代码如下：
+123456789101112131415161718192021222324252627282930313233343536//窗口尺寸调节视口适应回调函数void framebuffer_size_callback(GLFWwindow* window, int width, int    height) &#123;    //指定当前视口尺寸(前两个参数为左下角位置，后两个参数是渲染窗口宽、高)    glViewport(0, 0, width, height);    &#...
           
 
         
@@ -438,11 +540,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/OpenGL-RenderEmptyWindow/">OpenGL-2:渲染窗体</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/OpenGL-RenderEmptyWindow/">OpenGL-2:渲染窗体</a>
+    </h1>
+  
 
       </header>
     
@@ -461,6 +563,11 @@ var themeMenus = {};
           
             <div class="entry-summary" style="margin-left:0;">
             在这里我们将实现一个空窗口的渲染
+
+渲染一个黑色空窗体初始化GLFW让我们先来试试能不能让 GLFW正常工作。首先，新建一个.cpp文件，然后把下面的代码粘贴到该文件的最前面 
+12#include &lt;glad/glad.h&gt; #include &lt;GLFW/glfw3.h&gt;
+接下来我们创建 main 函数，在这个函数中我们将会实例化 GLFW窗口： 
+123456789int main() &#123;     glfwInit();     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);     glfwWindo...
           
 
         
@@ -498,11 +605,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/OpenGL-BasicConfig-GLFW-GLAD/">OpenGL-1:基本配置(GLFW+GLAD)</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/OpenGL-BasicConfig-GLFW-GLAD/">OpenGL-1:基本配置(GLFW+GLAD)</a>
+    </h1>
+  
 
       </header>
     
@@ -521,6 +628,14 @@ var themeMenus = {};
           
             <div class="entry-summary" style="margin-left:0;">
             这里我们将帮助你入门OpenGL第一步——基于GLFW、GLAD库的开发环境搭建配置
+
+开始
+GLFW 准备GLFW是一个 OpenGL的 C语言库，它提供了渲染物体所需要的最低限度的接口，它允许用户创建 OpenGL上下文，定义窗口参数以及用户的输入。 是对之前固定管线常用的 GLUT的一种改进。
+
+下载GLFW源代码包，解压缩
+https://www.glfw.org
+
+从源代码编译库可以保证生成的库是兼容你的操作系统和硬件的，而预编译的二进制文件可能会出现兼容问题。提供源代码所产生的一个问题在于不是每个人都用相同的 IDE开发程序，因而提供的工程/解决方案文件可能和一些人的 IDE不兼容。所以人们只能从.c/.cpp和.h/.hpp文件来自己建立工程/解决方案，这是一项枯燥的工作...
           
 
         
@@ -558,11 +673,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/ESP8266-SmartConfig/">ESP8266：SmartConfig</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/ESP8266-SmartConfig/">ESP8266：SmartConfig</a>
+    </h1>
+  
 
       </header>
     
@@ -581,6 +696,23 @@ var themeMenus = {};
           
             <div class="entry-summary" style="margin-left:0;">
             在之前的教程中，我们已经学习了ESP8266的基本信息及开发环境搭建。在这里我们将学习如何 通过SmartConfig配网 将ESP8266 以一种对用户更友好的方式接入互联网
+
+前导教程如果你第一次阅读本文且之前无相关经验，建议阅读以下前导教程后再开始着手开始此教程。
+
+
+ESP8266：基本配置
+
+
+准备
+
+ESPTouch
+
+iOS 
+(注意截止到2019.11.16乐鑫尚未对iOS版本ESPTouch进行iOS13适配，可能存在问题，尚不推荐使用)
+https://apps.apple.com/cn/app/espressif-esptouch-aka-a-m-x/id1071176700
+
+Android
+https://github.com/EspressifApp/Esp...
           
 
         
@@ -618,11 +750,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/ESP8266-BasicConfiguration/">ESP8266:基本配置</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/ESP8266-BasicConfiguration/">ESP8266:基本配置</a>
+    </h1>
+  
 
       </header>
     
@@ -641,6 +773,20 @@ var themeMenus = {};
           
             <div class="entry-summary" style="margin-left:0;">
             这里我们将以 Adruino+ESP8266+VSCode配置 为例，展示ESP8266的入门基础配置，并实现最基本的点灯
+
+准备
+
+Adruino IDE
+https://www.arduino.cc/en/Main/Software
+
+CH341驱动程序
+http://www.wch.cn/download/CH341SER_EXE.html
+
+ESP8266 开发板
+（参考购买链接）
+https://store.arduino.cc/usa/
+https://www.espressif.com/zh-hans/products/hardware/esp8266ex/overview
+https://item.taobao.com/item.htm?_u=d35edijr38fd&...
           
 
         
@@ -678,11 +824,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/Algorithm-Search/">算法：查找（Java实现）</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/Algorithm-Search/">算法：查找（Java实现）</a>
+    </h1>
+  
 
       </header>
     
@@ -701,6 +847,10 @@ var themeMenus = {};
           
             <div class="entry-summary" style="margin-left:0;">
             这里我们将展示一些常用查找算法的Java实现代码
+
+符号表
+
+二叉查找树12345678910111213141516171819public class BST&lt;Key extends Comparable&lt;Key&gt;, Value&gt;&#123;  private Node root;    private class Node    &#123;        private Key key;        private Value val;        private Node left, right;        private int N;        public Node(Key key, Value val, int N)        &...
           
 
         
@@ -793,27 +943,39 @@ var themeMenus = {};
     	<ul class="clearfix widget-social-icons">   
     	
           
-            <li><a href="mailto:histevehu@outlook.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
+     			  <li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://github.com/HiSteveHu" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+     			  <li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://weibo.com/3487139180/profile" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://www.facebook.com/profile.php?id=100010496835680" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://twitter.com/histevehu" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://www.instagram.com/histevehu/" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+            <li><a href="mailto:?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
           
    		
    		</ul>
@@ -1041,6 +1203,9 @@ var themeMenus = {};
 
 
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
 
 <script src="/js/scripts.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -1050,6 +1215,11 @@ var themeMenus = {};
 
 
 
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
 
 
 

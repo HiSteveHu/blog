@@ -4,12 +4,17 @@
   <meta charset="utf-8">
 
   <!-- PACE Progress Bar START -->
+  
+    <script src="https://raw.githubusercontent.com/HubSpot/pace/v1.0.2/pace.min.js"></script>
+    <link rel="stylesheet" href="https://github.com/HubSpot/pace/raw/master/themes/orange/pace-theme-flash.css">
+  
+  
+
+  <!-- PACE Progress Bar START -->
 
   
   <title>HiSteveHu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  
-    <meta name="keywords" content="histevehu,stevehu,blog">
   
   
   
@@ -25,7 +30,9 @@
 <meta name="twitter:title" content="HiSteveHu">
 <meta name="twitter:description" content="SteveHu&apos;s Personal Official Website">
   
-  <link rel="icon" href="/logo-1.ico">
+    <link rel="alternate" href="/atom.xml" title="HiSteveHu" type="application/atom+xml">
+  
+  <link rel="icon" href="/css/images/favicon.ico">
   
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
@@ -48,6 +55,8 @@
   <link rel="stylesheet" href="/css/hiero.css">
   <link rel="stylesheet" href="/css/glyphs.css">
   
+    <link rel="stylesheet" href="/css/vdonate.css">
+  
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/my.css">
@@ -56,7 +65,7 @@
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
       (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "",
+          google_ad_client: "ca-pub-0123456789ABCDEF",
           enable_page_level_ads: true
       });
   </script>
@@ -123,6 +132,33 @@ var themeMenus = {};
 </header>
 
 
+  <div id="originBgDiv" style="background: #fff; width: 100%;">
+
+      <div style="max-height:600px; overflow: hidden;  display: flex; display: -webkit-flex; align-items: center;">
+        <img id="originBg" width="100%" alt="" src="">
+      </div>
+
+  </div>
+
+  <script>
+  function setAboutIMG(){
+      var imgUrls = "css/images/pose.jpg,https://source.unsplash.com/collection/954550/1920x1080".split(",");
+      var random = Math.floor((Math.random() * imgUrls.length ));
+      if (imgUrls[random].startsWith('http') || imgUrls[random].indexOf('://') >= 0) {
+        document.getElementById("originBg").src=imgUrls[random];
+      } else {
+        document.getElementById("originBg").src='/' + imgUrls[random];
+      }
+  }
+  bgDiv=document.getElementById("originBgDiv");
+  if(location.pathname.match('about')){
+    setAboutIMG();
+    bgDiv.style.display='block';
+  }else{
+    bgDiv.style.display='none';
+  }
+  </script>
+
 
 
   <div id="container">
@@ -138,11 +174,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/Algorithm-Sorting/">算法：排序（Java实现）</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/Algorithm-Sorting/">算法：排序（Java实现）</a>
+    </h1>
+  
 
       </header>
     
@@ -161,6 +197,11 @@ var themeMenus = {};
           
             <div class="entry-summary" style="margin-left:0;">
             这里我们将展示一些常用排序算法的Java实现代码
+
+基本函数
+基本函数都被包含于类 basic_module 内12345public class basic_module &#123;    public  boolean isLarger(int a,int b)	//若a比b大，返回true,否则返回false    public  boolean isSmaller(int a,int b)	//若a比b小，返回true,否则返回false    public  void swap(int arr[],int a,int b)	//输入数组及要交换的两数下标&#125;
+排序算法（Java实现 - 升序）
+以下语句为基本函数类 basic_module 初始化必需,若未出现则自...
           
 
         
@@ -198,11 +239,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/New-HiSteveHu-com/">新的HiSteveHu.com!</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/New-HiSteveHu-com/">新的HiSteveHu.com!</a>
+    </h1>
+  
 
       </header>
     
@@ -222,6 +263,30 @@ var themeMenus = {};
             <div class="entry-summary" style="margin-left:0;">
             距离HiSteveHu.com上线已经一年了。在这周年之际，我们也完成了对其年度维护和升级工作。
 更重要的是，这是一次重大更新，一起来看看有哪些令人振奋的新内容吧！
+
+更新内容
+添加站内全局搜索，可根据关键字搜索全站分类、标签、归档、动态的全部内容，查找内容更高效
+(支持电脑端和iPad端，不支持移动端)
+
+为更好地展示和传播内容，汉化了原先网站中所有文章动态和大部分网站内容，并将简体中文设为今后首选语言
+
+将主题由polarbear更换至hiero，更美，更强大。
+
+主页根据文章数量自动分页
+
+添加社交媒体联系方式
+
+添加最新文章一栏，快速浏览新动态
+
+添加标签云
+
+全站添加“小火箭”一键到页首支持
+
+主页文章提供快速预览和阅读全文选项
+
+优化归档、分类、标签模块
+
+优化全站布局排版...
           
 
         
@@ -259,11 +324,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/2019-Summer-Professional-Improvement-Progress-Tracking/">2019 Summer Professional Improvement Progress Tracking</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/2019-Summer-Professional-Improvement-Progress-Tracking/">2019 Summer Professional Improvement Progress Tracking</a>
+    </h1>
+  
 
       </header>
     
@@ -317,11 +382,11 @@ var themeMenus = {};
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/CppToolBox-Original-CToolBox-Ver-0-0-0-3-Update/">CppToolBox(原CToolBox) Ver.0.0.0.3 更新</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/CppToolBox-Original-CToolBox-Ver-0-0-0-3-Update/">CppToolBox(原CToolBox) Ver.0.0.0.3 更新</a>
+    </h1>
+  
 
       </header>
     
@@ -345,6 +410,16 @@ var themeMenus = {};
 对 C++ 进行适配
 
 bool file_copy(string ori, string tgt)
+
+
+参数1：输入原始（输入）文件路径
+参数2：输入目标（输出）文件路径
+retrun true：成功   false：失败
+
+
+
+Githubhttps://github.com/histevehu/cpptoolbox
+
           
 
         
@@ -382,11 +457,11 @@ bool file_copy(string ori, string tgt)
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/Cpp-Issure-About-the-initialization-of-derived-classes-in-virtual-functions/">Cpp 问题：派生类初始化时构造函如何处理基类数据成员</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/Cpp-Issure-About-the-initialization-of-derived-classes-in-virtual-functions/">Cpp 问题：派生类初始化时构造函如何处理基类数据成员</a>
+    </h1>
+  
 
       </header>
     
@@ -408,6 +483,9 @@ bool file_copy(string ori, string tgt)
 
 这是一个展示虚函数的程序，由class.h，class.cpp，main.cpp 组成。Class.h 用于声明类， class.cpp 用于定义类，main.cpp 是主程序文件。
 以下是 class.h 和 class.cpp 中与问题相关的代码的一部分
+
+class.h
+12345678910111213141516171819&gt; class circle&gt; &#123;&gt;   public:&gt;     circle(double r);&gt;     virtual double area(); //virtual fuction&gt;     void show_area();&gt;   protected:&gt;     doubl...
           
 
         
@@ -445,11 +523,11 @@ bool file_copy(string ori, string tgt)
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/A-simple-comparison-of-three-commonly-used-sorting-algorithms/">三种常用排序算法的简单比较（冒泡，选择，快速）</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/A-simple-comparison-of-three-commonly-used-sorting-algorithms/">三种常用排序算法的简单比较（冒泡，选择，快速）</a>
+    </h1>
+  
 
       </header>
     
@@ -470,6 +548,12 @@ bool file_copy(string ori, string tgt)
             我们都知道或熟悉一些常见的排序算法，但我们可能无法清楚地了解性能差距。
 在这个简单的小实验中我们能初步给出答案。
 这是一个小实验。 我们比较了三种常见的排序算法：冒泡排序算法，选择排序算法和快速排序算法。
+
+为了提高定时精度，CPU时钟周期（时间戳）的数量专门用于实现微秒级的定时精度。
+结果出人意料并令人震惊。 
+随着测试数据的大小增加，冒泡和选择排序的时间急剧增加，特别是当数据达到100,000级时，冒泡、选择排序时间几乎增加到难以忍受的半分钟。 虽然快速排序比冒泡和选择排序算法更复杂，但显然它在处理大规模数据时具有优势。
+
+因此，在处理小规模数据时，使用冒泡和选择排序显然可以提高开发效率，但在处理大型数据时，使用快速排序或其他更先进的算法是明智的。 （冒泡排序算法可以通过改进提高性...
           
 
         
@@ -507,11 +591,11 @@ bool file_copy(string ori, string tgt)
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/CToolBox-Project-Establishment/">CToolBox: 项目建立</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/CToolBox-Project-Establishment/">CToolBox: 项目建立</a>
+    </h1>
+  
 
       </header>
     
@@ -532,6 +616,24 @@ bool file_copy(string ori, string tgt)
             项目 Github 主页https://github.com/histevehu/cpptoolbox
 简介为了提高编程效率，提高代码可读性并减少维护难度，我们创建了一个C头文件项目。
 现在很高兴展示该项目的0.0.0.1版本。
+
+用法
+下载头文件 (ctb.h), 放入和你的C程序项目同一目录下.
+
+
+在你的C的程序头部加入以下语句：
+
+
+1#include "ctb.h"
+API
+sort_bubble(int array[], int total, int order)
+
+参数1：输入整数数组
+参数2：数组长度
+参数3：排列顺序（1：顺序（从小到大）2：反向顺序（从大到小））其他：原始数组输出
+
+
+sort_select(int array[], int total, int o...
           
 
         
@@ -569,11 +671,11 @@ bool file_copy(string ori, string tgt)
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/Building-a-Website-with-the-Hexo-Framework-and-Github-Pages/">如何使用Hexo和Github Pages搭建网站</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/Building-a-Website-with-the-Hexo-Framework-and-Github-Pages/">如何使用Hexo和Github Pages搭建网站</a>
+    </h1>
+  
 
       </header>
     
@@ -592,6 +694,28 @@ bool file_copy(string ori, string tgt)
           
             <div class="entry-summary" style="margin-left:0;">
             简介这里我们将展示如何使用Hexo框架和Github Pages服务构建网站的方法。
+
+
+Hexo framework
+快速，简单，高效的博客框架
+Hexo
+Github Pages 服务
+Github Pages
+
+步骤1. Github 注册首先注册Github帐户。 如果你有一个，则可以跳过此步骤。 
+然后新建一个仓库作为网站存放仓库。
+记住你申请时填写的Github用户名和电子邮件地址，以及新建的仓库名字。 这些将在下面使用。
+2. Git, node.js 安装
+Git
+
+https://git-scm.com/downloads
+
+验证安装是否成功：
+右键单击桌面，单击“Git Bash”，然后拉出一个类似的命令行窗口，表明Git已成功安装
+
+
+Git 基本设置
+在 Git...
           
 
         
@@ -629,11 +753,11 @@ bool file_copy(string ori, string tgt)
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/How-to-Screenshot-the-Full-Page-with-Google-Chrome-Native-Feature/">如何使用Google Chrome原生功能对整个网页截图</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/How-to-Screenshot-the-Full-Page-with-Google-Chrome-Native-Feature/">如何使用Google Chrome原生功能对整个网页截图</a>
+    </h1>
+  
 
       </header>
     
@@ -652,6 +776,23 @@ bool file_copy(string ori, string tgt)
           
             <div class="entry-summary" style="margin-left:0;">
             简介有很多方法可以截取网页截图。 使用系统附带的屏幕截图软件或Chrome扩展程序。 在这里，我们想分享一种更方便，更先进的方法。
+
+与其他方法相比，它：
+1.只需要Chrome，不需要其他Chrome扩展程序2.从渲染输出，更好的拍摄质量
+步骤
+浏览长网页时，按 F12 进入Chrome开发者模式。
+
+
+按Shift + Ctrl + P 打开命令文本框，输入命令：
+1Capture full size screenshot
+回车
+
+
+Chrome会自动保存这个网页截图。
+
+
+
+
           
 
         
@@ -689,11 +830,11 @@ bool file_copy(string ori, string tgt)
     
       <header class="article-header">
         
-
-<h1 class="thumb" itemprop="name">
-  <a class="article-title" href="/passages/Visualstudio-Code-Configuration-C/">VSCode C语言开发环境配置 (C)</a>
-</h1>
-
+  
+    <h1 class="thumb" itemprop="name">
+      <a class="article-title" href="/passages/Visualstudio-Code-Configuration-C/">VSCode C语言开发环境配置 (C)</a>
+    </h1>
+  
 
       </header>
     
@@ -713,6 +854,24 @@ bool file_copy(string ori, string tgt)
             <div class="entry-summary" style="margin-left:0;">
             简介VSCode是一个轻量级，开源和流行的编辑器，支持主流编程语言。 当然，也支持C语言。
 在使用之前只需要做一些配置。
+
+步骤
+在VSCode中安装Microsoft提供的C / C ++支持插件
+
+
+安装 MingGW 并执行下列操作:
+
+打开MingGW勾选下列必须组件: 
+gdb-gcc(bin), gdb-gcc-g++(bin), 
+然后点击顶端菜单左上角 Installation &gt; Apply Changes  进行安装
+
+配置系统环境变量, 将MingGW安装目录下bin文件夹的完整路径(例如：C:\MinGW\bin)添加到 系统变量的path 一项
+
+重启VSCode
+
+
+
+使用VSCode打开一个文件夹。 编写一个简单的C程序（如打印“HelloWorld...
           
 
         
@@ -805,27 +964,39 @@ bool file_copy(string ori, string tgt)
     	<ul class="clearfix widget-social-icons">   
     	
           
-            <li><a href="mailto:histevehu@outlook.com?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
+     			  <li><a href="https://github.com/iTimeTraveler" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://github.com/HiSteveHu" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li> 
+     			  <li><a href="http://www.yoursite.com" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://weibo.com/3487139180/profile" title="Weibo"><i class="fa fa-weibo" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://www.facebook.com/profile.php?id=100010496835680" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://twitter.com/histevehu" title="Twitter"><i class="fa fa-twitter" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Google-plus"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li> 
           
    		
           
-     			  <li><a href="https://www.instagram.com/histevehu/" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+     			  <li><a href="" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="" title="Pinterest"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+     			  <li><a href="" title="Flickr"><i class="fa fa-flickr" aria-hidden="true"></i></a></li> 
+          
+   		
+          
+            <li><a href="mailto:?subject=请联系我&body=我能帮你什么" title="email"><i class="fa fa-envelope" aria-hidden="true"></i></a></li> 
           
    		
    		</ul>
@@ -1053,6 +1224,9 @@ bool file_copy(string ori, string tgt)
 
 
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
 
 <script src="/js/scripts.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -1062,6 +1236,11 @@ bool file_copy(string ori, string tgt)
 
 
 
+
+
+  <div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
 
 
 
