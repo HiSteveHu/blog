@@ -1,41 +1,20 @@
 <!DOCTYPE html>
-<html lang="">
-  <head><meta name="generator" content="Hexo 3.8.0">
-    
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
 
+  <!-- PACE Progress Bar START -->
 
-<meta http-equiv="Cache-Control" content="no-transform">
-<meta http-equiv="Cache-Control" content="no-siteapp">
-
-
-
-  <meta name="description" content="Unity:Playground框架入门">
-
-
-
-
-  <meta name="keywords" content="教程,">
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="HiSteveHu">
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/logo.ico?v=0.1">
-
-
-
-<link rel="canonical" href="https://histevehu.com/passages/Unity-Playground-Practice/">
-
-
-<meta name="description" content="Unity的Playground是一个用来制作拥有物理引擎的2D游戏开发框架，非常适合初学者。在这里，我们将用它来制作一个简单的飞船小游戏以快速入门。">
+  
+  <title>unity:playground框架入门 | HiSteveHu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="histevehu,stevehu,blog">
+  
+  
+  
+  
+  <meta name="description" content="Unity的Playground是一个用来制作拥有物理引擎的2D游戏开发框架，非常适合初学者。在这里，我们将用它来制作一个简单的飞船小游戏以快速入门。">
 <meta name="keywords" content="教程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity:Playground框架入门">
@@ -65,93 +44,141 @@
 <meta name="twitter:title" content="Unity:Playground框架入门">
 <meta name="twitter:description" content="Unity的Playground是一个用来制作拥有物理引擎的2D游戏开发框架，非常适合初学者。在这里，我们将用它来制作一个简单的飞船小游戏以快速入门。">
 <meta name="twitter:image" content="https://histevehu.com/passages/Unity-Playground-Practice/17.jpg">
+  
+  <link rel="icon" href="/logo-1.ico">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="https://cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+    
+  <link rel="stylesheet" id="athemes-headings-fonts-css" href="//fonts.googleapis.com/css?family=Yanone+Kaffeesatz%3A200%2C300%2C400%2C700&amp;ver=4.6.1" type="text/css" media="all">
+  <link rel="stylesheet" href="/css/style.css">
 
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="/css/style.css?v=0.1">
-<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/hiero.css">
+  <link rel="stylesheet" href="/css/glyphs.css">
+  
 
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/css/my.css">
+  <!-- Google Adsense -->
+  
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "",
+          enable_page_level_ads: true
+      });
+  </script>
+  
+</head>
+</html>
+<script>
+var themeMenus = {};
 
-  <link rel="stylesheet" type="text/css" href="/lib/fancybox/jquery.fancybox.css">
+  themeMenus["/"] = "Home"; 
 
+  themeMenus["/archives"] = "Archives"; 
 
+  themeMenus["/categories"] = "Categories"; 
 
+  themeMenus["/tags"] = "Tags"; 
 
-<script type="text/javascript">
-  var themeConfig = {
-    fancybox: {
-      enable: true
-    },
-  };
+  themeMenus["/about"] = "About"; 
+
 </script>
 
 
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
 
 
-  
+  <header id="allheader" class="site-header" role="banner">
+  <div class="clearfix container">
+      <div class="site-branding">
+
+          <h1 class="site-title">
+            
+              <a href="/" title="HiSteveHu" rel="home"> HiSteveHu </a>
+            
+          </h1>
+
+          
+            <div class="site-description">SteveHu&#39;s Personal Official Website</div>
+          
+            
+          <nav id="main-navigation" class="main-navigation" role="navigation">
+            <a class="nav-open">Menu</a>
+            <a class="nav-close">Close</a>
+            <div class="clearfix sf-menu">
+
+              <ul id="main-nav" class="nmenu sf-js-enabled">
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/">Home</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/archives">Archives</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/categories">Categories</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/tags">Tags</a> </li>
+                    
+                      <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-1663"> <a class="" href="/about">About</a> </li>
+                    
+              </ul>
+            </div>
+          </nav>
+
+
+      </div>
+  </div>
+</header>
 
 
 
-    <title> Unity:Playground框架入门 - HiSteveHu </title>
-    <meta name="theme-color" content="#000000">
-  </head>
 
-  <body>
-    <div id="page">
-      <header id="masthead"><div class="site-header-inner">
-    <h1 class="site-title">
-        <a href="/." class="logo">HiSteveHu</a>
-    </h1>
-
-    <nav id="nav-top">
+  <div id="container">
+    <div id="wrap">
+            
+      <div id="content" class="outer">
         
-            <ul id="menu-top" class="nav-top-items">
-                
-                    <li class="menu-item">
-                        <a href="/archives">
-                            
-                            
-                                Archives
-                            
-                        </a>
-                    </li>
-                
-                    <li class="menu-item">
-                        <a href="/about">
-                            
-                            
-                                About
-                            
-                        </a>
-                    </li>
-                
-            </ul>
+          <section id="main" style="float:none;"><article id="post-Unity-Playground-Practice" style="width: 66%; float:left;" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div id="articleInner" class="clearfix post-1016 post type-post status-publish format-standard has-post-thumbnail hentry category-template-2 category-uncategorized tag-codex tag-edge-case tag-featured-image tag-image tag-template">
+    
+    
+      <header class="article-header">
         
-  </nav>
-</div>
+
+<h1 class="thumb" itemprop="name">
+  Unity:Playground框架入门
+</h1>
+
 
       </header>
-      <div id="content">
-        
-    <div id="primary">
-        
-  <article class="post">
-    <header class="post-header">
-      <h1 class="post-title">
-        
-          Unity:Playground框架入门
-        
-      </h1>
-
-      <time class="post-time">
-          Feb 08 2020
-      </time>
-    </header>
-
-
-
     
-            <div class="post-content">
-            <p>Unity的Playground是一个用来制作拥有物理引擎的2D游戏开发框架，非常适合初学者。在这里，我们将用它来制作一个简单的飞船小游戏以快速入门。</p>
+    <div class="article-meta">
+      
+	Posted on <a href="/passages/Unity-Playground-Practice/" class="article-date">
+	  <time datetime="2020-02-08T02:04:18.000Z" itemprop="datePublished">February 8, 2020</time>
+	</a>
+
+      
+	<span id="busuanzi_container_page_pv">
+	  本文总阅读量<span id="busuanzi_value_page_pv"></span>次
+	</span>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Unity的Playground是一个用来制作拥有物理引擎的2D游戏开发框架，非常适合初学者。在这里，我们将用它来制作一个简单的飞船小游戏以快速入门。</p>
 <a id="more"></a>
 <h3 id="前导教程"><a href="#前导教程" class="headerlink" title="前导教程"></a><strong>前导教程</strong></h3><p><em>如果你第一次阅读本文且之前无相关Unity使用经验，建议阅读以下前导教程后再开始着手开始此教程。</em></p>
 <blockquote>
@@ -215,92 +242,161 @@
 <p>至此游戏的制作大功告成，你可以选择打包生成可执行文件分享给你的好友。打包生成详见前导教程中的分享一节。</p>
 <p><strong>另附上游戏的完整工程文件，如果你中途遇到困难可供参考：</strong><a href="https://github.com/histevehu/blog/raw/master/2020/02/08/Unity-Playground-Practice/Playground2D.zip" target="_blank" rel="noopener">Playground2D.zip</a></p>
 
-            </div>
+      
+    </div>
+    <footer class="entry-meta entry-footer">
+      
+	<span class="ico-folder"></span>
+    <a class="article-category-link" href="/categories/Unity/">Unity</a>
+
+      
+  <span class="ico-tags"></span>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程/">教程</a></li></ul>
+
+      
+            
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/passages/Ubuntu-Common-Instruction-Collection/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Ubuntu 常用指令操作&amp;问题解决方案收集
+        
+      </div>
+    </a>
+  
+  
+    <a href="/passages/Unity-Create-Ball-Game/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Unity:制作小球滚动游戏</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="sidebar">
+    <div id="toc" class="toc-article" style="overflow-y: scroll; max-width: 28%;">
+    <strong class="toc-title">Contents</strong>
+    
+      <ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前导教程"><span class="nav-number">1.</span> <span class="nav-text">前导教程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前言"><span class="nav-number">2.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#准备"><span class="nav-number">3.</span> <span class="nav-text">准备</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建项目"><span class="nav-number">3.1.</span> <span class="nav-text">创建项目</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#引入Playground框架"><span class="nav-number">3.2.</span> <span class="nav-text">引入Playground框架</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正式开始"><span class="nav-number">4.</span> <span class="nav-text">正式开始</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#背景"><span class="nav-number">4.1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加飞船"><span class="nav-number">4.2.</span> <span class="nav-text">添加飞船</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置Camera"><span class="nav-number">4.3.</span> <span class="nav-text">设置Camera</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加小行星"><span class="nav-number">4.4.</span> <span class="nav-text">添加小行星</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加Collider"><span class="nav-number">4.5.</span> <span class="nav-text">添加Collider</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加生命值"><span class="nav-number">4.6.</span> <span class="nav-text">添加生命值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加UI"><span class="nav-number">4.7.</span> <span class="nav-text">添加UI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加激光武器"><span class="nav-number">4.8.</span> <span class="nav-text">添加激光武器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加星星"><span class="nav-number">4.9.</span> <span class="nav-text">添加星星</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#完善场景"><span class="nav-number">4.10.</span> <span class="nav-text">完善场景</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加胜利条件"><span class="nav-number">4.11.</span> <span class="nav-text">添加胜利条件</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大功告成"><span class="nav-number">5.</span> <span class="nav-text">大功告成</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      <footer id="footer" class="site-footer">
+  
+
+  <div class="clearfix container">
+      <div class="site-info">
+	      &copy; 2020 HiSteveHu All Rights Reserved.
           
+            <span id="busuanzi_container_site_uv">
+              本站访客数<span id="busuanzi_value_site_uv"></span>人次  
+              本站总访问量<span id="busuanzi_value_site_pv"></span>次
+            </span>
+          
+      </div>
+      <div class="site-credit">
+            <a href="https://github.com/iTimeTraveler/hexo-theme-hiero" target="_blank">hiero</a>
+      </div>
+  </div>
+</footer>
 
-    
-      <footer class="post-footer">
-		
-		<div class="post-tags">
-		  
-			<a href="/tags/教程/">教程</a>
-		  
-		</div>
-		
 
-        
-        
-  <nav class="post-nav">
-    
-      <a class="prev" href="/passages/Ubuntu-Common-Instruction-Collection/">
-        <i class="iconfont icon-left"></i>
-        <span class="prev-text nav-default">Ubuntu 常用指令操作&问题解决方案收集</span>
-        <span class="prev-text nav-mobile">Prev</span>
-      </a>
-    
-    
-      <a class="next" href="/passages/Unity-Create-Ball-Game/">
-        <span class="next-text nav-default">Unity:制作小球滚动游戏</span>
-        <span class="prev-text nav-mobile">Next</span>
-        <i class="iconfont icon-right"></i>
-      </a>
-    
-  </nav>
+<!-- min height -->
 
-        
-  <div class="comments" id="comments">
+<script>
+    var contentdiv = document.getElementById("content");
+
+    contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("allheader").offsetHeight - document.getElementById("footer").offsetHeight + "px";
+</script>
+
+<!-- Custome JS -->
+<script src="/js/my.js"></script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
     
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+
+<script src="/js/scripts.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+
+
+	<script async src="https://dnqof95d40fo6.cloudfront.net/atw7f8.js">
+	</script>
+
+
+
+
+
+
   </div>
 
-
-      </footer>
-    
-  </article>
-
-    </div>
-
-      </div>
-
-      <footer id="colophon"><span><a>Copyright</a></span>
-<span class="copyright-year">
-    
-        &copy;
-    
-        1999 -
-    
-    2020
-    <span class="footer-author">Steve Hu<br></span>
-    <span class="power-by">
-        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/frostfan/hexo-theme-polarbear">Polar Bear</a>
-    </span>
-</span>
-
-      </footer>
-
-      <div class="back-to-top" id="back-to-top">
-        <i class="iconfont icon-up"></i>
-      </div>
-    </div>
-    
-
-
-    
-  
-
-
-
-
-
-  
-    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
-  
-
-  
-    <script type="text/javascript" src="/lib/fancybox/jquery.fancybox.pack.js"></script>
-  
-
-    <script type="text/javascript" src="/js/src/theme.js?v=0.1"></script>
-<script type="text/javascript" src="/js/src/bootstrap.js?v=0.1"></script>
-
-  </body>
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="/js/totop.js" async=""></script>
+</body>
 </html>
