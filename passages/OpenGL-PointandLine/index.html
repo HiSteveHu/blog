@@ -31,18 +31,10 @@
 <meta property="og:site_name" content="HiSteveHu">
 <meta property="og:description" content="导言在之前的教程中，我们已经实现了空窗口以及三角形的渲染。然而只是略知一二，对于渲染的具体细节，比如三角形边的绘制，我们还不太清楚。从这节开始，我们将更加深入、系统地入门图形学，先从点和直线开始">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://histevehu.com/passages/OpenGL-PointandLine/0.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/OpenGL-PointandLine/1.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/OpenGL-PointandLine/4.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/OpenGL-PointandLine/2.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/OpenGL-PointandLine/5.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/OpenGL-PointandLine/3.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/OpenGL-PointandLine/6.jpg">
 <meta property="og:updated_time" content="2020-03-30T23:59:28.878Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL-3:点和直线">
 <meta name="twitter:description" content="导言在之前的教程中，我们已经实现了空窗口以及三角形的渲染。然而只是略知一二，对于渲染的具体细节，比如三角形边的绘制，我们还不太清楚。从这节开始，我们将更加深入、系统地入门图形学，先从点和直线开始">
-<meta name="twitter:image" content="https://histevehu.com/passages/OpenGL-PointandLine/0.jpg">
 
 <link rel="canonical" href="https://histevehu.com/passages/OpenGL-PointandLine/">
 
@@ -225,6 +217,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -244,25 +243,25 @@
 <li><p>根据图形的定义在点阵单元上确定最佳逼近于图形的像素集。逼近的过程本质可以认为是连续量向离散量的转换</p>
 </li>
 <li><p>给像素指定合适的颜色值</p>
-<p><img src="0.jpg" style="zoom:50%;"></p>
+<p><img data-src="0.jpg" style="zoom:50%;"></p>
 </li>
 </ol>
 <h3 id="直线扫描转换算法分类"><a href="#直线扫描转换算法分类" class="headerlink" title="直线扫描转换算法分类"></a><strong>直线扫描转换算法分类</strong></h3><p>逐点比较法、正负法、<strong>数值微分算法、Bresenham算法</strong></p>
 <p>接下来，我们主要了解数值微分算法</p>
-<h3 id="数值微分法（Digital-Differential-Analyzer-DDA）"><a href="#数值微分法（Digital-Differential-Analyzer-DDA）" class="headerlink" title="数值微分法（Digital Differential Analyzer,DDA）"></a><strong>数值微分法（Digital Differential Analyzer,DDA）</strong></h3><h4 id="理论"><a href="#理论" class="headerlink" title="理论"></a><strong>理论</strong></h4><p><img src="1.jpg" style="zoom:50%;"></p>
-<p><img src="4.jpg" style="zoom:60%;"></p>
+<h3 id="数值微分法（Digital-Differential-Analyzer-DDA）"><a href="#数值微分法（Digital-Differential-Analyzer-DDA）" class="headerlink" title="数值微分法（Digital Differential Analyzer,DDA）"></a><strong>数值微分法（Digital Differential Analyzer,DDA）</strong></h3><h4 id="理论"><a href="#理论" class="headerlink" title="理论"></a><strong>理论</strong></h4><p><img data-src="1.jpg" style="zoom:50%;"></p>
+<p><img data-src="4.jpg" style="zoom:60%;"></p>
 <p>使得ε△x或ε△y中会有一个变成<strong>单位步长</strong>。算法在<strong>最大位移方向</strong>上，<strong>每次总是走一步：</strong></p>
 <ul>
 <li><p>情况一：斜率绝对值小于1：<strong>ε=1/|△x|,其中对y(i+1)结果四舍五入</strong></p>
-<p><img src="2.jpg" style="zoom:50%;"></p>
+<p><img data-src="2.jpg" style="zoom:50%;"></p>
 <blockquote>
-<p><img src="5.jpg" style="zoom:60%;"></p>
+<p><img data-src="5.jpg" style="zoom:60%;"></p>
 </blockquote>
 </li>
 <li><p>情况二：斜率绝对值大于1：<strong>ε=1/|△y|,其中对x(i+1)结果四舍五入</strong></p>
-<p><img src="3.jpg" style="zoom:50%;"></p>
+<p><img data-src="3.jpg" style="zoom:50%;"></p>
 <blockquote>
-<p><img src="6.jpg" style="zoom:60%;"></p>
+<p><img data-src="6.jpg" style="zoom:60%;"></p>
 </blockquote>
 </li>
 </ul>
@@ -437,6 +436,26 @@
 </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 

@@ -31,12 +31,10 @@
 <meta property="og:site_name" content="HiSteveHu">
 <meta property="og:description" content="在这里我们将实现一个空窗口的渲染">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://histevehu.com/passages/OpenGL-RenderEmptyWindow/1.jpg">
 <meta property="og:updated_time" content="2020-01-20T00:39:21.024Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL-2:渲染窗体">
 <meta name="twitter:description" content="在这里我们将实现一个空窗口的渲染">
-<meta name="twitter:image" content="https://histevehu.com/passages/OpenGL-RenderEmptyWindow/1.jpg">
 
 <link rel="canonical" href="https://histevehu.com/passages/OpenGL-RenderEmptyWindow/">
 
@@ -219,6 +217,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -280,7 +285,7 @@
 <p>为了测试一切都正常工作，我们使用一个自定义的颜色清空屏幕。在每个新的渲染迭代开始的时候我们总是希望清屏，否则我们仍能看见上一次迭代的渲染结果（这可能是你想要的效果，但通常这不是）。我们可以通过调用glClear函数来清空屏幕的颜色缓冲，它接受一个缓冲位(Buffer Bit)来指定要清空的缓冲，可能的缓冲位有GL_COLOR_BUFFER_BIT，GL_DEPTH_BUFFER_BIT和 GL_STENCIL_BUFFER_BIT。由于现在我们只关心颜色值，所以我们只清空颜色缓冲。 </p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">glClearColor(<span class="number">0.0f</span>, <span class="number">0.34f</span>, <span class="number">0.57f</span>, <span class="number">1.0f</span>); </span><br><span class="line">glClear(GL_COLOR_BUFFER_BIT);</span><br></pre></td></tr></table></figure>
 <p>注意，除了 glClear之外，我们还调用了 glClearColor来设置清空屏幕所用的颜色。当调用 glClear函数，清除颜色缓冲之后，整个颜色缓冲都会被填充为glClearColor里所设置的颜色。在这里，我们将屏幕设置为了一种好看的蓝色。<br>效果如下： </p>
-<p><img src="1.jpg" style="zoom:50%;"> </p>
+<p><img data-src="1.jpg" style="zoom:50%;"> </p>
 <h3 id="预告"><a href="#预告" class="headerlink" title="预告"></a><strong>预告</strong></h3><p>如果一切顺利，那么这一节大功告成！</p>
 <p>在下面一节中，我们将渲染三角形</p>
 
@@ -454,6 +459,26 @@
 </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 

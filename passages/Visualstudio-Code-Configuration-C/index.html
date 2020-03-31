@@ -31,15 +31,10 @@
 <meta property="og:site_name" content="HiSteveHu">
 <meta property="og:description" content="简介VSCode是一个轻量级，开源和流行的编辑器，支持主流编程语言。 当然，也支持C语言。 在使用之前只需要做一些配置。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://histevehu.com/passages/Visualstudio-Code-Configuration-C/img_1.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/Visualstudio-Code-Configuration-C/img_2.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/Visualstudio-Code-Configuration-C/img_3.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/Visualstudio-Code-Configuration-C/img_4.jpg">
 <meta property="og:updated_time" content="2019-08-13T14:46:13.612Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VSCode C语言开发环境配置 (C)">
 <meta name="twitter:description" content="简介VSCode是一个轻量级，开源和流行的编辑器，支持主流编程语言。 当然，也支持C语言。 在使用之前只需要做一些配置。">
-<meta name="twitter:image" content="https://histevehu.com/passages/Visualstudio-Code-Configuration-C/img_1.jpg">
 
 <link rel="canonical" href="https://histevehu.com/passages/Visualstudio-Code-Configuration-C/">
 
@@ -222,6 +217,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -237,7 +239,7 @@
 <a id="more"></a>
 <h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
 <li><p>在VSCode中安装<strong>Microsoft</strong>提供的<strong>C / C ++支持插件</strong></p>
-<p><img src="img_1.jpg" alt=""></p>
+<p><img data-src="img_1.jpg" alt=""></p>
 </li>
 <li><p>安装 <strong><a href="http://mingw.org/" target="_blank" rel="noopener">MingGW</a></strong> 并执行下列操作:</p>
 <ol>
@@ -252,16 +254,16 @@
 </ol>
 </li>
 <li><p>使用VSCode打开一个文件夹。 编写一个简单的C程序（如打印“HelloWorld！”）并将其保存为<strong>.c</strong>文件。 单击 <strong>Debug </strong>图标，在选项卡的下拉菜单中选择 <strong>C ++（GDB）</strong>，然后单击<strong>齿轮图标</strong> 。VSCode将自动在当前目录中新建.vscode文件夹并在其中生成 <strong>launch.json 启动配置文件</strong>。</p>
-<p><img src="img_2.jpg" alt=""></p>
+<p><img data-src="img_2.jpg" alt=""></p>
 <p><strong><em>注意：VSCode调试需要在打开的文件夹中完成（即首先应该用VSCode打开经过上述过程配置的文件夹，再调试其中的程序。打开一个独立的 C 程序会因为缺少.vscode目录即其中的配置文件而无法调试。这与DevCpp、C-Free等可以调试单个 C 程序不同）</em></strong></p>
 </li>
 <li><p>打开目录下 <strong>.vscode文件夹 </strong>中自动生成的 <strong>launch.json</strong> 文件, 然后清空，用一下代码代替，保存:</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line">    <span class="attr">"configurations"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"(gdb) Launch"</span>, </span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>, </span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,   </span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"$&#123;workspaceRoot&#125;/$&#123;fileBasenameNoExtension&#125;.exe"</span>, </span><br><span class="line">            <span class="attr">"args"</span>: [], </span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,   </span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceRoot&#125;"</span>, </span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>, </span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"gdb"</span>,</span><br><span class="line">            "miDebuggerPath": "C:\\MinGW\\bin\\gdb.exe", // The path of the miDebugger, note that it corresponds to the path of MinGw</span><br><span class="line">            "preLaunchTask": "gcc", // C++:g++, C:gcc  </span><br><span class="line">            "setupCommands": [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"description"</span>: <span class="string">"Enable pretty-printing for gdb"</span>,</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                    <span class="attr">"ignoreFailures"</span>: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>转到刚才编写的C程序, 按 <strong>F5</strong> 进行调试，然后将出现一个消息框警告你配置任务。 单击 <strong>Debug Anyway</strong>。</p>
-<p><img src="img_3.jpg" alt=""></p>
+<p><img data-src="img_3.jpg" alt=""></p>
 </li>
-<li><p>从下拉菜单中选择:  <strong>Create from a blank template &gt; Others</strong>. 然后VSCode将生成一个 <strong>Tasks.json</strong> 配置文件在 .vscode 目录中.<img src="img_4.jpg" alt=""></p>
+<li><p>从下拉菜单中选择:  <strong>Create from a blank template &gt; Others</strong>. 然后VSCode将生成一个 <strong>Tasks.json</strong> 配置文件在 .vscode 目录中.<img data-src="img_4.jpg" alt=""></p>
 </li>
 <li><p>打开 <strong>Tasks.json</strong> 文件，清空，用以下代码替换，保存:</p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"2.0.0"</span>,</span><br><span class="line">    <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">    <span class="attr">"args"</span>: [</span><br><span class="line">        <span class="string">"-g"</span>,</span><br><span class="line">        <span class="string">"$&#123;file&#125;"</span>,</span><br><span class="line">        <span class="string">"-o"</span>,</span><br><span class="line">        <span class="string">"$&#123;fileBasenameNoExtension&#125;.exe"</span></span><br><span class="line">    ], </span><br><span class="line">    <span class="attr">"problemMatcher"</span>: &#123;</span><br><span class="line">        <span class="attr">"owner"</span>: <span class="string">"cpp"</span>,</span><br><span class="line">        <span class="attr">"fileLocation"</span>: [</span><br><span class="line">            <span class="string">"relative"</span>,</span><br><span class="line">            <span class="string">"$&#123;workspaceRoot&#125;"</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">"pattern"</span>: &#123;</span><br><span class="line">            <span class="attr">"regexp"</span>: <span class="string">"^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$"</span>,</span><br><span class="line">            <span class="attr">"file"</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">"line"</span>: <span class="number">2</span>,</span><br><span class="line">            <span class="attr">"column"</span>: <span class="number">3</span>,</span><br><span class="line">            <span class="attr">"severity"</span>: <span class="number">4</span>,</span><br><span class="line">            <span class="attr">"message"</span>: <span class="number">5</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -442,6 +444,26 @@
 </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 

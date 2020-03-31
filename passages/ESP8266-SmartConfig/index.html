@@ -31,13 +31,10 @@
 <meta property="og:site_name" content="HiSteveHu">
 <meta property="og:description" content="在之前的教程中，我们已经学习了ESP8266的基本信息及开发环境搭建。在这里我们将学习如何 通过SmartConfig配网 将ESP8266 以一种对用户更友好的方式接入互联网">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://histevehu.com/passages/ESP8266-SmartConfig/1.png">
-<meta property="og:image" content="https://histevehu.com/passages/ESP8266-SmartConfig/2.jpg">
 <meta property="og:updated_time" content="2020-02-08T09:57:26.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ESP8266：SmartConfig">
 <meta name="twitter:description" content="在之前的教程中，我们已经学习了ESP8266的基本信息及开发环境搭建。在这里我们将学习如何 通过SmartConfig配网 将ESP8266 以一种对用户更友好的方式接入互联网">
-<meta name="twitter:image" content="https://histevehu.com/passages/ESP8266-SmartConfig/1.png">
 
 <link rel="canonical" href="https://histevehu.com/passages/ESP8266-SmartConfig/">
 
@@ -220,6 +217,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -266,14 +270,14 @@
 </ol>
 <p>此时就需要我们的智能配网模式。SmartConfig最先是TI开始研究的，其实类似的协议有很多，只是不同厂家间名称不同，乐鑫智能配网模式的名称仍为 <strong>SmartConfig</strong></p>
 <p>下面一张图来概括什么是SmartConfig及其原理和作用</p>
-<p><img src="1.png" alt=""></p>
+<p><img data-src="1.png" alt=""></p>
 <h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a><strong>开始</strong></h3><p>1.打开Arduino,添加一下代码并烧录至ESP8266：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ESP8266WiFi.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">smartConfig</span><span class="params">()</span></span>&#123;</span><br><span class="line">    WiFi.mode(WIFI_STA);</span><br><span class="line">    Serial.println(<span class="string">"\r\nWait for Smartconfig"</span>);</span><br><span class="line">    WiFi.beginSmartConfig();</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        delay(<span class="number">500</span>);</span><br><span class="line">        <span class="keyword">if</span> (WiFi.smartConfigDone())</span><br><span class="line">        &#123;</span><br><span class="line">            Serial.println(<span class="string">"SmartConfig Success"</span>);</span><br><span class="line">            Serial.<span class="built_in">printf</span>(<span class="string">"SSID:%s\r\n"</span>, WiFi.SSID().c_str());</span><br><span class="line">            Serial.<span class="built_in">printf</span>(<span class="string">"PSW:%s\r\n"</span>, WiFi.psk().c_str());</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Serial.begin(<span class="number">115200</span>);</span><br><span class="line">    smartConfig();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li><strong>确认移动端已经连接到2.4Ghz WiFi（因为ESP8266 仅支持2.4Ghz WiFi，若移动端连接到5Ghz 或其他频率WiFi则配网会失败）</strong></li>
 <li>打开移动端ESPTouch，输入密码并确认，移动端开始广播WiFi信息，开始配网。</li>
 </ol>
-<p><img src="2.jpg" alt=""></p>
+<p><img data-src="2.jpg" alt=""></p>
 <p>3.打开Arduino串口监视器（点击主界面右上角放大镜图标），重启ESP8266。稍等片刻，可见ESP8266向串口输出WiFi的SSID和密码消息，证明配网成功</p>
 
     </div>
@@ -446,6 +450,26 @@
 </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 

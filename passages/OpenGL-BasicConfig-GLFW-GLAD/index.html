@@ -31,18 +31,10 @@
 <meta property="og:site_name" content="HiSteveHu">
 <meta property="og:description" content="这里我们将帮助你入门OpenGL第一步——基于GLFW、GLAD库的开发环境搭建配置">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://histevehu.com/passages/OpenGL-BasicConfig-GLFW-GLAD/0.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/OpenGL-BasicConfig-GLFW-GLAD/1.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/OpenGL-BasicConfig-GLFW-GLAD/2.png">
-<meta property="og:image" content="https://histevehu.com/passages/OpenGL-BasicConfig-GLFW-GLAD/3.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/OpenGL-BasicConfig-GLFW-GLAD/4.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/OpenGL-BasicConfig-GLFW-GLAD/5.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/OpenGL-BasicConfig-GLFW-GLAD/6.jpg">
 <meta property="og:updated_time" content="2020-01-19T16:36:16.622Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OpenGL-1:基本配置(GLFW+GLAD)">
 <meta name="twitter:description" content="这里我们将帮助你入门OpenGL第一步——基于GLFW、GLAD库的开发环境搭建配置">
-<meta name="twitter:image" content="https://histevehu.com/passages/OpenGL-BasicConfig-GLFW-GLAD/0.jpg">
 
 <link rel="canonical" href="https://histevehu.com/passages/OpenGL-BasicConfig-GLFW-GLAD/">
 
@@ -225,6 +217,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -252,10 +251,10 @@
 <li><p>当 CMake安装成功后，你可以选择从命令行或者 GUI启动 CMake，由于我们不想让事情变得太过复杂，我们选择用 GUI。(GUI版本CMake位于安装路径根下的bin目录中)</p>
 </li>
 <li><p>CMake需要一个源代码目录和一个存放编译结果的目标文件目录。源代码目录我们选择 GLFW的源代码的根目录，然后我们新建一个 build 文件夹作为目标目录</p>
-<p><img src="0.jpg"></p>
+<p><img data-src="0.jpg"></p>
 </li>
 <li><p>点击”Configure”，只需选择目标的IDE版本，其他保持默认即可。这里以Visual Studio 2019为例</p>
-<p><img src="1.jpg" style="zoom:50%;"></p>
+<p><img data-src="1.jpg" style="zoom:50%;"></p>
 </li>
 <li><p>点击”Generate”生成，期间会出现红色提示，再依次点击”Configure”和”Generate”，生成成功</p>
 </li>
@@ -275,10 +274,10 @@
 <h4 id="GLAD-准备"><a href="#GLAD-准备" class="headerlink" title="GLAD 准备"></a><strong>GLAD 准备</strong></h4><p>到这里还没有结束，我们仍然还有一件事要做。因为 OpenGL只是一个标准/规范，具体的实现是由驱动开发商针对特定显卡实现的。由于 OpenGL驱动版本众多，它大多数函数的位置都无法在编译时确定下来，需要在运行时查询。所以任务就落在了开发者身上，开发者需要在运行时获取函数地址并将其保存在一个函数指针中供以后使用。取得地址的方法因平台而异，代码非常复杂繁琐，幸运的是有些库能简化此过程，其中 GLAD是目前最新，也是最流行的库。 </p>
 <ol>
 <li><p>进入 GLAD 的在线服务 <a href="https://glad.dav1d.de/" target="_blank" rel="noopener">https://glad.dav1d.de/</a>   将语言(Language)设置为 C/C++，规范(Specification)设置为OpenGL。在 API 选项中，选择 3.3以上的 OpenGL(gl)版本，将模式(Profile)设置为 Core，先暂时忽略拓展(Extensions)中的内容。选中生成加载器(Generate a loader)。最后点击生成(Generate)按钮来生成库文件。</p>
-<p><img src="2.png" style="zoom: 50%;"></p>
+<p><img data-src="2.png" style="zoom: 50%;"></p>
 </li>
 <li><p>随后会跳转到一个结果生成页面，点击下载 glad.zip ，解压缩</p>
-<p><img src="3.jpg" alt=""></p>
+<p><img data-src="3.jpg" alt=""></p>
 </li>
 <li><p>解压缩后得到其中两个目录：include 和 src。将include目录下两个文件夹（glad 和 KHR）复制到工程根目录下的 include 文件夹内。将 src 目录下的 glad.c 复制到工程根目录下。</p>
 </li>
@@ -292,15 +291,15 @@
 <li><p>打开工程属性（解决方案窗口里右键项目，属性）</p>
 </li>
 <li><p>点击 VC++目录选项卡，在包含目录一项添加工程根目录下 include 文件夹的路径，在库目录一项添加工程根目录下 libs 文件夹的路径</p>
-<p><img src="4.jpg" style="zoom: 50%;"></p>
+<p><img data-src="4.jpg" style="zoom: 50%;"></p>
 </li>
 </ol>
 <ol start="4">
 <li><p>点击选项卡 链接器-&gt;输入，添加依赖项，添加 glfw3.lib ，点击确定保存</p>
-<p><img src="5.jpg" style="zoom:50%;"></p>
+<p><img data-src="5.jpg" style="zoom:50%;"></p>
 </li>
 <li><p>在结局方案窗口，右键项目的源文件文件夹，添加现有项，将工程根目录的 glad.c 添加进工程</p>
-<p><img src="6.jpg" style="zoom:50%;"></p>
+<p><img data-src="6.jpg" style="zoom:50%;"></p>
 </li>
 </ol>
 <h3 id="完成！"><a href="#完成！" class="headerlink" title="完成！"></a><strong>完成！</strong></h3><hr>
@@ -480,6 +479,26 @@
 </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 

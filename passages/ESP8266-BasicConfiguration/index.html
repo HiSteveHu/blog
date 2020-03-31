@@ -31,20 +31,10 @@
 <meta property="og:site_name" content="HiSteveHu">
 <meta property="og:description" content="这里我们将以 Adruino+ESP8266+VSCode配置 为例，展示ESP8266的入门基础配置，并实现最基本的点灯">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://histevehu.com/passages/ESP8266-BasicConfiguration/7.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/ESP8266-BasicConfiguration/0.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/ESP8266-BasicConfiguration/1.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/ESP8266-BasicConfiguration/2.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/ESP8266-BasicConfiguration/3.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/ESP8266-BasicConfiguration/4.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/ESP8266-BasicConfiguration/5.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/ESP8266-BasicConfiguration/6.jpg">
-<meta property="og:image" content="https://histevehu.com/passages/ESP8266-BasicConfiguration/8.jpg">
 <meta property="og:updated_time" content="2020-01-19T11:30:01.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ESP8266:基本配置">
 <meta name="twitter:description" content="这里我们将以 Adruino+ESP8266+VSCode配置 为例，展示ESP8266的入门基础配置，并实现最基本的点灯">
-<meta name="twitter:image" content="https://histevehu.com/passages/ESP8266-BasicConfiguration/7.jpg">
 
 <link rel="canonical" href="https://histevehu.com/passages/ESP8266-BasicConfiguration/">
 
@@ -227,6 +217,13 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
 
         </div>
       </header>
@@ -266,18 +263,18 @@
 <p><strong>(注意：线缆是具备数据传输功能的数据线，而非Micro-USB 接口的电源线，否则无法被计算机识别）</strong></p>
 <p>计算机将识别ESP8266并完成剩余安装。</p>
 <p>验证驱动程序是否成功安装？可将ESP8266与电脑连接后，可通过：<strong>计算机-右键-属性-设备管理器</strong>，若在其中存在端口一项，其中包含CH340一项，则代表安装成功。</p>
-<p><img src="7.jpg" alt=""></p>
+<p><img data-src="7.jpg" alt=""></p>
 </li>
 <li><h4 id="Adruino-IDE"><a href="#Adruino-IDE" class="headerlink" title="Adruino IDE"></a><strong>Adruino IDE</strong></h4><ol>
 <li><p>下载，安装</p>
 </li>
 <li><p>打开Adruino,点击“文件-首选项”，在附加开发板管理器网址中添加：</p>
 <p><a href="https://arduino.esp8266.com/stable/package_esp8266com_index.json" target="_blank" rel="noopener">https://arduino.esp8266.com/stable/package_esp8266com_index.json</a></p>
-<p><img src="0.jpg" alt=""></p>
+<p><img data-src="0.jpg" alt=""></p>
 </li>
 <li><p>点击“工具-开发板-开发板管理器”，搜索”ESP8266”,安装</p>
 <p><strong><em>若位于中国，则建议挂载VPN以顺利完成此步</em></strong></p>
-<p><img src="1.jpg" alt=""></p>
+<p><img data-src="1.jpg" alt=""></p>
 </li>
 <li><p>点击“工具-开发板“，选择”Generic ESP8266 Module”，完成配置</p>
 </li>
@@ -286,19 +283,19 @@
 <li><h4 id="启用第三方编辑器（可选）"><a href="#启用第三方编辑器（可选）" class="headerlink" title="启用第三方编辑器（可选）"></a><strong><em>启用第三方编辑器（可选）</em></strong></h4><p>我们可以使用第三方更为强大的编辑器来替换Adruino内置编辑器，下面以VSCode为例，介绍对其基本配置：</p>
 <ol>
 <li><p>搜索插件”Arduino”，安装</p>
-<p><img src="2.jpg" alt=""></p>
+<p><img data-src="2.jpg" alt=""></p>
 </li>
 <li><p>打开设置，搜索”Arduino”，更改”Arduino:Path“ 一项为Arduino安装根目录（eg:默认为 <code>C:\Program Files (x86)\Arduino</code>），其他保持默认</p>
-<p><img src="3.jpg" alt=""></p>
+<p><img data-src="3.jpg" alt=""></p>
 </li>
 <li><p><strong>Ctrl+Shift+P</strong>,在命令端口输入 <strong>Arduino</strong>，选择 <strong>Arduino:Board Config</strong></p>
-<p><img src="4.jpg" alt=""></p>
+<p><img data-src="4.jpg" alt=""></p>
 </li>
 <li><p>在出现的配置窗口，将开发板类型更改为 <strong>Generic ESP8266 Module(esp8266)</strong>，其他保持默认即可</p>
-<p><img src="5.jpg" alt=""></p>
+<p><img data-src="5.jpg" alt=""></p>
 </li>
 <li><p>可通过底端状态栏快速做出相应操作</p>
-<p><img src="6.jpg" alt=""></p>
+<p><img data-src="6.jpg" alt=""></p>
 <p><em>从右往左，<strong>COM4 </strong>选项为端口选择，选择ESP8266连接所在的端口，也可检验见面CH340驱动程序是否成功安装；<strong>插座</strong>图标为串口监听开关；<strong>Generic ESP8266 Module </strong>为所选开发板型号</em></p>
 </li>
 </ol>
@@ -308,7 +305,7 @@
 <p>在编程语言的学习中，第一步往往是在屏幕上打印“Hello World！”，对于单片机学习而言，第一步相对应的就是点亮ESP8266上的LED灯。</p>
 <ol>
 <li><p>打开Arduino，点击菜单 <strong>文件-示例-Basics-Blink</strong>，我们选择其内置的示例代码快速开始</p>
-<p><img src="8.jpg" alt=""></p>
+<p><img data-src="8.jpg" alt=""></p>
 </li>
 <li><p>将ESP8266 连接至计算机，点击菜单 <strong>工具-端口</strong>，选择正确端口，同时确保开发板型号选择为 <strong>Generic ESP8266 Module</strong>  （原因及注意事项见最后<strong>”注意“</strong>一栏）</p>
 </li>
@@ -499,6 +496,26 @@
 </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
