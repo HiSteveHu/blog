@@ -1,0 +1,1284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Ubuntu 常用指令操作&amp;问题解决方案收集</title>
+    <url>/passages/Ubuntu-Common-Instruction-Collection/</url>
+    <content><![CDATA[<p>长期收集更新关于Ubuntu的常用指令操作和问题解决方案</p>
+<a id="more"></a>
+<h3 id="常用指令操作"><a href="#常用指令操作" class="headerlink" title="常用指令操作"></a><strong>常用指令操作</strong></h3><ul>
+<li><h4 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a><strong>文件操作</strong></h4><ul>
+<li><h5 id="进入目录-cd-PATH"><a href="#进入目录-cd-PATH" class="headerlink" title="进入目录    cd PATH"></a><strong>进入目录</strong>    <code>cd PATH</code></h5><blockquote>
+<p>进入根目录    <code>cd /</code><br>进入当前用户身份所在的主目录    <code>cd ~</code><br>返回上级目录    <code>cd ..</code></p>
+</blockquote>
+</li>
+<li><h5 id="查看当前路径-pwd"><a href="#查看当前路径-pwd" class="headerlink" title="查看当前路径    pwd"></a><strong>查看当前路径</strong>    <code>pwd</code></h5></li>
+<li><h5 id="查看目录内容-ls"><a href="#查看目录内容-ls" class="headerlink" title="查看目录内容    ls"></a><strong>查看目录内容</strong>    <code>ls</code></h5><blockquote>
+<p>查看全部内容（包含隐藏文件）    <code>ls -a</code></p>
+</blockquote>
+</li>
+<li><h5 id="新建文件-touch-FILENAME"><a href="#新建文件-touch-FILENAME" class="headerlink" title="新建文件    touch FILENAME"></a><strong>新建文件</strong>    <code>touch FILENAME</code></h5></li>
+<li><h5 id="新建文件夹-mkdir-FOLDERNAME"><a href="#新建文件夹-mkdir-FOLDERNAME" class="headerlink" title="新建文件夹    mkdir FOLDERNAME"></a><strong>新建文件夹</strong>    <code>mkdir FOLDERNAME</code></h5></li>
+<li><h5 id="使用-vi-打开文件-vi-FILENAME"><a href="#使用-vi-打开文件-vi-FILENAME" class="headerlink" title="使用 vi 打开文件    vi FILENAME"></a><strong>使用 vi 打开文件</strong>    <code>vi FILENAME</code></h5></li>
+<li><h5 id="复制-cp-ORIPATH-TARGETPATH"><a href="#复制-cp-ORIPATH-TARGETPATH" class="headerlink" title="复制    cp ORIPATH TARGETPATH"></a><strong>复制</strong>    <code>cp ORIPATH TARGETPATH</code></h5></li>
+<li><h5 id="移动-mv-ORIPATH-TARGETPATH"><a href="#移动-mv-ORIPATH-TARGETPATH" class="headerlink" title="移动    mv ORIPATH TARGETPATH"></a><strong>移动</strong>    <code>mv ORIPATH TARGETPATH</code></h5><p><em>注意：必须在要移动的文件的目录下执行该命令，而且该文件夹下不能有文件夹，我的part2文件夹放在home目录下</em></p>
+</li>
+<li><h5 id="删除-rm-X-PATH1-PATH2"><a href="#删除-rm-X-PATH1-PATH2" class="headerlink" title="删除    rm X PATH1 PATH2 ..."></a><strong>删除</strong>    <code>rm X PATH1 PATH2 ...</code></h5><blockquote>
+<p>X参数：</p>
+<pre><code>-i    逐个确认要删除的文件
+-r    递归删除目录下内容，**删除文件夹时必须添加**
+-f    强制删除，忽略不存在的文件，无确认提示
+-rf    强制删除目录，无提示
+</code></pre></blockquote>
+</li>
+<li><h5 id="更改权限-sudo-chmod-X"><a href="#更改权限-sudo-chmod-X" class="headerlink" title="更改权限    sudo chmod X"></a><strong>更改权限</strong>    <code>sudo chmod X</code></h5><blockquote>
+<p>X参数：</p>
+<pre><code>600 （只有所有者有读和写的权限）       
+644 （所有者有读和写的权限，组用户只有读的权限）          
+700 （只有所有者有读和写以及执行的权限） 
+666 （每个人都有读和写的权限）       
+777 （每个人都有读和写以及执行的权限）    
+</code></pre></blockquote>
+</li>
+</ul>
+</li>
+<li><h4 id="包管理"><a href="#包管理" class="headerlink" title="包管理"></a><strong>包管理</strong></h4><p><code>apt X</code></p>
+<blockquote>
+<p>X参数：</p>
+<pre><code>install    安装软件包         
+remove    移除软件包           
+purge    移除软件包及配置文件      
+update    刷新存储库索引         
+upgrade    升级所有可升级的软件包     
+autoremove    自动删除不需要的包       
+full-upgrade    在升级软件包时自动处理依赖关系 
+search    搜索应用程序          
+show    显示安装细节      
+list    列出包含条件的包（已安装，可升级等）
+</code></pre></blockquote>
+</li>
+<li><h4 id="vi"><a href="#vi" class="headerlink" title="vi"></a><strong>vi</strong></h4><ul>
+<li><h5 id="编辑、命令行模式切换-i-esc"><a href="#编辑、命令行模式切换-i-esc" class="headerlink" title="编辑、命令行模式切换   i/esc"></a>编辑、命令行模式切换   i/esc</h5></li>
+<li><h5 id="保存-命令模式，w"><a href="#保存-命令模式，w" class="headerlink" title="保存    命令模式，w"></a>保存    命令模式，w</h5></li>
+<li><h5 id="退出-命令模式，q"><a href="#退出-命令模式，q" class="headerlink" title="退出   命令模式，q"></a>退出   命令模式，q</h5></li>
+<li><h5 id="保存退出-命令模式，wq"><a href="#保存退出-命令模式，wq" class="headerlink" title="保存退出   命令模式，wq"></a>保存退出   命令模式，wq</h5></li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Ubuntu</category>
+      </categories>
+      <tags>
+        <tag>整理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Unity:Playground框架入门</title>
+    <url>/passages/Unity-Playground-Practice/</url>
+    <content><![CDATA[<p>Unity的Playground是一个用来制作拥有物理引擎的2D游戏开发框架，非常适合初学者。在这里，我们将用它来制作一个简单的飞船小游戏以快速入门。</p>
+<a id="more"></a>
+<h3 id="前导教程"><a href="#前导教程" class="headerlink" title="前导教程"></a><strong>前导教程</strong></h3><p><em>如果你第一次阅读本文且之前无相关Unity使用经验，建议阅读以下前导教程后再开始着手开始此教程。</em></p>
+<blockquote>
+<ol>
+<li><a href="https://histevehu.com/2020/02/02/Unity-Create-Ball-Game/">Unity:制作小球滚动游戏</a></li>
+</ol>
+</blockquote>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><hr>
+<p>游戏构思是，通过键盘操作键盘方向键操控飞船移动，躲避或者按空格键发射激光以摧毁小行星，同时收集星星。撞击小行星会丢失生命值。当生命值为0时，游戏失败。当收集到所有星星时（即分数满分时），游戏胜利。</p>
+<p><img data-src="17.jpg" alt=""></p>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a><strong>准备</strong></h3><hr>
+<h4 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a><strong>创建项目</strong></h4><p>创建游戏的过程和上一节中的创建方式一样，只是要将游戏设置为2D，这里我们创建一个名为Playground2D的游戏项目。</p>
+<h4 id="引入Playground框架"><a href="#引入Playground框架" class="headerlink" title="引入Playground框架"></a><strong>引入Playground框架</strong></h4><p>为了使用Playground框架，需要在Asset Store中搜索Unity Playground并下载引入其资源包。</p>
+<p>在顶部菜单栏的Window中选择Asset Store即可进入资源商店，搜索找到Unity Playground选择下载（Download）然后引入（Import）。</p>
+<p>引入成功后，可以看到Playground框架已经为我们准备了很多资源，主要的资源集中在Scripts，打开这个文件夹可以发现很多已经写好的可以直接使用的脚本。</p>
+<h3 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a><strong>正式开始</strong></h3><hr>
+<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a><strong>背景</strong></h4><p>将SampleScene重命名为MainScene并保存于Scenes目录下，保留Main Camera。</p>
+<p>选择Assets-&gt;Images-&gt;Backgrounds下的BG_Space背景图，拖动到Hierarchy面板中。在Inspector面板中的Sprite Renderer（着色器）中将起Draw Mode（绘制模式）改为Tiled（平铺），还可以扩大它的大小，这里将其X、Y的Size值均设置为100。然后展开Visibility Options（可视化选项），将Sorting Layer（排布布局）设置为Background（背景），这样可以使得其他所有的GameObject均在其上方。</p>
+<p><img data-src="0.jpg" style="zoom:50%;"></p>
+<h4 id="添加飞船"><a href="#添加飞船" class="headerlink" title="添加飞船"></a><strong>添加飞船</strong></h4><p>选择Assets-&gt;Images-&gt;Spaceships下的一个图像作为Player，这里选择了一个红色的飞船，并将其拖动到Hierarchy面板中。在Inspector面板中，为了让飞船实现碰撞等物理效果，为其添加刚体属性，只不过这里我们选择添加Rigidbody 2D，即选择Add Component，找到或者搜索该Component之后添加。<br> 显然，我们需要将它的Gravity（重力）置零，为了不让其在受到一小点点的力后运动起来停不下来，将其Friction（摩擦力）设置一个合理的值，这里设置为2，Angular Friction（角摩擦）可以保持0.05的预设值。</p>
+<p><img data-src="1.jpg" style="zoom:50%;"></p>
+<p>接下来就可以体会到Playground框架的强大之处，因为它预先为我们准备了各种各样的脚本。运用这些脚本可以直接实现很多游戏情景，而我们要做的只是将对应的脚本添加给对应的GameObject，并且设置脚本需要的public属性的值，也就是在Inspector面板中设置这些值即可。</p>
+<p>首先，为了让飞船能够运动起来，为其添加一个推动力的脚本：Move With Arrows，你可以选择从Assets中的Scirpts目录下找到这个脚本拖动到Inspector面板中，也可以在Add Component中直接搜索添加该脚本。然后更改控制方式为Arrow Keys（方向键），Push Strength（推力大小）为适当的值，这里置为3，勾选 Orient to direction。此时运行游戏可以通过按方向键（↑↓←→）使飞船运动起来。</p>
+<p><img data-src="2.jpg" style="zoom:50%;"></p>
+<p>这里还给飞船增加了一点儿可爱的属性，找到Assets-&gt;Prefabs-&gt;Particles下的P_Flame，拖动到Hierarchy成为飞船的子物体，让其跟随飞船运动，然后通过选择和平移调整一个合适的位置加到飞船的尾部。</p>
+<p><img data-src="4.jpg" style="zoom:50%;"></p>
+<h4 id="设置Camera"><a href="#设置Camera" class="headerlink" title="设置Camera"></a><strong>设置Camera</strong></h4><p>设置Camera，调整Size，改变其视野范围，并添加一个Follow脚本使其固定跟随一个物体，直接点击Camera中的Add Camera Follow script即可添加，然后将我们的Player也就是飞船拖动到Target作为其参数即可。</p>
+<p><img data-src="5.jpg" style="zoom:50%;"></p>
+<p><img data-src="6.jpg" style="zoom:50%;"></p>
+<h4 id="添加小行星"><a href="#添加小行星" class="headerlink" title="添加小行星"></a><strong>添加小行星</strong></h4><p>选择Assets-&gt;Images-&gt;Asteroids下的一个小行星图像作为障碍物，同样需要为其添加Rigidbody 2D属性，修改其中的值</p>
+<p>在物理学中我们知道，如果一个物体没有受到任何摩擦力，在其受到一个力从而获得一个初速度后会一直以这个速度运动下去，所以为了避免这种情况的发生，我们还是需要为其Friction（摩擦力）赋予一个合理的值</p>
+<p><img data-src="7.jpg" style="zoom:50%;"></p>
+<h4 id="添加Collider"><a href="#添加Collider" class="headerlink" title="添加Collider"></a><strong>添加Collider</strong></h4><p>为了有碰撞效果，为飞船和石头均添加 Polygon Collider 2D 属性。此时运行游戏，会发现飞船可以碰撞石头</p>
+<p><img data-src="8.jpg" style="zoom:50%;"></p>
+<h4 id="添加生命值"><a href="#添加生命值" class="headerlink" title="添加生命值"></a><strong>添加生命值</strong></h4><p>为飞船添加一个Health System（健康系统），直接添加Health System脚本即可，可以看到，我们可以预设生命值。</p>
+<p><img data-src="10.jpg" style="zoom:50%;"></p>
+<p>飞船碰撞到了石头，飞船的生命值就减少一，这需要我们为石头添加Modify Health脚本，然后看到有两个可选参数，第一个Destroy When Activated（起作用时销毁）如果选中的话就会在石头起到“减血”作用后销毁石头，这里不选中，第二个Health Change即为对生命值的变化，这里设置为-1很合理。</p>
+<p><img data-src="9.jpg" style="zoom:50%;"></p>
+<h4 id="添加UI"><a href="#添加UI" class="headerlink" title="添加UI"></a><strong>添加UI</strong></h4><p>为了让生命值和分数显示出来，我们为Hierarchy目录添加Assets下的Prefabs下的UserInterface，UI自动显示在了游戏界面中。</p>
+<p>为了让Untiy清楚生命值和分数都记录的是谁的，这里需要为飞船添加一个Player的Tag，添加Tag详见前导教程。</p>
+<p><img data-src="11.jpg" style="zoom:50%;"></p>
+<h4 id="添加激光武器"><a href="#添加激光武器" class="headerlink" title="添加激光武器"></a><strong>添加激光武器</strong></h4><p>为了不让我们的飞船显得太过于脆弱，为其添加发射激光的功能。</p>
+<p>这里选择Assets-&gt;Images-&gt;Projectiles下的LasersMid作为发射的激光，拖动到Hierarchy下。</p>
+<p>为其添加Rigidbody 2D和capsule Collider 2D（胶囊状的碰撞器）使其拥有碰撞属性，正如前导教程中所提到的，还需要选中Is Trigger一项。</p>
+<p><img data-src="12.jpg" style="zoom:50%;"></p>
+<p>Playground框架为我们准备了Bullet（子弹）脚本使其在特定条件下产生一个该对象的引用，即发射一发子弹。<br> 添加了Bullet脚本后的激光束，将其拖动回Assets下的Prefabs目录下成为一个预设体。</p>
+<p><img data-src="13.jpg" style="zoom:50%;"></p>
+<p>有了激光，还需要一个发射的枪口，我们在飞船下新建一个空的子物体，将其命名为Gun，将其拖动至飞船的顶部也就是发射的地方。</p>
+<p><img data-src="14.jpg" style="zoom:50%;"></p>
+<p>为刚创建的Gun添加一个Object Shooter的脚本，在Inspector面板中设置其参数。Prefab To Spawn（要发射的预设体）里拖动我们已有的Prefab下的子弹预设体到这里作为参数，Key To Press是发射的按键，这里设置为空格键，Creation Rate是产生的速度，这里设置为0.1，Shoot Speed为发射速度，这里设置为17，shoot Direction为发射方向，显然是沿Y方向发射，所以将X设为0，Y设为1。勾选 Relative to Rotation。</p>
+<p>射击中石头时石头就需要消失并且我们要得分，所以为石头再添加一个脚本：Destory For Points，这个脚本使得物体被击中时销毁并为我们的Player增加分数，Points Worth即其所价值的分数，这里我们设置为0，因为并不想在击中石头后得到分数。</p>
+<h4 id="添加星星"><a href="#添加星星" class="headerlink" title="添加星星"></a><strong>添加星星</strong></h4><p>为游戏添加一些在太空中漂浮的星星，用我们驾驶的飞船去收集这些星星，收集到的外星人就进入飞船（消失）</p>
+<p>选择Assets-&gt;Images-&gt;GameElements下的Star，它需要拥有以下的Component：</p>
+<p><img data-src="15.jpg" style="zoom:50%;"></p>
+<p>再添加一个Collectable（可收集的）脚本，这个脚本表示这是一个可以被收集的物体，Points Worth表示收集到后得到的分数，这里默认1不变。</p>
+<p><img data-src="16.jpg" style="zoom:80%;"></p>
+<h4 id="完善场景"><a href="#完善场景" class="headerlink" title="完善场景"></a><strong>完善场景</strong></h4><p>对小行星和星星进行复制（Duplicate），然后任意摆放。</p>
+<h4 id="添加胜利条件"><a href="#添加胜利条件" class="headerlink" title="添加胜利条件"></a><strong>添加胜利条件</strong></h4><p>到什么时候才算胜利呢？选择UserInterface，在Inspector中的UI Script处可以设置，比如这里默认的为一个玩家、计分制、满分为胜利。以10个星星为例，每个星星我们前面设置为1分，则满分为10分。</p>
+<h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a><strong>大功告成</strong></h3><hr>
+<p>运行游戏，完美！</p>
+<p>至此游戏的制作大功告成，你可以选择打包生成可执行文件分享给你的好友。打包生成详见前导教程中的分享一节。</p>
+<p><strong>另附上游戏的完整工程文件，如果你中途遇到困难可供参考：</strong><a href="https://github.com/histevehu/blog/raw/master/2020/02/08/Unity-Playground-Practice/Playground2D.zip" target="_blank" rel="noopener">Playground2D.zip</a></p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Unity:制作小球滚动游戏</title>
+    <url>/passages/Unity-Create-Ball-Game/</url>
+    <content><![CDATA[<p>这里我们将以制作一个小球滚动的游戏为例，以快速熟悉Unity的常用界面操作概念、入门Unity。</p>
+<a id="more"></a>
+<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a><strong>前言</strong></h3><hr>
+<p>游戏构思很简单，在一个平面内，通过键盘操作小球滚动击中上面的立方体以获得分数并显示在左上角。当玩家击中全部的立方体之后，跳转到另一个界面提示游戏完成，玩家胜利，并附有重新开始游戏的按钮。</p>
+<p><img data-src="0.jpg" style="zoom:30%;"></p>
+<p><img data-src="1.jpg" style="zoom:30%;"></p>
+<p>通过这个学习，你将会主要掌握：</p>
+<ul>
+<li>Unity中一些基本知识</li>
+<li>常用组件的控制（移动、旋转、设定颜色及材质）</li>
+<li>摄像机的简单跟踪</li>
+<li>简单碰撞判断原理</li>
+</ul>
+<p><strong>注意：</strong></p>
+<ul>
+<li><strong>本文需要基本C#语言基础，如果你没有学习过这门语言可以事先学习一下再开始这个教程。别担心，很简单</strong></li>
+<li>本文基于Unity 2019.3.0f6 ，外部代码编辑器为 Visual Studio 2019</li>
+</ul>
+<p>让我们开始吧！</p>
+<h3 id="Unity中的一些基本知识"><a href="#Unity中的一些基本知识" class="headerlink" title="Unity中的一些基本知识"></a><strong>Unity中的一些基本知识</strong></h3><hr>
+<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a><strong>概念</strong></h4><ul>
+<li><p><strong>Game Object    游戏对象</strong>    </p>
+<p>Game Object是搭建游戏的最基础的模块，但是任何一个Game Object本身并没有任何作用，其属性以及行为都由这个Game Object所拥有的Components决定</p>
+</li>
+<li><p><strong>Components   元件</strong></p>
+<p>Components从属于Game Object，从而定义了每一个Game Object应该表现哪些行为以及拥有哪些属性</p>
+</li>
+<li><p><strong>Prefabs   预设体</strong></p>
+<p>有些Game Object我们以后可能会经常用到（比如游戏中的墙），如果我们为其设置好了很多Components以及其对应的值，后期需要更改属性的时候，我们肯定不希望每一面墙都重新添加一遍这些Components或重新设置参数值，那么此时我们就可以将一些Game Objects保存成为Prefabs，下次用到可以拿来即用，因为Prefabs可以生成很多的同样的Game Object</p>
+<p>Prefabs之于Game Object相当于编程中的类之于对象</p>
+<p>因而当我们需要生成一个Game Object时，只需要将Project窗口中的相应Prefab拖动到Hierarchy窗口即可完成实例化，生成一个Game Object。（界面视图介绍详见后文）</p>
+</li>
+<li><p><strong>Assets   资产</strong></p>
+<p>Assects可以是3D models（3D模型）、audio files（音频文件）、scripts（脚本）等等。（显然，Prefabs也是一种assets）这些资产可以看成是游戏的原材料，构成了我们的游戏</p>
+</li>
+</ul>
+<h4 id="界面"><a href="#界面" class="headerlink" title="界面"></a><strong>界面</strong></h4><p><img data-src="3.jpg" alt=""></p>
+<p><strong>①Hierarchy    层次管理器</strong></p>
+<p>管理各个Game Object的层次结构</p>
+<p><strong>②Project    工程管理器</strong></p>
+<p>管理当前工程的Assets</p>
+<p><strong>③Scene    场景视图</strong></p>
+<p>通过Scene视图对整个游戏的所有Game Object（如地图、道具、角色等）进行一些操作，比如拖动任何一个可动的元素，调整其位置角度大小；改变观看这个世界的角度、远近等。称这个模式为Edit模式。</p>
+<p><strong>④Game    游戏视图</strong></p>
+<p>Game窗口所展示的内容即玩家看到的内容，因而尽管我们可以在Scene窗口中随意变化观察的角度，但是Game窗口的内容却只取决于Camera所看到的内容。<br>同时如果运行游戏的话还可以在Game窗口中直接“玩”我们的游戏，从而达到调试的目的。</p>
+<p><strong>⑤Inspector    属性</strong></p>
+<p>列出了所选中的Game Object的所有Components，这里可以对它们进行管理并且更改参数值</p>
+<p><strong>⑥Console    终端</strong></p>
+<p>控制台所打印的信息，可以用来调试C#脚本或者其他内容</p>
+<p><strong>你的视图可能与截图有所不同，这里仅仅以我们所常用的视图结构为例</strong></p>
+<h3 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a><strong>正式开始</strong></h3><hr>
+<p>前面我们已经简单介绍了Unity的一些基本概念，这里我们将正式开始游戏的制作</p>
+<p>打开Unity，新建一个3D工程。我们会看到Unity已经事先为我们新建了两个Game Object: Main Camera和Directional Light，保留它们，后文将会用到</p>
+<p>然后在Project窗口，新建以下文件夹为后续工作准备：Materials, Prefabs, Scenes, Scripts</p>
+<p>至此，你的层次结构和工程资产应该如下：</p>
+<p><img data-src="4.jpg" style="zoom:50%;"></p>
+<p><img data-src="5.jpg" style="zoom:50%;"></p>
+<h3 id="添加-amp-设置游戏对象"><a href="#添加-amp-设置游戏对象" class="headerlink" title="添加&amp;设置游戏对象"></a><strong>添加&amp;设置游戏对象</strong></h3><hr>
+<h4 id="地面"><a href="#地面" class="headerlink" title="地面"></a><strong>地面</strong></h4><p>Hierarchy窗口，右键，3D Object，Plane</p>
+<p><img data-src="6.jpg" style="zoom:50%;"></p>
+<p>然后在Inspector窗口将Plane重命名为Ground，在Transform选项卡中，点选项卡的右上角省略号，Reset，重置平面的位置及大小</p>
+<p><img data-src="7.jpg" style="zoom:50%;"></p>
+<p>接下来，我们要为地面添加材质颜色</p>
+<p>在Project窗口中，进入Materials文件夹，右键，Create，Material，这时会生成一个材质球并等待命名，我们将它命名为background。然后在Inspector中将Albedo（反射率）设成自己喜欢的颜色（这里以RGB（0,32,64）为例），然后将材质球拖动到Scene窗口的Ground对象上以将材质球应用。</p>
+<p><img data-src="8.jpg" alt=""></p>
+<h4 id="球"><a href="#球" class="headerlink" title="球"></a><strong>球</strong></h4><p>Hierarchy窗口，右键，3D Object，Sphere</p>
+<p>然后在Inspector窗口将Sphere重命名为Player，在Transform选项卡中，点选项卡的右上角省略号，Reset，重置平面的位置及大小，然后将Position属性的Y设置为0.5</p>
+<p>因为小球会遇到碰撞等事件，为了模拟物理属性，我们需要为其添加相应的Components。在Inspector窗口，点击最底部的Add Component，输入Rigidbody以添加</p>
+<h4 id="墙"><a href="#墙" class="headerlink" title="墙"></a><strong>墙</strong></h4><p>正如最终游戏截图所示，我们计划在平面四周各建立墙体以防止玩家的小球脱离平面坠落。当然你也可以跳过这一步，如果你想让游戏更惊险刺激。但在这里我们将会使用Prefab进行建造，后文也将用到这一重要概念，因此我们强烈建议你不要跳过</p>
+<p>Hierarchy窗口，右键，3D Object，Create Empty，创建一个空的Game Object，用以当作墙体集合，重命名为Walls，然后在Walls对象上右键，3D Object，Cube，在Inspector窗口调整大小以符合地面边长并重命名为wall，这样wall就成为了Walls的子对象</p>
+<p>然后将wall拖动到Project窗口的Prefabs文件夹，将会自动创建wall对象的prefab，同时wall对象会变成蓝色，证明创建成功</p>
+<p><img data-src="9.jpg" style="zoom:50%;"></p>
+<p>Ctrl+D快速复制出剩余三个墙体并移动摆放好位置</p>
+<h4 id="立方体"><a href="#立方体" class="headerlink" title="立方体"></a><strong>立方体</strong></h4><p>立方体与墙体构造方法类似。先创建一个空对象，命名为Cubes作为集合。然后在其中新建Cube，命名为cube，拖动到Project窗口的Prefab文件夹以生成预设体。然后Ctrl+D快速复制若干个立方体并摆好位置</p>
+<p>为了美观，我们可以为立方体们设置材质颜色。在Materials文件夹内新建材质命名为cube，设置Albedo为你喜欢的颜色（这里随机以黄色为例）。因为我们使用预制体构建，所以上色十分方便。只要在Project窗口中选中cube预制体，双击进入编辑模式，将材质球拖动到预制体上即可。</p>
+<p>如游戏设计思路所言，我们需要控制小球击中立方体以获得分数，因此我们也要像小球一样，为立方体设置刚体的物理属性。在Inspector窗口，点击最底部的Add Component，输入Rigidbody，为cube预制体添加刚体属性</p>
+<p>然后点击Scene导航条的Scenes场景退出编辑模式，然后我们会发现所有立方体已经成功添加了材质球和刚体属性</p>
+<p><img data-src="10.jpg" style="zoom:50%;"></p>
+<p>到这里，我们已经完成了游戏所需要的所有Game Object的添加和设置工作。</p>
+<h3 id="代码，魔法"><a href="#代码，魔法" class="headerlink" title="代码，魔法"></a><strong>代码，魔法</strong></h3><hr>
+<p>试着运行一下游戏，很好，所有的对象都出现在Game窗口里，但无法使用键盘控制小球移动。接下来我们需要添加一些代码来实现这个目标。</p>
+<h4 id="球的移动"><a href="#球的移动" class="headerlink" title="球的移动"></a><strong>球的移动</strong></h4><p>我们在Scripts文件夹下来管理代码，在该目录处右键，Create，C# Script创建一个脚本并命名为PlayerController。然后我们需要将这个脚本与小球Player关联起来。选择Player，在Inspector面板下选择Add Component，在其中搜索我们的脚本名字就可以找到该脚本完成绑定。</p>
+<p>双击脚本文件，自动调用外部编辑器打开（推荐使用Visual Studio，这里以2019版本为例）</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">using</span> System.Collections;</span><br><span class="line"><span class="keyword">using</span> System.Collections.Generic;</span><br><span class="line"><span class="keyword">using</span> UnityEngine;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title">PlayerController</span> : <span class="title">MonoBehaviour</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Start is called before the first frame update</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Update is called once per frame</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Update</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Unity已经为我们预置好了脚本的结构，最基本的，我们可以看到所有的Unity脚本都继承自MonoBehaviour类，然后有两个预设函数，Start函数是在第一帧开始渲染前调用，Update函数在每一帧刷新前调用，都是非常常用的函数<br> 接下来思考我们要做的事情，我们需要检测用户的输入，并且通过输入的按键来控制小球的滚动方向，检测用户的输入同时也需要识别输入的是哪一个按键，除此之外我们还需要一些物理学有关的逻辑，比如我们需要添加一个力来控制小球的移动，这就是物理学逻辑，这些逻辑当然是每一帧都要进行一次，所以我们需要将这些逻辑写在每一帧更新都要执行的函数中<br>显然我们可以写到Update函数下，因为Update函数是每一帧刷新前都会调用的，同时我们还有另外的选择，即使用FixedUpdate函数，它在每一次进行物理学运算的时候调用，每次检测到用户输入都需要进行物理学运算，所以我们可以将逻辑写到FixedUpdate函数下</p>
+<p>首先我们需要创建一个对于这个Player小球的引用，这样才能知道我们控制的是哪个小球，这里小球是刚体，所以我们创建一个刚体（Rigidbody）的引用，并且需要在第一帧开始渲染之前通过GetComponent方法来找到小球创建刚体的引用，这一逻辑自然就需要写到Start函数中了</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">private Rigidbody rigidbodyPlayer;</span><br><span class="line"></span><br><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    rigidbodyPlayer = GetComponent&lt;Rigidbody&gt;();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接下来对用户输入的读取就需要写到FiexedUpdate函数中了，我们使用Input类的GetAxis方法来获取水平或者垂直的运动轴，这个方法会返回一个float值作为该轴的移动距离</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">float moveHorizontal = Input.GetAxis(&quot;Horizontal&quot;);</span><br><span class="line">float moveVertical = Input.GetAxis(&quot;Vertical&quot;);</span><br></pre></td></tr></table></figure>
+<p>通过以上两行代码我们就可以将用户的W，S，A，D输入转化为水平轴和垂直轴的移动距离，分别存储在moveHorizontal和moveVertical两个float类型的变量中</p>
+<p>接下来通过Rigidbody类的AddForce方法可以为刚体添加作用力，AddForce方法接受一个三维向量（Vector3）参数，这个三维向量就可以表示力，显然我们的三维向量可以用刚才的moveHorizontal和moveVertical两个变量作为X值和Z值，同时我们是不需要小球在Y方向上移动的，也就是将Y方向的力作用设置为0.0f即可，经过调试我们会发现小球的移动速度过慢，为了方便调节小球的速度，只需要在表示力的三维向量前乘以一个倍数即可，为了方便调整，我们设置一个public的float类型的变量speed来调节这个乘积<br><strong>另外，凡在Unity的脚本中被声明为public类型的变量，在Unity的Inspector界面中的该脚本的Component下都会出现一个可以设置的值的方框</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public float speed;</span><br><span class="line">void FixedUpdate()</span><br><span class="line">&#123;</span><br><span class="line">    Vector3 movement = new Vector3(moveHorizontal,0.0f,moveVertical);</span><br><span class="line">    rigidbodyPlayer.AddForce(movement*speed);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img data-src="12.jpg" style="zoom:50%;"></p>
+<p>这里我们将speed的值设为10，运行游戏就会发现通过W，S，A，D的控制，小球动了起来</p>
+<h4 id="摄像机的跟踪"><a href="#摄像机的跟踪" class="headerlink" title="摄像机的跟踪"></a><strong>摄像机的跟踪</strong></h4><p>可以发现，我们的Camera的角度和位置都比较刁钻，这导致我们的游戏看到的画面并不完整，接下来我们对Camera进行设置，使其能够跟随我们的小球滚动来同时移动</p>
+<p>首先调节Main Camera的Position和Rotation使得画面和角度比较合适</p>
+<p>接下来通过脚本控制Main Camera跟随小球Player一同移动，即在Position上保持相对静止</p>
+<blockquote>
+<p>可能你会想到，只需要将Main Camera拖动给Player使其成为Player的子物体不就可以保持两者相对位置不变化了吗？但是问题在于球体Player是滚动的，如果两者的位置完全相对静止，就会导致球滚动时Main Camera也会跟着球滚动，产生天旋地转的感觉。</p>
+</blockquote>
+<p>新建脚本CameraController并添加给Main Camera做一个Component。为了使Main Camera的Transform的Position和Player的保持相对静止，Rotation并不和其保持一致，可以想到一个办法：设置一个偏移量，这个值初始化为游戏开始时Main Camera和Player之间的Position的差值，然后在球滚动时，每一次滚动都改变Main Cmaera的Position，使其新的Position等于现在球的Position的值加上刚才的偏移量，这样就会在每次球的位置改变时Main Camera都会跟上它的步骤<br>显然，偏移量的设置需要在Start函数中完成，每一次球的位置发生变化时的逻辑可以在Update函数中完成，但还有一个更好的选择，就是LateUpdate函数，该函数在每次有GameObject发生变动时才会调用。同时，我们的脚本使加在Main Camera上的，所以Main Camera的Transform可以直接调用，但是球的Transform则需要单独获取，这里我们设置一个public的GameObject量，然后在Unity中将球Player拖动到这个量处作为参数即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">private Vector3 offset;</span><br><span class="line">public GameObject player;</span><br><span class="line"></span><br><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    offset = transform.position - player.transform.position;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void LateUpdate()</span><br><span class="line">&#123;</span><br><span class="line">    transform.position = player.transform.position + offset;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img data-src="13.jpg" style="zoom:50%;"></p>
+<p>这时候运行游戏就可以发现Main Camera的位置随着球的改变而发生了改变</p>
+<h4 id="立方体的旋转"><a href="#立方体的旋转" class="headerlink" title="立方体的旋转"></a><strong>立方体</strong>的旋转</h4><p>我们已经在地面上放置了若干个立方体，为了增强视觉效果可以让它们原地缓缓旋转。当然你也可以跳过这一小节。</p>
+<p>新建脚本Rotator，并添加给预设体cube，编辑此脚本。这个逻辑中是不需要Start函数的，我们只需要每一帧都让小方块儿转动一下，所以将逻辑写到Update函数中，这里使用Ratate方法，需要一个Vector3作为参数。为了不让旋转过快，我们给每一帧都乘以一个小的时间量</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="keyword">private</span> Vector3 rotation = <span class="keyword">new</span> Vector3(<span class="number">15</span>,<span class="number">30</span>,<span class="number">45</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Update</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    transform.Rotate(rotation * Time.deltaTime);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>保存脚本，运行游戏可以看到小方块旋转起来了。</p>
+<h4 id="碰撞"><a href="#碰撞" class="headerlink" title="碰撞"></a><strong>碰撞</strong></h4><p>如果小球碰撞了旋转的立方体，那么立方体就会消失。那么如何识别我们的小球Player碰撞的是立方体呢？我们通过为预设体cube添加特定的标签来识别。在Assets的Prefabs中找到我们的cube并打开它，可以在它的Inspector面板中发现它还没有添加标签（Untagged），点击Tag后的按钮选择Add Tag…，来添加一个名为cube的标签，然后再回到最开始的面板处选择新添加的这个标签，这样cube的标签就添加好了。</p>
+<p><img data-src="14.Jpg" style="zoom:50%;"></p>
+<p>重新打开PlayerController脚本，这里我们将碰撞发生的逻辑写到函数OnTriggerEnter中，这个函数在发生碰撞事件的时候调用，而且用碰到的Collider（碰撞机）作为参数，也就是我们的Player碰到的Collider。可见，如果要检测到的碰撞，被碰撞的物体需要由碰撞引擎，也就是要有Collider的属性，其实我们会发现，作为cube保存的一个Prefab在创建之初就已经有Box Collider的这一Component了，所以不再需要我们自己添加。</p>
+<p><strong>但是我们需要勾选上Is Trigger选项</strong></p>
+<blockquote>
+<p>这里的原因需要我们了解一定的Unity碰撞原理。Unity将Collider（碰撞机）分为静态碰撞机（Static Collider）和动态碰撞机（Dynamic Collider）两种。</p>
+<p>静态的碰撞机比如墙面、地板等一些列静态的物体，与他们碰撞时，不允许两个Collider相互重合，也就是说会发生反弹。</p>
+<p>而为了让我们的碰撞能够实现（碰撞后立方体消失），我们需要将立方体设置为动态的（Trigger）触发器，成为Trigger的Collider是可以被穿过的，这样才会引发我们的“碰撞事件”的逻辑。这里我们找到预设体cube，在它的Box Collider的Component中，勾选Is Trigger选项，这样它就成为了一个动态触发器。</p>
+</blockquote>
+<p><img data-src="15.jpg" style="zoom:50%;"></p>
+<p>OnTriggerEnter函数用其碰撞到的Collider作为参数，现在就需要我们识别这个碰到的Collider是不是一个cube立方体了，显然可以使用Tag来鉴别。这里使用gameObject的CompareTag方法来完成。该方法以一个字符串作为参数，返回一个布尔值，如果gameObject的Tag和字符串一致，就返回true。<br>接下来完成控制小立方体消失的逻辑，使用gameObject的方法SetActive来完成。这个方法接受一个布尔值作为参数来控制GameObject的消失与显现。作用同我们在Inspector面板中看到的每一个GameObject前的小对勾相同。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void OnTriggerEnter(Collider other)</span><br><span class="line">&#123;</span><br><span class="line">    if (other.gameObject.CompareTag(&quot;cube&quot;))</span><br><span class="line">    &#123;</span><br><span class="line">        other.gameObject.SetActive(false);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="计数器"><a href="#计数器" class="headerlink" title="计数器"></a><strong>计数器</strong></h4><p>接下来添加一个计数器，每撞到一个小球就使计数器数值增加1。自然需要编辑PlayerController脚本，声明一个int类型的变量，在Start函数中初始化为0，在每一次碰撞到小立方体后都增加一。这里特地将count每次更新后的值都打印到控制台来验证其正确性。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">private int count;</span><br><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    rigidbodyPlayer = GetComponent&lt;Rigidbody&gt;();</span><br><span class="line">    count = 0;</span><br><span class="line">&#125;</span><br><span class="line">void OnTriggerEnter(Collider other)</span><br><span class="line">&#123;</span><br><span class="line">    if (other.gameObject.CompareTag(&quot;cube&quot;))</span><br><span class="line">    &#123;</span><br><span class="line">        other.gameObject.SetActive(false);</span><br><span class="line">        count++;</span><br><span class="line">        Debug.Log(count);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img data-src="16.jpg" style="zoom:50%;"></p>
+<p>但显然，将分数显示在游戏界面中才是更好的选择，这里需要用到UI组件。<br>在Hierarchy窗口中，右键，UI，Text，就会创建一个UI组件，但是我们会发现其实Text外还有一层Canvas（画布），下方还出现了一个EventSystem，这些都是Unity为我们自动创建的，这是因为：</p>
+<blockquote>
+<p>The single most important thing to know about these additional items is that all UI elements must be the child of a canvas to behave correctly.<br> （所有的UI元素都必须是一个Canvas（画布）的子元素才能正常工作）</p>
+</blockquote>
+<p>这里将Text命名为CountText。接下来我们来调整它的位置。</p>
+<p>找到Inspecctor的Rect Transform，可以看到UI的Transform和一般GameObject的定位方式不同，这个位置的确定是相对于游戏屏幕的，点击左边的这个方框，展开位置选择的面板，根据提示：按住Shift键选择中心轴（pivot），按住Alt键选择位置（position）。我们选择同时按住Shift和Alt键，将Text放到Canvas的左上角：</p>
+<p><img data-src="17.jpg" style="zoom:50%;"></p>
+<p>这样就可以看到Count Text放置到了Game窗口的左上角。接下来可以改变Rect Transform的Pos X的值和Pos Y的值让Count Text稍微离左边缘和顶部边缘一段距离</p>
+<p>接下来要将分数显示到Text中，继续编辑PlayerController脚本，首先需要添加新的Namespace：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">using UnityEngine.UI;</span><br></pre></td></tr></table></figure>
+<p>然后自然需要创建一个Text变量来表示CountText的一个引用，我们将此Text变量声明为public的类型，为了可以在Inspector中对其进行直接的赋值。接下来要初始化CountText中所显示的文字，使用Text的text变量即可，在Start函数中进行初始化，然后再每一次碰撞到小立方体的时候再重新更新Text的内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public Text countText;</span><br><span class="line">void Start()</span><br><span class="line">&#123;</span><br><span class="line">    rigidbodyPlayer = GetComponent&lt;Rigidbody&gt;();</span><br><span class="line">    count = 0;</span><br><span class="line">    countText.text = &quot;Count: &quot; + count.ToString();</span><br><span class="line">&#125;</span><br><span class="line">void OnTriggerEnter(Collider other)</span><br><span class="line">&#123;</span><br><span class="line">    if (other.gameObject.CompareTag(&quot;cube&quot;))</span><br><span class="line">    &#123;</span><br><span class="line">        other.gameObject.SetActive(false);</span><br><span class="line">        count++;</span><br><span class="line">        countText.text = &quot;Count: &quot; + count.ToString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>保存脚本回到Unity，将CountText拖动到Inspector中新产生的这个Text变量处来实例化它即可。</p>
+<p><img data-src="18.jpg" style="zoom:50%;"></p>
+<p>运行游戏，很好！</p>
+<p>至此，游戏的主体部分已经完成。但按照最初的游戏设想，在完成游戏后会跳转到另一个界面提示游戏完成，玩家胜利，并附有重新开始游戏的按钮。让我们继续！</p>
+<h3 id="最后的胜利"><a href="#最后的胜利" class="headerlink" title="最后的胜利"></a><strong>最后的胜利</strong></h3><hr>
+<p>在Project的Scene文件下，右键，Create，Scene，并命名为Finish。这将创建一个新的场景。（你同时也可以将之前我们所进行的一系列操作的场景在Assets中找到并移动到Scene文件中方便管理）</p>
+<p><img data-src="19.jpg" style="zoom:50%;"></p>
+<p>然后我们需要将新场景添加到构建列表中。点击菜单File，Build Settings，添加我们的两个场景。</p>
+<p><img data-src="22.jpg" style="zoom:50%;"></p>
+<p>双击finish打开场景编辑。在Hierarchy窗口中，右键，UI，分别创建一个Text和Button。调整好颜色和位置。值得注意的是，按钮的文本内容位于Button的子对象中，需要对其的Inspector中属性进行调整以调整按钮的文本。</p>
+<p><img data-src="20.jpg" style="zoom:50%;"></p>
+<p>我们可以在Button的Inspector窗口的Button选项卡中更改按钮的外观细节。</p>
+<p><img data-src="21.jpg" style="zoom:50%;"></p>
+<p>接下来需要对原来的PlayController脚本进行小修改。在满足玩家将所有立方体都撞击的条件后（即分数point等于满分，比如这里因为共设置了8个立方体，每个立方体分数均为1分，所以总分为8分），跳转到我们新建的用于显示游戏胜利信息的新场景。跳转场景需要我们引入新的命名空间</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">using UnityEngine.SceneManagement;</span><br></pre></td></tr></table></figure>
+<p>然后我们需要修改OnTriggerEnter函数内容。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void OnTriggerEnter(Collider other)</span><br><span class="line">    &#123;</span><br><span class="line">        if (other.gameObject.CompareTag(&quot;cube&quot;))</span><br><span class="line">        &#123;</span><br><span class="line">            other.gameObject.SetActive(false);</span><br><span class="line">            point++;</span><br><span class="line">            pointText.text = &quot;Count: &quot; + point.ToString();</span><br><span class="line">            Debug.Log(point);</span><br><span class="line">            if (point == 8)</span><br><span class="line">                SceneManager.LoadScene(&quot;Finish&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>试着运行一下游戏，到这里我们已经能完成游戏结束后从游戏场景跳转到Finish场景，接下来我们需要对Finish场景的按钮添加代码来跳转到游戏场景以实现重现开始</p>
+<p>新建脚本PlayAgain，并添加给按钮，编辑此脚本。首先在我们需要在Start函数中添加一个按钮的监听器以监听按钮的点击事件，绑定一个自定义函数OnClick。然后添加自定义函数OnClick，在其中完成场景跳转功能。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">using UnityEngine;</span><br><span class="line">using UnityEngine.UI;</span><br><span class="line">using UnityEngine.SceneManagement;</span><br><span class="line">public class PlayAgain : MonoBehaviour</span><br><span class="line">&#123;</span><br><span class="line">    void Start()</span><br><span class="line">    &#123;</span><br><span class="line">        this.GetComponent&lt;Button&gt;().onClick.AddListener(OnClick);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    void OnClick()</span><br><span class="line">    &#123;</span><br><span class="line">        SceneManager.LoadScene(&quot;BallMove&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行游戏，完美！</p>
+<h3 id="分享"><a href="#分享" class="headerlink" title="分享"></a><strong>分享</strong></h3><p>至此游戏的制作大功告成。如果你想把自己的游戏分享给你的朋友，可以选择打包生成</p>
+<p>点击菜单File，Build Settings，确认所有需要的场景均被勾选。在下面选择目标平台及相关设置，点击Build按钮即可</p>
+<p><img data-src="23.jpg" style="zoom:50%;"></p>
+<p><strong>另附上游戏的完整工程文件，如果你中途遇到困难可供参考：</strong><a href="https://github.com/histevehu/blog/raw/master/2020/02/02/Unity-Create-Ball-Game/BallMoveGame.zip" target="_blank" rel="noopener">BallMoveGame.zip</a></p>
+]]></content>
+      <categories>
+        <category>Unity</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenGL-3:点和直线</title>
+    <url>/passages/OpenGL-PointandLine/</url>
+    <content><![CDATA[<h3 id="导言"><a href="#导言" class="headerlink" title="导言"></a><strong>导言</strong></h3><p>在之前的教程中，我们已经实现了空窗口以及三角形的渲染。然而只是略知一二，对于渲染的具体细节，比如三角形边的绘制，我们还不太清楚。从这节开始，我们将更加深入、系统地入门图形学，先从点和直线开始</p>
+<a id="more"></a>
+<h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a><strong>概念</strong></h3><h4 id="光栅化（扫描转换）"><a href="#光栅化（扫描转换）" class="headerlink" title="光栅化（扫描转换）"></a><strong>光栅化（扫描转换）</strong></h4><p>分为两步(以三角形为例)：</p>
+<ol>
+<li><p>输入三角形的定义:（1）几何信息：三个顶点的坐标（2）属性信息：颜色、光照、纹理等。</p>
+</li>
+<li><p>根据图形的定义在点阵单元上确定最佳逼近于图形的像素集。逼近的过程本质可以认为是连续量向离散量的转换</p>
+</li>
+<li><p>给像素指定合适的颜色值</p>
+<p><img data-src="0.jpg" style="zoom:50%;"></p>
+</li>
+</ol>
+<h3 id="直线扫描转换算法分类"><a href="#直线扫描转换算法分类" class="headerlink" title="直线扫描转换算法分类"></a><strong>直线扫描转换算法分类</strong></h3><p>逐点比较法、正负法、<strong>数值微分算法、Bresenham算法</strong></p>
+<p>接下来，我们主要了解数值微分算法</p>
+<h3 id="数值微分法（Digital-Differential-Analyzer-DDA）"><a href="#数值微分法（Digital-Differential-Analyzer-DDA）" class="headerlink" title="数值微分法（Digital Differential Analyzer,DDA）"></a><strong>数值微分法（Digital Differential Analyzer,DDA）</strong></h3><h4 id="理论"><a href="#理论" class="headerlink" title="理论"></a><strong>理论</strong></h4><p><img data-src="1.jpg" style="zoom:50%;"></p>
+<p><img data-src="4.jpg" style="zoom:60%;"></p>
+<p>使得ε△x或ε△y中会有一个变成<strong>单位步长</strong>。算法在<strong>最大位移方向</strong>上，<strong>每次总是走一步：</strong></p>
+<ul>
+<li><p>情况一：斜率绝对值小于1：<strong>ε=1/|△x|,其中对y(i+1)结果四舍五入</strong></p>
+<p><img data-src="2.jpg" style="zoom:50%;"></p>
+<blockquote>
+<p><img data-src="5.jpg" style="zoom:60%;"></p>
+</blockquote>
+</li>
+<li><p>情况二：斜率绝对值大于1：<strong>ε=1/|△y|,其中对x(i+1)结果四舍五入</strong></p>
+<p><img data-src="3.jpg" style="zoom:50%;"></p>
+<blockquote>
+<p><img data-src="6.jpg" style="zoom:60%;"></p>
+</blockquote>
+</li>
+</ul>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a><strong>代码</strong></h4><figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">DDALine</span><span class="params">(<span class="keyword">int</span> x0,<span class="keyword">int</span> y0,<span class="keyword">int</span> x1,<span class="keyword">int</span> y1)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> dx,dy,eps1,k;</span><br><span class="line">    <span class="keyword">float</span> x,y,xIncre,yIncre;</span><br><span class="line">    dx=x1-x0; dy=y1-y0;</span><br><span class="line">    x=x0; y=y0;</span><br><span class="line">    <span class="comment">//最大位移方向判断,即得max(|Δx|,|Δy|)</span></span><br><span class="line">    If (<span class="built_in">abs</span>(dx)&gt;<span class="built_in">abs</span>(dy)) eps1=<span class="built_in">abs</span>(dx);</span><br><span class="line">    <span class="keyword">else</span> eps1=<span class="built_in">abs</span>(dy);</span><br><span class="line">    <span class="comment">//x、y方向上增量的计算，即得ε×Δd</span></span><br><span class="line">    xIncre=(<span class="keyword">float</span>)dx/(<span class="keyword">float</span>)eps1;</span><br><span class="line">    yIncre=(<span class="keyword">float</span>)dy/(<span class="keyword">float</span>)eps1;</span><br><span class="line">    <span class="comment">//输出最佳逼近的像素点</span></span><br><span class="line">    <span class="keyword">for</span> (k=<span class="number">0</span>;k&lt;=eps1;k++)</span><br><span class="line">    &#123;</span><br><span class="line">        putpixel((<span class="keyword">int</span>)(x+<span class="number">0.5</span>),(<span class="keyword">int</span>)(y+<span class="number">0.5</span>));<span class="comment">//在对应坐标处输出像素点</span></span><br><span class="line">        x+=xIncre;</span><br><span class="line">        y+=yIncre;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>OpenGL</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenGL-3:渲染三角形</title>
+    <url>/passages/OpenGL-RenderTriangle/</url>
+    <content><![CDATA[<p>在这里我们将实现一个三角形的渲染</p>
+<a id="more"></a>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a><strong>开始</strong></h3><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a><strong>初始化</strong></h4><p>在代码的开始部分，我们依然需要对 OpenGL 进行一个初始化。正如上一节所说的，初始化阶段包括初始化GLFW，窗口， GLAD，视口这四个部分。代码如下：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//窗口尺寸调节视口适应回调函数</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">int</span> width, <span class="keyword">int</span></span></span></span><br><span class="line"><span class="function"><span class="params">    height)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//指定当前视口尺寸(前两个参数为左下角位置，后两个参数是渲染窗口宽、高)</span></span><br><span class="line">    glViewport(<span class="number">0</span>, <span class="number">0</span>, width, height);    </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"> 	<span class="comment">//初始化GLFW</span></span><br><span class="line">    <span class="keyword">int</span> Major, Minor, Rev;</span><br><span class="line">    glfwInit();</span><br><span class="line">    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>);  <span class="comment">// OpenGL版本为3.3，主次版本号均设为3</span></span><br><span class="line">    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>);</span><br><span class="line">    <span class="comment">//使用核心模式(无需向后兼容性)</span></span><br><span class="line">    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); </span><br><span class="line">    <span class="comment">//获取版本信息并打印</span></span><br><span class="line">    glfwGetVersion(&amp;Major, &amp;Minor, &amp;Rev);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"GLFW %d.%d.%d initialized\n"</span>, Major, Minor, Rev);</span><br><span class="line">    <span class="comment">//创建窗口(宽、高、窗口名称)</span></span><br><span class="line">    <span class="keyword">auto</span> window = glfwCreateWindow(<span class="number">800</span>, <span class="number">600</span>, <span class="string">"CG_1_helloworld"</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>);</span><br><span class="line">    <span class="keyword">if</span> (window == <span class="literal">nullptr</span>)  <span class="comment">//如果窗口创建失败，输出信息并退出</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to create GLFW window"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        glfwTerminate();</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    glfwMakeContextCurrent(window); <span class="comment">//将窗口的上下文设置为当前线程的主上下文</span></span><br><span class="line">    <span class="comment">//初始化GLAD，加载OpenGL函数指针地址的函数</span></span><br><span class="line">    <span class="keyword">if</span> (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))    </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to initialize GLAD"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//设置视口大小适应回调函数</span></span><br><span class="line">    glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="顶点输入"><a href="#顶点输入" class="headerlink" title="顶点输入"></a><strong>顶点输入</strong></h4><p>初始化之后，我们需要给出我们三角形的顶点数据，并对数据做出一些处理，包括生成绑定 VAO、VBO和属性设置，最后将其解绑</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//三角形顶点位置数组</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">float</span> triangle[] = &#123;</span><br><span class="line">    <span class="number">-0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>, <span class="comment">// 左下</span></span><br><span class="line">    <span class="number">0.5f</span>, <span class="number">-0.5f</span>, <span class="number">0.0f</span>,  <span class="comment">// 右下</span></span><br><span class="line">    <span class="number">0.0f</span>, <span class="number">0.5f</span>, <span class="number">0.0f</span>    <span class="comment">//正上</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>由于我们绘制的是一个三角形，因此我们的顶点数据由三个顶点 组成。这里的顶点数据是标准化的设备坐标，也就是 x,y,z 轴坐标均映射到[-1,1]之间。</p>
+</blockquote>
+<h4 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a><strong>数据处理</strong></h4><h5 id="VAO、VBO"><a href="#VAO、VBO" class="headerlink" title="VAO、VBO"></a><strong>VAO、VBO</strong></h5><p>我们有了顶点数据，接下来就是要将这些顶点数据发送到 GPU中去处理，这里我们生成了一个顶点缓冲对象 VBO，并且将其绑定到顶点缓冲对象上，使用这个顶点缓冲对象的好处是我们不用将顶点数据一个一个的发送到显卡，而是可以借助 VBO一次性的发送一大批数据过去，然后使用 glBufferData 将顶点数据绑定到当前默认的缓冲上</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//生成VBO </span></span><br><span class="line">GLuint vertex_buffer_object;  </span><br><span class="line">glGenBuffers(<span class="number">1</span>, &amp;vertex_buffer_object); </span><br><span class="line"><span class="comment">//绑定VBO</span></span><br><span class="line">glBindBuffer(GL_ARRAY_BUFFER, vertex_buffer_object); </span><br><span class="line"><span class="comment">//将顶点数据绑定至当前默认的缓冲中</span></span><br><span class="line"><span class="comment">//GL_STATIC_DRAW 表示三角形位置数据不会被改变。 </span></span><br><span class="line">glBufferData(GL_ARRAY_BUFFER, <span class="keyword">sizeof</span>(triangle), triangle, GL_STATIC_DRAW);</span><br></pre></td></tr></table></figure>
+<p>这里我们还需要生成了一个顶点数组对象 VAO，使用 VAO的原因是：首先我们使用的核心模式要求我们需要使用 VAO，其次使用 VAO的好处在于我们在渲染的时候只需要调用一次 VAO 就可以了，之前的数据都对应存储在了 VAO 中，不用再调用 VBO。那么 VAO的生成过程也跟 VBO一样，需要生成再绑定，等到这些操作都完毕，我们可以解绑我们的 VAO，VBO</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//生成VAO </span></span><br><span class="line">GLuint vertex_array_object; </span><br><span class="line">glGenVertexArrays(<span class="number">1</span>, &amp;vertex_array_object); </span><br><span class="line"><span class="comment">//绑定VAO</span></span><br><span class="line">glBindVertexArray(vertex_array_object);</span><br></pre></td></tr></table></figure>
+<h5 id="顶点属性"><a href="#顶点属性" class="headerlink" title="顶点属性"></a><strong>顶点属性</strong></h5><p>发送到 GPU之后我们还需要告诉 OpenGL 我们如何解释这些顶点数据。因此我们用 glVertexAttribPointer 这个函数告诉 OpenGL我们如何解释这些顶点数据。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 设置顶点属性指针</span></span><br><span class="line">glVertexAttribPointer(<span class="number">0</span>, <span class="number">3</span>, GL_FLOAT, GL_FALSE,<span class="number">3</span> * <span class="keyword">sizeof</span>(<span class="keyword">float</span>), (<span class="keyword">void</span>*)<span class="number">0</span>);</span><br><span class="line">glEnableVertexAttribArray(<span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<p>这个函数第一个参数是我们后面会用到的顶点着色器的位置值，3 表示的是顶点属性是一个三分量的向量，第三个参数表示的是我们顶点的类型，第四个是我们是否希望数据被标准化，就是映射到 0-1 之间，第五个参数叫做步长，它表示连续顶点属性之间的间隔，因为我们这里只有顶点的位置，所以我们将步长设置为这个，表示下组数据在 3个 float之后。最后一个是数据的偏移量，这里我们的位置属性是在数组的开头，因此这里是 0，并且由于参数类型的限制，我们需要将其进行强制类型转换。而下面 Enable的函数则是表明我们开启了 0 的这个通道，默认状态下是关闭的，因此我们在这里需要开启</p>
+<p>等到设置属性指针完成之后，我们这里需要解绑 VAO和 VBO。我们可以思考一下，为什么我们在这里要解绑 VAO和 VBO呢？<br>一个原因是因为在防止之后再继续绑定 VAO的时候会影响当前的 VAO，另一个原因是为了使代码更加灵活规范，在渲染需要的时候我们会再绑定 VAO</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 解绑VAO和VBO</span></span><br><span class="line">glBindVertexArray(<span class="number">0</span>);</span><br><span class="line">glBindBuffer(GL_ARRAY_BUFFER, <span class="number">0</span>);</span><br></pre></td></tr></table></figure>
+<h4 id="顶点着色器和片段着色器"><a href="#顶点着色器和片段着色器" class="headerlink" title="顶点着色器和片段着色器 "></a><strong>顶点着色器和片段着色器 </strong></h4><p>这里我们给出的这两段分别是顶点着色器的源码和片段着色器的源码，这个是用 GLSL 语言来编写的，与 C 语言的风格类似。</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//顶点着色器源码</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *vertex_shader_source =</span><br><span class="line">    <span class="string">"#version 330 core\n"</span>                           </span><br><span class="line">    <span class="string">"layout (location = 0) in vec3 aPos;\n"</span>	<span class="comment">// 位置变量的属性位置值为0</span></span><br><span class="line">    <span class="string">"void main()\n"</span></span><br><span class="line">    <span class="string">"&#123;\n"</span></span><br><span class="line">    <span class="string">"    gl_Position = vec4(aPos, 1.0);\n"</span></span><br><span class="line">    <span class="string">"&#125;\n\0"</span>;</span><br><span class="line"><span class="comment">//片段着色器源码</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">char</span> *fragment_shader_source =</span><br><span class="line">    <span class="string">"#version 330 core\n"</span></span><br><span class="line">    <span class="string">"out vec4 FragColor;\n"</span>	<span class="comment">// 输出的颜色向量</span></span><br><span class="line">    <span class="string">"void main()\n"</span></span><br><span class="line">    <span class="string">"&#123;\n"</span></span><br><span class="line">    <span class="string">"    FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"</span></span><br><span class="line">    <span class="string">"&#125;\n\0"</span>;</span><br></pre></td></tr></table></figure>
+<p>先看顶点着色器，第一行表示我们使用的是 OpenGL3.3的核心模式，第二行就是我们之前说到的位置值。Main函数中的部分就是将我们之前的顶点数据直接输出到 GLSL已经定义好的一个内建变量 gl_Position中，这个就是我们顶点着色器的输出，也就是说我们在顶点着色器这里什么都没做，就只是将顶点位置作为顶点着色器的输出</p>
+<p>接下来是片段着色器，前面两行类似，这里的 out表示输出变量，就像之前的 in表示输入变量。然后我们这里的四分量向量就是我们之前看到的三角形是红色的来源，是一个四分量的 RGBA，那么我们也可以将其更改一下，我们输出的三角形颜色就会发生变化</p>
+<p>有了顶点和片段着色器的源码，我们还需要编译着色器。这里我们先编译了顶点着色器，然后我们这里对其进行检测，是否成功编译，如果编译不成功就打印错误信息。片段着色器同理</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> success;</span><br><span class="line"><span class="keyword">char</span> info_log[<span class="number">512</span>];</span><br><span class="line"><span class="comment">//顶点着色器</span></span><br><span class="line"><span class="keyword">int</span> vertex_shader = glCreateShader(GL_VERTEX_SHADER);</span><br><span class="line">glShaderSource(vertex_shader, <span class="number">1</span>, &amp;vertex_shader_source, <span class="literal">NULL</span>);</span><br><span class="line">glCompileShader(vertex_shader);</span><br><span class="line"><span class="comment">//检查顶点着色器是否成功编译，如果编译失败，打印错误信息</span></span><br><span class="line">glGetShaderiv(vertex_shader, GL_COMPILE_STATUS, &amp;success);</span><br><span class="line"><span class="keyword">if</span> (!success)</span><br><span class="line">&#123;</span><br><span class="line">    glGetShaderInfoLog(vertex_shader, <span class="number">512</span>, <span class="literal">NULL</span>, info_log);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ERROR::SHADER::VERTEX::COMPILATION_FAILED\n"</span>&lt;&lt; info_log &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//片段着色器</span></span><br><span class="line"><span class="keyword">int</span> fragment_shader = glCreateShader(GL_FRAGMENT_SHADER);</span><br><span class="line">glShaderSource(fragment_shader, <span class="number">1</span>, &amp;fragment_shader_source,<span class="literal">NULL</span>);</span><br><span class="line">glCompileShader(fragment_shader);</span><br><span class="line"><span class="comment">//检查片段着色器是否成功编译，如果编译失败，打印错误信息</span></span><br><span class="line">glGetShaderiv(fragment_shader, GL_COMPILE_STATUS, &amp;success);</span><br><span class="line"><span class="keyword">if</span> (!success)</span><br><span class="line">&#123;</span><br><span class="line">    glGetShaderInfoLog(fragment_shader, <span class="number">512</span>, <span class="literal">NULL</span>, info_log);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt;<span class="string">"ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n"</span> &lt;&lt; info_log&lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后我们将顶点和片段着色器链接到一个着色器程序中，这样我们在渲染时只需要调用一个着色器程序就可以了，同样最后我们需要检测一下链接是否成功 ，若成功则删除掉顶点和片段着色器。因为在后面渲染的时候我们只需要用那个我们之前链接好的着色器程序即可，不再需要单独使用顶点和片段着色器</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//链接顶点和片段着色器至一个着色器程序</span></span><br><span class="line"><span class="keyword">int</span> shader_program = glCreateProgram();</span><br><span class="line">glAttachShader(shader_program, vertex_shader);</span><br><span class="line">glAttachShader(shader_program, fragment_shader);</span><br><span class="line">glLinkProgram(shader_program);</span><br><span class="line"><span class="comment">//检查着色器是否成功链接，如果链接失败，打印错误信息</span></span><br><span class="line">glGetProgramiv(shader_program, GL_LINK_STATUS, &amp;success);</span><br><span class="line"><span class="keyword">if</span> (!success) &#123;</span><br><span class="line">    glGetProgramInfoLog(shader_program, <span class="number">512</span>, <span class="literal">NULL</span>, info_log);</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"ERROR::SHADER::PROGRAM::LINKING_FAILED\n"</span> &lt;&lt; info_log &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//删除着色器</span></span><br><span class="line">glDeleteShader(vertex_shader);</span><br><span class="line">glDeleteShader(fragment_shader);</span><br></pre></td></tr></table></figure>
+<h4 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a><strong>渲染</strong></h4><p>接下来我们进入我们的渲染阶段，当窗口没有关闭的时候我们就一直进行循环渲染。</p>
+<p>首先我们先清空颜色缓冲，我们这里用的是上次的蓝色背景色来清空屏幕颜色缓冲，当然这里我们可以更换颜色。接下来我们使用我们之前已经链接好的着色器程序，和 VAO，来绘制三角形。绘制三角形其实只要一句话，就是这个glDrawArrays。这里的第一个参数表示我们是要绘制三角形，第二个参数表示我们顶点数组的起始索引值，第三个参数表示我们要绘制的顶点数量，这里绘制三角形我们要绘制三个顶点。绘制结束后解除绑定。最后我们会交换一下缓冲，这里我们使用的是一个双缓冲的做法，前缓冲保存着输出的图像，而渲染指令都在后缓冲中进行，当指令执行完毕后我们交换前后缓冲，最后我们还会检测是否有触发一些回调函数。 </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 渲染循环</span></span><br><span class="line"><span class="keyword">while</span> (!glfwWindowShouldClose(window)) &#123;</span><br><span class="line">    <span class="comment">//清空颜色缓冲</span></span><br><span class="line">    glClearColor(<span class="number">0.0f</span>, <span class="number">0.34f</span>, <span class="number">0.57f</span>, <span class="number">1.0f</span>);</span><br><span class="line">    glClear(GL_COLOR_BUFFER_BIT);</span><br><span class="line">    <span class="comment">//使用着色器程序</span></span><br><span class="line">    glUseProgram(shader_program);</span><br><span class="line">    <span class="comment">//绘制三角形</span></span><br><span class="line">    glBindVertexArray(vertex_array_object);	<span class="comment">//绑定VAO</span></span><br><span class="line">    glDrawArrays(GL_TRIANGLES, <span class="number">0</span>, <span class="number">3</span>);	<span class="comment">//绘制三角形</span></span><br><span class="line">    glBindVertexArray(<span class="number">0</span>);	<span class="comment">//解除绑定</span></span><br><span class="line">    <span class="comment">//交换缓冲并且检查是否有触发事件(比如键盘输入、鼠标移动等）</span></span><br><span class="line">    glfwSwapBuffers(window);</span><br><span class="line">    glfwPollEvents();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="善后"><a href="#善后" class="headerlink" title="善后"></a><strong>善后</strong></h4><p>当我们的窗口关闭之后，我们还会进行一些善后工作，这里包括删除我们之前所创建的 VAO、VBO，以及调用 GLFW 的函数来清理所有的资源并退出程序。 </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="comment">//删除VAO和VBO</span></span><br><span class="line">glDeleteVertexArrays(<span class="number">1</span>, &amp;vertex_array_object);</span><br><span class="line">glDeleteBuffers(<span class="number">1</span>, &amp;vertex_buffer_object);</span><br><span class="line"><span class="comment">//清理所有的资源并正确退出程序</span></span><br><span class="line">glfwTerminate();</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="大功告成！"><a href="#大功告成！" class="headerlink" title="大功告成！"></a><strong>大功告成！</strong></h3><p>整个绘制三角形的程序就到此为止。 </p>
+<p>如果一切顺利，点击编译运行你会看到：</p>
+<p><img data-src="0.jpg" style="zoom:50%;"></p>
+<h3 id="回顾"><a href="#回顾" class="headerlink" title="回顾"></a><strong>回顾</strong></h3><p>我们回头再来梳理一遍绘制三角形流程</p>
+<p>刚开始我们先初始化 OpenGL，接下来对我们的数据进行处理，通过 VAO、VBO将其发送至 GPU中，并设置<br>属性指针告诉 GPU我们会如何解释这些数据，然后在着色器中通过顶点和片段着色器对数据进行处理，最后进行渲染，渲染之后做好我们的善后工作，一个三角形就绘制成功了</p>
+]]></content>
+      <categories>
+        <category>OpenGL</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenGL-2:渲染窗体</title>
+    <url>/passages/OpenGL-RenderEmptyWindow/</url>
+    <content><![CDATA[<p>在这里我们将实现一个空窗口的渲染</p>
+<a id="more"></a>
+<h3 id="渲染一个黑色空窗体"><a href="#渲染一个黑色空窗体" class="headerlink" title="渲染一个黑色空窗体"></a><strong>渲染一个黑色空窗体</strong></h3><h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a><strong>初始化</strong></h4><h5 id="GLFW"><a href="#GLFW" class="headerlink" title="GLFW"></a><strong>GLFW</strong></h5><p>让我们先来试试能不能让 GLFW正常工作。首先，新建一个.cpp文件，然后把下面的代码粘贴到该文件的最前面 </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;glad/glad.h&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;GLFW/glfw3.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>接下来我们创建 main 函数，在这个函数中我们将会实例化 GLFW窗口： </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    glfwInit(); </span><br><span class="line">    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, <span class="number">3</span>); </span><br><span class="line">    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, <span class="number">3</span>); </span><br><span class="line">    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE); </span><br><span class="line">    <span class="comment">//glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE); </span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>首先，我们在 main函数中调用 glfwInit函数来初始化 GLFW，然后我们可以使用 glfwWindowHint函数来配置 GLFW。glfwWindowHint函数的第一个参数代表选项的名称，我们可以从很多以 GLFW_开头的枚举值中选择；第二个参数接受一个整形，用来设置这个选项的值。如果你现在编译你的 cpp文件会得到大量的 undefined reference (未定义的引用)错误，也就是说你并未顺利地链接GLFW库。</p>
+<p>由于我们是基于 OpenGL3.3来进行讨论的 ，我们将主版本号(Major)和次版本号(Minor)都设为 3。我们同样明确告诉 GLFW我们使用的是核心模式(Core-profile)。明确告诉 GLFW我们需要使用核心模式意味着我们只能使用<br>OpenGL功能的一个子集（没有我们已不再需要的向后兼容特性）。如果使用的是 Mac OS X系统，你还需要加下面这行代码到你的初始化代码中这些配置才能起作用（将上面的代码解除注释）： </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);</span><br></pre></td></tr></table></figure>
+<p>当然我们也可以看到 GLFW当前使用的版本号</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> Major, Minor, Rev; </span><br><span class="line">glfwGetVersion(&amp;Major, &amp;Minor, &amp;Rev); </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"GLFW %d.%d.%d initialized\n"</span>, Major, Minor, Rev);</span><br></pre></td></tr></table></figure>
+<h5 id="窗体"><a href="#窗体" class="headerlink" title="窗体"></a><strong>窗体</strong></h5><p>接下来我们创建一个窗口对象，这个窗口对象存放了所有和窗口相关的数据，而且会被 GLFW的其他函数频繁地用到。 </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">GLFWwindow* window = glfwCreateWindow(<span class="number">800</span>, <span class="number">600</span>, <span class="string">"window"</span>, <span class="literal">NULL</span>, <span class="literal">NULL</span>); </span><br><span class="line"><span class="keyword">if</span> (window == <span class="literal">NULL</span>) </span><br><span class="line">&#123; </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to create GLFW window"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br><span class="line">    glfwTerminate(); </span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>; </span><br><span class="line">&#125; </span><br><span class="line">glfwMakeContextCurrent(window);</span><br></pre></td></tr></table></figure>
+<p>glfwCreateWindow函数需要窗口的宽和高作为它的前两个参数。第三个参数表示这个窗口的名称（标题），这里我们使用”window”，当然你也可以使用你喜欢的名称。最后两个参数我们暂时忽略。这个函数将会返回一个<br>GLFWwindow对象，我们会在其它的 GLFW操作中使用到。创建完窗口我们就可以通知 GLFW将我们窗口的上下文设置为当前线程的主上下文了。</p>
+<h5 id="GLAD"><a href="#GLAD" class="headerlink" title="GLAD"></a><strong>GLAD</strong></h5><p>在之前我们已经提到，GLAD是用来管理 OpenGL的函数指针的，所以在调用任何 OpenGL的函数之前我们需要初始化 GLAD。 </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) </span><br><span class="line">&#123; </span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Failed to initialize GLAD"</span> &lt;&lt; <span class="built_in">std</span>::<span class="built_in">endl</span>; </span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们给 GLAD传入了用来加载系统相关的 OpenGL函数指针地址的函数。GLFW给我们的是glfwGetProcAddress，它根据我们编译的系统定义了正确的函数。 </p>
+<h5 id="视口"><a href="#视口" class="headerlink" title="视口"></a><strong>视口</strong></h5><p>在我们开始渲染之前还有一件重要的事情要做，我们必须告诉 OpenGL渲染窗口的尺寸大小，即视口(Viewport)，这样 OpenGL才只能知道怎样根据窗口大小显示数据和坐标。我们可以通过调用 glViewport函数来设置窗口的维度(Dimension)： </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">glViewport(<span class="number">0</span>, <span class="number">0</span>, <span class="number">800</span>, <span class="number">600</span>);</span><br></pre></td></tr></table></figure>
+<p>glViewport函数前两个参数控制窗口左下角的位置。第三个和第四个参数控制渲染窗口的宽度和高度（像素）。我们实际上也可以将视口的维度设置为比 GLFW的维度小，这样子之后所有的 OpenGL渲染将会在一个更小的窗口中显示，这样子的话我们也可以将一些其它元素显示在 OpenGL视口之外。 </p>
+<p>然而，当用户改变窗口的大小的时候，视口也应该被调整。我们可以对窗口注册一个回调函数(Callback Function)，它会在每次窗口大小被调整的时候被调用。这个回调函数的原型如下： </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">framebuffer_size_callback</span><span class="params">(GLFWwindow* window, <span class="keyword">int</span> width, <span class="keyword">int</span> </span></span></span><br><span class="line"><span class="function"><span class="params">height)</span></span>;</span><br></pre></td></tr></table></figure>
+<p>这个帧缓冲大小函数需要一个 GLFWwindow 作为它的第一个参数，以及两个整数表示窗口的新维度。每当窗口改变大小，GLFW会调用这个函数并填充相应的参数供你处理。 </p>
+<p>我们还需要注册以下这个函数，告诉 GLFW我们希望每当窗口改变大小的时候调用上面的回调函数完成视口调整处理： </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);</span><br></pre></td></tr></table></figure>
+<p>当窗口被第一次显示的时候 framebuffer_size_callback也会被调用。对于视网膜(Retina)显示屏，width和 height都会明显比原输入值更高一点。 </p>
+<h4 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a><strong>渲染</strong></h4><p>我们希望程序在我们主动关闭它之前不断绘制图像并能够接受用户输入</p>
+<p>因此，我们需要继续在程序中添加一个while循环，我们可以把它称之为<strong>渲染循环</strong>(Render Loop)，它能在我们让 GLFW退出前一直保持运行。下面几行的代码就实现了一个简单的渲染循环： </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(!glfwWindowShouldClose(window)) </span><br><span class="line">&#123; </span><br><span class="line">	glfwPollEvents();  </span><br><span class="line">	glfwSwapBuffers(window); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>glfwWindowShouldClose 函数在我们每次循环的开始前检查一次 GLFW 是否被要求退出，如果是的话该函数返回 true然后渲染循环便结束了，之后为我们就可以关闭应用程序了。glfwPollEvents 函数检查有没有触发什么事件（比如键盘输入、鼠标移动等）、更新窗口状态，并调用对应的回调函数（可以通过回调方法手动设置）。 </p>
+</li>
+<li><p>glfwSwapBuffers 函数会交换颜色缓冲（它是一个储存着 GLFW 窗口每一个像素颜色值的大缓冲），它在这一迭代中被用来绘制，并且将会作为输出显示在屏幕上。 </p>
+<blockquote>
+<p><strong>双缓冲(Double Buffer)</strong><br>应用程序使用单缓冲绘图时可能会存在图像闪烁的问题。 这是因为生成的图像不是一下子被绘制出来的，而是按照从左到右，由上而下逐像素地绘制而成的。最终图像不是在瞬间显示给用户，而是通过一步一步生成的，这会导致渲染的结果很不真实。为了规避这些问题，我们应用双缓冲渲染窗口应用程序。前缓冲保存着最终输出的图像，它会在屏幕上显示；而所有的的渲染指令都会在后缓冲上绘制。当所有的渲染指令执行完毕后，我们交换(Swap)前缓冲和后缓冲，这样图像就立即呈显出来，之前提到的不真实感就消除了。 </p>
+</blockquote>
+</li>
+</ul>
+<p>当渲染循环结束后我们需要正确释放/删除之前的分配的所有资源。我们可以在 main函数的最后调用 glfwTerminate 函数来完成。 </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">glfwTerminate(); </span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<p>这样便能清理所有的资源并正确地退出应用程序。现在你可以尝试编译并<br>运行你的应用程序了。</p>
+<p>如果没做错的话，你将会看到一个黑色窗口。恭喜你，那就对了。</p>
+<p>如果没有得到正确的结果，或者不知道怎样把东西放在一起，那么请参考源码：</p>
+<p> <a href="https://github.com/histevehu/OpenGL-Learning" target="_blank" rel="noopener">https://github.com/histevehu/OpenGL-Learning</a></p>
+<p>我们会将所有的示例源码提交至此</p>
+<h3 id="更进一步：更换颜色！"><a href="#更进一步：更换颜色！" class="headerlink" title="更进一步：更换颜色！"></a><strong>更进一步：更换颜色！</strong></h3><p>接下来，我们只需要增添一些细节，就可以改变窗体的颜色</p>
+<p>我们要把所有的渲染操作放到渲染循环中，因为我们想让这些渲染指令在每次渲染循环迭代的时候都能被执行。代码将会是这样的： </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">while</span>(!glfwWindowShouldClose(window)) </span><br><span class="line">&#123; </span><br><span class="line">    <span class="comment">// 输入</span></span><br><span class="line">	...</span><br><span class="line">    <span class="comment">// 渲染指令</span></span><br><span class="line">    ... </span><br><span class="line">    <span class="comment">// 检查并调用事件，交换缓冲</span></span><br><span class="line">    glfwPollEvents(); </span><br><span class="line">    glfwSwapBuffers(window); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了测试一切都正常工作，我们使用一个自定义的颜色清空屏幕。在每个新的渲染迭代开始的时候我们总是希望清屏，否则我们仍能看见上一次迭代的渲染结果（这可能是你想要的效果，但通常这不是）。我们可以通过调用glClear函数来清空屏幕的颜色缓冲，它接受一个缓冲位(Buffer Bit)来指定要清空的缓冲，可能的缓冲位有GL_COLOR_BUFFER_BIT，GL_DEPTH_BUFFER_BIT和 GL_STENCIL_BUFFER_BIT。由于现在我们只关心颜色值，所以我们只清空颜色缓冲。 </p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">glClearColor(<span class="number">0.0f</span>, <span class="number">0.34f</span>, <span class="number">0.57f</span>, <span class="number">1.0f</span>); </span><br><span class="line">glClear(GL_COLOR_BUFFER_BIT);</span><br></pre></td></tr></table></figure>
+<p>注意，除了 glClear之外，我们还调用了 glClearColor来设置清空屏幕所用的颜色。当调用 glClear函数，清除颜色缓冲之后，整个颜色缓冲都会被填充为glClearColor里所设置的颜色。在这里，我们将屏幕设置为了一种好看的蓝色。<br>效果如下： </p>
+<p><img data-src="1.jpg" style="zoom:50%;"> </p>
+<h3 id="预告"><a href="#预告" class="headerlink" title="预告"></a><strong>预告</strong></h3><p>如果一切顺利，那么这一节大功告成！</p>
+<p>在下面一节中，我们将渲染三角形</p>
+]]></content>
+      <categories>
+        <category>OpenGL</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>OpenGL-1:基本配置(GLFW+GLAD)</title>
+    <url>/passages/OpenGL-BasicConfig-GLFW-GLAD/</url>
+    <content><![CDATA[<p>这里我们将帮助你入门OpenGL第一步——基于GLFW、GLAD库的开发环境搭建配置</p>
+<a id="more"></a>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a><strong>开始</strong></h3><hr>
+<h4 id="GLFW-准备"><a href="#GLFW-准备" class="headerlink" title="GLFW 准备"></a><strong>GLFW</strong> 准备</h4><p>GLFW是一个 OpenGL的 C语言库，它提供了渲染物体所需要的最低限度的接口，它允许用户创建 OpenGL上下文，定义窗口参数以及用户的输入。 是对之前固定管线常用的 GLUT的一种改进。</p>
+<ol>
+<li><p>下载GLFW源代码包，解压缩</p>
+<p><a href="https://www.glfw.org" target="_blank" rel="noopener">https://www.glfw.org</a></p>
+<blockquote>
+<p>从源代码编译库可以保证生成的库是兼容你的操作系统和硬件的，而预编译的二进制文件可能会出现兼容问题。提供源代码所产生的一个问题在于不是每个人都用相同的 IDE开发程序，因而提供的工程/解决方案文件可能和一些人的 IDE不兼容。所以人们只能从.c/.cpp和.h/.hpp文件来自己建立工程/解决方案，这是一项枯燥的工作。但因此也诞生了一个叫做 CMake的工具。</p>
+<p>CMake是一个工程文件生成工具。用户可以使用预定义好的 CMake脚本，根据自己的需求生成对应IDE（Visual Studio, Eclipse…）的工程文件。</p>
+</blockquote>
+</li>
+<li><p>下载CMake <a href="https://cmake.org/download" target="_blank" rel="noopener">https://cmake.org/download</a></p>
+</li>
+<li><p>当 CMake安装成功后，你可以选择从命令行或者 GUI启动 CMake，由于我们不想让事情变得太过复杂，我们选择用 GUI。(GUI版本CMake位于安装路径根下的bin目录中)</p>
+</li>
+<li><p>CMake需要一个源代码目录和一个存放编译结果的目标文件目录。源代码目录我们选择 GLFW的源代码的根目录，然后我们新建一个 build 文件夹作为目标目录</p>
+<p><img data-src="0.jpg"></p>
+</li>
+<li><p>点击”Configure”，只需选择目标的IDE版本，其他保持默认即可。这里以Visual Studio 2019为例</p>
+<p><img data-src="1.jpg" style="zoom:50%;"></p>
+</li>
+<li><p>点击”Generate”生成，期间会出现红色提示，再依次点击”Configure”和”Generate”，生成成功</p>
+</li>
+<li><p>在 build文件夹里找到生成的 GLFW.sln 文件，用 Visual Studio 2019 打开。因为CMake已经配置好了项目，所以直接点击生成解决方案，然后编译的库 glfw3.lib（注意版本为第 3版）就会出现在 src/Debug文件夹内</p>
+</li>
+<li><p>库文件生成完毕，但我们需要进行需要一些配置让 IDE知道库和头文件的位置。</p>
+<blockquote>
+<p>推荐的方式是建立一个新的单独的目录，里面包含 libs 和 include文件夹，用以包含所有OpenGL工程用到的第三方库和头文件，然后在你的 IDE 中指定这些文件夹路径。这样的好处是所有第三方库都在同一个位置 （并且可以共享至多台电脑）；缺点是需要每次新建一个工程时都配置这些目录路径。</p>
+</blockquote>
+<p>这里以这种方法为例</p>
+</li>
+<li><p>新建一个文件夹，作为工程根目录。再在其中新建 libs 和 include文件夹。</p>
+</li>
+<li><p>进入GLFW解压缩源代码目录下的include文件夹，将其中的 GLFW 整个文件夹复制到工程根目录下的 include 文件夹中。再将刚在编译生成的库文件 glfw3.lib 复制到工程根目录下的 libs 文件夹中。</p>
+</li>
+</ol>
+<h4 id="GLAD-准备"><a href="#GLAD-准备" class="headerlink" title="GLAD 准备"></a><strong>GLAD 准备</strong></h4><p>到这里还没有结束，我们仍然还有一件事要做。因为 OpenGL只是一个标准/规范，具体的实现是由驱动开发商针对特定显卡实现的。由于 OpenGL驱动版本众多，它大多数函数的位置都无法在编译时确定下来，需要在运行时查询。所以任务就落在了开发者身上，开发者需要在运行时获取函数地址并将其保存在一个函数指针中供以后使用。取得地址的方法因平台而异，代码非常复杂繁琐，幸运的是有些库能简化此过程，其中 GLAD是目前最新，也是最流行的库。 </p>
+<ol>
+<li><p>进入 GLAD 的在线服务 <a href="https://glad.dav1d.de/" target="_blank" rel="noopener">https://glad.dav1d.de/</a>   将语言(Language)设置为 C/C++，规范(Specification)设置为OpenGL。在 API 选项中，选择 3.3以上的 OpenGL(gl)版本，将模式(Profile)设置为 Core，先暂时忽略拓展(Extensions)中的内容。选中生成加载器(Generate a loader)。最后点击生成(Generate)按钮来生成库文件。</p>
+<p><img data-src="2.png" style="zoom: 50%;"></p>
+</li>
+<li><p>随后会跳转到一个结果生成页面，点击下载 glad.zip ，解压缩</p>
+<p><img data-src="3.jpg" alt=""></p>
+</li>
+<li><p>解压缩后得到其中两个目录：include 和 src。将include目录下两个文件夹（glad 和 KHR）复制到工程根目录下的 include 文件夹内。将 src 目录下的 glad.c 复制到工程根目录下。</p>
+</li>
+</ol>
+<h4 id="确认"><a href="#确认" class="headerlink" title="确认"></a><strong>确认</strong></h4><p>如果一切顺利，现在工程根目录下有include、libs两个目录以及glad.c。</p>
+<p>在 include 文件夹中有 GLFW、KHR、glad 三个文件夹。在 libs 文件夹中有 glfw3.lib。</p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a><strong>配置</strong></h4><p>库和头文件准备就绪，最后只需要在工程中配置这些文件路径即可。</p>
+<ol>
+<li><p>打开 Visual Studio 2019，创建新项目（C++空项目），将位置设置为前文的工程根目录。</p>
+</li>
+<li><p>打开工程属性（解决方案窗口里右键项目，属性）</p>
+</li>
+<li><p>点击 VC++目录选项卡，在包含目录一项添加工程根目录下 include 文件夹的路径，在库目录一项添加工程根目录下 libs 文件夹的路径</p>
+<p><img data-src="4.jpg" style="zoom: 50%;"></p>
+</li>
+</ol>
+<ol start="4">
+<li><p>点击选项卡 链接器-&gt;输入，添加依赖项，添加 glfw3.lib ，点击确定保存</p>
+<p><img data-src="5.jpg" style="zoom:50%;"></p>
+</li>
+<li><p>在结局方案窗口，右键项目的源文件文件夹，添加现有项，将工程根目录的 glad.c 添加进工程</p>
+<p><img data-src="6.jpg" style="zoom:50%;"></p>
+</li>
+</ol>
+<h3 id="完成！"><a href="#完成！" class="headerlink" title="完成！"></a><strong>完成！</strong></h3><hr>
+<p>如果一切顺利，至此OpenGL开发环境配置完毕。</p>
+<p>在下一节中，我们将会实现一个空窗口的渲染，借此也得以验证你是否正确配置OpenGL的开发环境。</p>
+<p><a href="https://histevehu.com/2020/01/19/OpenGL-RenderEmptyWindow/">OpenGL-2:渲染窗体</a></p>
+<p>当然，我们也会将示例代码提交至Github，如果你遇到问题可供参考：</p>
+<p><a href="https://github.com/histevehu/OpenGL-Learning" target="_blank" rel="noopener">HiSteveHu::OpenGL-Learning</a></p>
+]]></content>
+      <categories>
+        <category>OpenGL</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ESP8266：SmartConfig</title>
+    <url>/passages/ESP8266-SmartConfig/</url>
+    <content><![CDATA[<p>在之前的教程中，我们已经学习了ESP8266的基本信息及开发环境搭建。在这里我们将学习如何 <strong>通过SmartConfig配网</strong> 将ESP8266 以一种对用户更友好的方式接入互联网</p>
+<a id="more"></a>
+<h3 id="前导教程"><a href="#前导教程" class="headerlink" title="前导教程"></a><strong>前导教程</strong></h3><p><em>如果你第一次阅读本文且之前无相关经验，建议阅读以下前导教程后再开始着手开始此教程。</em></p>
+<blockquote>
+<ol>
+<li><a href="https://histevehu.com/2019/09/13/ESP8266-BasicConfiguration/">ESP8266：基本配置</a></li>
+</ol>
+</blockquote>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a><strong>准备</strong></h3><blockquote>
+<ul>
+<li><p>ESPTouch</p>
+<ul>
+<li><p>iOS </p>
+<p><strong>(注意截止到2019.11.16乐鑫尚未对iOS版本ESPTouch进行iOS13适配，可能存在问题，尚不推荐使用)</strong></p>
+<p><a href="https://apps.apple.com/cn/app/espressif-esptouch-aka-a-m-x/id1071176700" target="_blank" rel="noopener">https://apps.apple.com/cn/app/espressif-esptouch-aka-a-m-x/id1071176700</a></p>
+</li>
+<li><p>Android</p>
+<p><a href="https://github.com/EspressifApp/EsptouchForAndroid/releases/download/v1.1.0/esptouch.apk" target="_blank" rel="noopener">https://github.com/EspressifApp/EsptouchForAndroid/releases/download/v1.1.0/esptouch.apk</a></p>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h3 id="什么是-SmartConfig-配网"><a href="#什么是-SmartConfig-配网" class="headerlink" title="什么是 SmartConfig 配网"></a><strong>什么是 SmartConfig</strong> 配网</h3><p>首先，我们先来看一下为什么设备需要配网呢？</p>
+<p>想象一下，假如你购买了一个智能插座，想让它连接到家里的WiFi，但是智能插座又没有键盘和触摸屏此时你该怎么操作呢？对于我们而言，可以将家中的WiFi的SSID和密码写死到固件中并烧录，然而如果遇到WiFi的SSID或密码更改的情况，修改将会非常麻烦。而以上对于普通用户来说更是天方夜谭，用户体验极不友好。</p>
+<p>我们想象中的优化目标：</p>
+<ol>
+<li><p><strong>SSID</strong> </p>
+<p>自动获取用户移动端（手机、平板等）所连接的WiFi的名称</p>
+</li>
+<li><p><strong>密码</strong></p>
+<p>鉴于多数WiFi密码长度尚可且为了安全性，这是用户需要且仅需要的一项内容</p>
+</li>
+</ol>
+<p>此时就需要我们的智能配网模式。SmartConfig最先是TI开始研究的，其实类似的协议有很多，只是不同厂家间名称不同，乐鑫智能配网模式的名称仍为 <strong>SmartConfig</strong></p>
+<p>下面一张图来概括什么是SmartConfig及其原理和作用</p>
+<p><img data-src="1.png" alt=""></p>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a><strong>开始</strong></h3><p>1.打开Arduino,添加一下代码并烧录至ESP8266：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ESP8266WiFi.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">smartConfig</span><span class="params">()</span></span>&#123;</span><br><span class="line">    WiFi.mode(WIFI_STA);</span><br><span class="line">    Serial.println(<span class="string">"\r\nWait for Smartconfig"</span>);</span><br><span class="line">    WiFi.beginSmartConfig();</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        delay(<span class="number">500</span>);</span><br><span class="line">        <span class="keyword">if</span> (WiFi.smartConfigDone())</span><br><span class="line">        &#123;</span><br><span class="line">            Serial.println(<span class="string">"SmartConfig Success"</span>);</span><br><span class="line">            Serial.<span class="built_in">printf</span>(<span class="string">"SSID:%s\r\n"</span>, WiFi.SSID().c_str());</span><br><span class="line">            Serial.<span class="built_in">printf</span>(<span class="string">"PSW:%s\r\n"</span>, WiFi.psk().c_str());</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setup</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Serial.begin(<span class="number">115200</span>);</span><br><span class="line">    smartConfig();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">loop</span><span class="params">()</span> </span>&#123;&#125;</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li><strong>确认移动端已经连接到2.4Ghz WiFi（因为ESP8266 仅支持2.4Ghz WiFi，若移动端连接到5Ghz 或其他频率WiFi则配网会失败）</strong></li>
+<li>打开移动端ESPTouch，输入密码并确认，移动端开始广播WiFi信息，开始配网。</li>
+</ol>
+<p><img data-src="2.jpg" alt=""></p>
+<p>3.打开Arduino串口监视器（点击主界面右上角放大镜图标），重启ESP8266。稍等片刻，可见ESP8266向串口输出WiFi的SSID和密码消息，证明配网成功</p>
+]]></content>
+      <categories>
+        <category>ESP8266</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ESP8266:基本配置</title>
+    <url>/passages/ESP8266-BasicConfiguration/</url>
+    <content><![CDATA[<p>这里我们将以 <strong>Adruino+ESP8266+VSCode配置</strong> 为例，展示ESP8266的入门基础配置，并实现最基本的点灯</p>
+<a id="more"></a>
+<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a><strong>准备</strong></h3><blockquote>
+<ul>
+<li><p><strong>Adruino IDE</strong></p>
+<p><a href="https://www.arduino.cc/en/Main/Software" target="_blank" rel="noopener">https://www.arduino.cc/en/Main/Software</a></p>
+</li>
+<li><p><strong>CH341驱动程序</strong></p>
+<p><a href="http://www.wch.cn/download/CH341SER_EXE.html" target="_blank" rel="noopener">http://www.wch.cn/download/CH341SER_EXE.html</a></p>
+</li>
+<li><p><strong>ESP8266 开发板</strong></p>
+<p>（参考购买链接）</p>
+<p><a href="https://store.arduino.cc/usa/" target="_blank" rel="noopener">https://store.arduino.cc/usa/</a></p>
+<p><a href="https://www.espressif.com/zh-hans/products/hardware/esp8266ex/overview" target="_blank" rel="noopener">https://www.espressif.com/zh-hans/products/hardware/esp8266ex/overview</a></p>
+<p><a href="https://item.taobao.com/item.htm?_u=d35edijr38fd&amp;id=531755241333" target="_blank" rel="noopener">https://item.taobao.com/item.htm?_u=d35edijr38fd&amp;id=531755241333</a></p>
+</li>
+<li><p><strong>一根可靠的 Micro-USB 数据线</strong></p>
+<p>注意线缆是具备数据传输功能的数据线，而非Micro-USB 接口的电源线，否则无法被计算机识别</p>
+</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>若位于中国，则另需VPN以顺利完成配置</strong></p>
+</blockquote>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a><strong>配置</strong></h3><ul>
+<li><h4 id="CH341驱动程序"><a href="#CH341驱动程序" class="headerlink" title="CH341驱动程序"></a>CH341驱动程序</h4><p>打开驱动程序安装文件，安装，出现预安装成功提示后，将ESP8266与计算机连接。</p>
+<p><strong>(注意：线缆是具备数据传输功能的数据线，而非Micro-USB 接口的电源线，否则无法被计算机识别）</strong></p>
+<p>计算机将识别ESP8266并完成剩余安装。</p>
+<p>验证驱动程序是否成功安装？可将ESP8266与电脑连接后，可通过：<strong>计算机-右键-属性-设备管理器</strong>，若在其中存在端口一项，其中包含CH340一项，则代表安装成功。</p>
+<p><img data-src="7.jpg" alt=""></p>
+</li>
+<li><h4 id="Adruino-IDE"><a href="#Adruino-IDE" class="headerlink" title="Adruino IDE"></a><strong>Adruino IDE</strong></h4><ol>
+<li><p>下载，安装</p>
+</li>
+<li><p>打开Adruino,点击“文件-首选项”，在附加开发板管理器网址中添加：</p>
+<p><a href="https://arduino.esp8266.com/stable/package_esp8266com_index.json" target="_blank" rel="noopener">https://arduino.esp8266.com/stable/package_esp8266com_index.json</a></p>
+<p><img data-src="0.jpg" alt=""></p>
+</li>
+<li><p>点击“工具-开发板-开发板管理器”，搜索”ESP8266”,安装</p>
+<p><strong><em>若位于中国，则建议挂载VPN以顺利完成此步</em></strong></p>
+<p><img data-src="1.jpg" alt=""></p>
+</li>
+<li><p>点击“工具-开发板“，选择”Generic ESP8266 Module”，完成配置</p>
+</li>
+</ol>
+</li>
+<li><h4 id="启用第三方编辑器（可选）"><a href="#启用第三方编辑器（可选）" class="headerlink" title="启用第三方编辑器（可选）"></a><strong><em>启用第三方编辑器（可选）</em></strong></h4><p>我们可以使用第三方更为强大的编辑器来替换Adruino内置编辑器，下面以VSCode为例，介绍对其基本配置：</p>
+<ol>
+<li><p>搜索插件”Arduino”，安装</p>
+<p><img data-src="2.jpg" alt=""></p>
+</li>
+<li><p>打开设置，搜索”Arduino”，更改”Arduino:Path“ 一项为Arduino安装根目录（eg:默认为 <code>C:\Program Files (x86)\Arduino</code>），其他保持默认</p>
+<p><img data-src="3.jpg" alt=""></p>
+</li>
+<li><p><strong>Ctrl+Shift+P</strong>,在命令端口输入 <strong>Arduino</strong>，选择 <strong>Arduino:Board Config</strong></p>
+<p><img data-src="4.jpg" alt=""></p>
+</li>
+<li><p>在出现的配置窗口，将开发板类型更改为 <strong>Generic ESP8266 Module(esp8266)</strong>，其他保持默认即可</p>
+<p><img data-src="5.jpg" alt=""></p>
+</li>
+<li><p>可通过底端状态栏快速做出相应操作</p>
+<p><img data-src="6.jpg" alt=""></p>
+<p><em>从右往左，<strong>COM4 </strong>选项为端口选择，选择ESP8266连接所在的端口，也可检验见面CH340驱动程序是否成功安装；<strong>插座</strong>图标为串口监听开关；<strong>Generic ESP8266 Module </strong>为所选开发板型号</em></p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="Hello-World！-Blink！"><a href="#Hello-World！-Blink！" class="headerlink" title="Hello World！= Blink！"></a><strong>Hello World！= Blink！</strong></h3><p>完成上述步骤，让我们开始第一步——运行最简单的程序！</p>
+<p>在编程语言的学习中，第一步往往是在屏幕上打印“Hello World！”，对于单片机学习而言，第一步相对应的就是点亮ESP8266上的LED灯。</p>
+<ol>
+<li><p>打开Arduino，点击菜单 <strong>文件-示例-Basics-Blink</strong>，我们选择其内置的示例代码快速开始</p>
+<p><img data-src="8.jpg" alt=""></p>
+</li>
+<li><p>将ESP8266 连接至计算机，点击菜单 <strong>工具-端口</strong>，选择正确端口，同时确保开发板型号选择为 <strong>Generic ESP8266 Module</strong>  （原因及注意事项见最后<strong>”注意“</strong>一栏）</p>
+</li>
+<li><p>点击菜单栏下方一条图标栏中的 <strong>上传（右箭头）</strong>图标，将程序烧录至ESP8266</p>
+</li>
+<li><p>若成功，则可见ESP8266将自动重启，然后LED灯间歇闪烁</p>
+</li>
+<li><p>大功告成！</p>
+</li>
+</ol>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a><strong>注意</strong></h3><ol>
+<li><p>上文提及注意开发板型号选择的原因，是因为若你选择前文 <strong>准备-ESP8266开发板</strong> 参考购买链接中第三个链接（<a href="https://item.taobao.com/item.htm?_u=d35edijr38fd&amp;id=531755241333）并购买了其**开发板+TFT液晶屏套装**，想要调用其自带库实现TFT屏幕显示功能，需要将开发板型号更改为" target="_blank" rel="noopener">https://item.taobao.com/item.htm?_u=d35edijr38fd&amp;id=531755241333）并购买了其**开发板+TFT液晶屏套装**，想要调用其自带库实现TFT屏幕显示功能，需要将开发板型号更改为</a> <strong>NodeMCU</strong> 并且<strong>LED灯将失效</strong>，<strong>显示屏与LED不可同时实现。</strong></p>
+<p><strong>即选择：</strong></p>
+<ul>
+<li><strong>Generic ESP8266 Module，LED可用，TFT显示屏不可用</strong></li>
+<li><strong>NodeMCU，LED灯不可用，TFT显示屏可用</strong></li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>ESP8266</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法：查找（Java实现）</title>
+    <url>/passages/Algorithm-Search/</url>
+    <content><![CDATA[<p>这里我们将展示一些常用查找算法的Java实现代码</p>
+<a id="more"></a>
+<h3 id="符号表"><a href="#符号表" class="headerlink" title="符号表"></a><strong>符号表</strong></h3><hr>
+<ul>
+<li><h4 id="二叉查找树"><a href="#二叉查找树" class="headerlink" title="二叉查找树"></a><strong>二叉查找树</strong></h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BST</span>&lt;<span class="title">Key</span> <span class="keyword">extends</span> <span class="title">Comparable</span>&lt;<span class="title">Key</span>&gt;, <span class="title">Value</span>&gt;</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">  <span class="keyword">private</span> Node root;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Node</span></span></span><br><span class="line"><span class="class">    </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> Key key;</span><br><span class="line">        <span class="keyword">private</span> Value val;</span><br><span class="line">        <span class="keyword">private</span> Node left, right;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> N;</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">Node</span><span class="params">(Key key, Value val, <span class="keyword">int</span> N)</span></span></span><br><span class="line"><span class="function">        </span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.key = key;</span><br><span class="line">            <span class="keyword">this</span>.val = val;</span><br><span class="line">            <span class="keyword">this</span>.N = N;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><em>以下为二叉查找树常见功能的实现，均为类 BST 成员函数，为提高可读性特提取分段显示</em></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> size(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">size</span><span class="params">(Node x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (x == <span class="keyword">null</span> ? <span class="number">0</span> : x.N);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Value <span class="title">get</span><span class="params">(Key key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> get(root, key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//在以x为根结点的子树中查找并返回key所对应的值</span></span><br><span class="line"><span class="comment">//若不存在则返回null</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Value <span class="title">get</span><span class="params">(Node x, Key key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">int</span> cmp = key.compareTo(x.key);<span class="comment">//将key与根结点的key对比大小结果判断左右分支或是符合条件</span></span><br><span class="line">    <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) <span class="keyword">return</span> get(x.left, key);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) <span class="keyword">return</span> get(x.right, key);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> x.val;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//查找key,若存在则更新值，否则创建新结点</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(Key key, Value val)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    root = put(root, key, val);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//如果key存在于以x为根结点的子树中则更新其值</span></span><br><span class="line"><span class="comment">//否则将以key和val为新结点插入到该子树中</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">put</span><span class="params">(Node x, Key key, Value val)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">new</span> Node(key, val, <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">int</span> cmp = key.compareTo(x.key);</span><br><span class="line">    <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) x.left = put(x.left, key, val);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) x.right = put(x.right, key, val);</span><br><span class="line">    <span class="keyword">else</span> x.val = val;</span><br><span class="line">    x.N = size(x.left) + size(x.right) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//最小键</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Key <span class="title">min</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> min(root).key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">min</span><span class="params">(Node x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (x.left == <span class="keyword">null</span> ? x : x.left);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//最大键</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Key <span class="title">max</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> max(root).key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">max</span><span class="params">(Node x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (x.right == <span class="keyword">null</span> ? x : x.right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//向下取整</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Key <span class="title">floor</span><span class="params">(Key key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Node x = floor(root, key);</span><br><span class="line">    <span class="keyword">return</span> (x == <span class="keyword">null</span> ? <span class="keyword">null</span> : x.key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">floor</span><span class="params">(Node x, Key key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">int</span> cmp = key.compareTo(x.key);</span><br><span class="line">    <span class="keyword">if</span> (cmp == <span class="number">0</span>) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) <span class="keyword">return</span> floor(x.left, key);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        Node t = floor(x.right, key);</span><br><span class="line">        <span class="keyword">return</span> (t != <span class="keyword">null</span> ? t : x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//向上取整</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Key <span class="title">ceiling</span><span class="params">(Key key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Node x = ceiling(root, key);</span><br><span class="line">    <span class="keyword">return</span> (x == <span class="keyword">null</span> ? <span class="keyword">null</span> : x.key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">ceiling</span><span class="params">(Node x, Key key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">int</span> cmp = key.compareTo(x.key);</span><br><span class="line">    <span class="keyword">if</span> (cmp == <span class="number">0</span>) <span class="keyword">return</span> x;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) <span class="keyword">return</span> floor(x.right, key);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        Node t = floor(x.left, key);</span><br><span class="line">        <span class="keyword">return</span> (t != <span class="keyword">null</span> ? t : x);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//返回排名为k的节点键</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Key <span class="title">select</span><span class="params">(<span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> select(root, k).key;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">select</span><span class="params">(Node x, <span class="keyword">int</span> k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">int</span> t = size(x.left);</span><br><span class="line">    <span class="keyword">if</span> (t &gt; k) <span class="keyword">return</span> select(x.left, k);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (t &lt; k) <span class="keyword">return</span> select(x.right, k - t - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//返回小于key的键数量</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rank</span><span class="params">(Key key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> rank(root, key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">rank</span><span class="params">(Node x, Key key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> cmp = key.compareTo(x.key);</span><br><span class="line">    <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) <span class="keyword">return</span> rank(x.left, key);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) <span class="keyword">return</span> size(x.left) + <span class="number">1</span> + rank(x.right, key);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">return</span> size(x.left);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//删除二叉树最小结点</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delMin</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    root = delMin(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">delMin</span><span class="params">(Node x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x.left == <span class="keyword">null</span>) <span class="keyword">return</span> x.right;</span><br><span class="line">    x.left = delMin(x.left);</span><br><span class="line">    x.N = size(x.left) + size(x.right) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//删除二叉树最大结点</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">delMax</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    root = delMax(root);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">delMax</span><span class="params">(Node x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x.right  == <span class="keyword">null</span>) <span class="keyword">return</span> x.left;</span><br><span class="line">    x.right  = delMin(x.right );</span><br><span class="line">    x.N = size(x.left) + size(x.right) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//二叉树一般删除操作</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">del</span><span class="params">(Key key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    root = del(root, key);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> Node <span class="title">del</span><span class="params">(Node x, Key key)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">int</span> cmp = key.compareTo(x.key);</span><br><span class="line">    <span class="keyword">if</span> (cmp &lt; <span class="number">0</span>) x.left = del(x.left, key);</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (cmp &gt; <span class="number">0</span>) x.right = del(x.right, key);</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span> (x.right == <span class="keyword">null</span>) <span class="keyword">return</span> x.left;</span><br><span class="line">        <span class="keyword">if</span> (x.left == <span class="keyword">null</span>) <span class="keyword">return</span> x.right;</span><br><span class="line">        Node t = x;</span><br><span class="line">        x = min(t.right);</span><br><span class="line">        x.left = t.left;</span><br><span class="line">        x.right = delMin(t.right);</span><br><span class="line">    &#125;</span><br><span class="line">    x.N = size(x.left) + size(x.right) + <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//二叉树范围查找</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(Node x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x == <span class="keyword">null</span>) <span class="keyword">return</span>;</span><br><span class="line">    print(x.left);</span><br><span class="line">    StdOut.println(x.key);</span><br><span class="line">    print(x.right);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> Iterable&lt;Key&gt; <span class="title">keys</span> <span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> keys(min(),max());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> Iterable&lt;Key&gt; <span class="title">keys</span><span class="params">(Key lo, Key hi)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Queue &lt;Key&gt; queue=<span class="keyword">new</span> Queue&lt;Key &gt;();</span><br><span class="line">    keys(root,queue,lo,hi);</span><br><span class="line">    <span class="keyword">return</span> queue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">keys</span><span class="params">(Node x, Queue&lt;Key&gt; queue, Key lo, Key hi)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(x==<span class="keyword">null</span>) <span class="keyword">return</span> ;</span><br><span class="line">    <span class="keyword">int</span> cmp_lo=lo.compareTo(x.key);</span><br><span class="line">    <span class="keyword">int</span> cmp_hi=hi.compareTo(x.key);</span><br><span class="line">    <span class="keyword">if</span>(cmp_lo&lt;<span class="number">0</span>) keys(x.left,queue,lo,hi);</span><br><span class="line">    <span class="keyword">if</span>(cmp_lo&lt;=<span class="number">0</span>&amp;&amp;cmp_hi&gt;=<span class="number">0</span>) queue.enqueue(x.key);</span><br><span class="line">    <span class="keyword">if</span>(cmp_hi&gt;<span class="number">0</span>) keys(x.right,queue,lo, hi);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>整理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>算法：排序（Java实现）</title>
+    <url>/passages/Algorithm-Sorting/</url>
+    <content><![CDATA[<p>这里我们将展示一些常用排序算法的Java实现代码</p>
+<a id="more"></a>
+<h3 id="基本函数"><a href="#基本函数" class="headerlink" title="基本函数"></a><strong>基本函数</strong></h3><hr>
+<p>基本函数都被包含于类 <code>basic_module</code> 内<br><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">basic_module</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span>  <span class="keyword">boolean</span> <span class="title">isLarger</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span>	<span class="comment">//若a比b大，返回true,否则返回false</span></span></span><br><span class="line"><span class="function">    <span class="keyword">public</span>  <span class="keyword">boolean</span> <span class="title">isSmaller</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span>	<span class="comment">//若a比b小，返回true,否则返回false</span></span></span><br><span class="line"><span class="function">    <span class="keyword">public</span>  <span class="keyword">void</span> <span class="title">swap</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span>	<span class="comment">//输入数组及要交换的两数下标</span></span></span><br><span class="line"><span class="function">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="排序算法（Java实现-升序）"><a href="#排序算法（Java实现-升序）" class="headerlink" title="排序算法（Java实现 - 升序）"></a><strong>排序算法（Java实现 - 升序）</strong></h3><hr>
+<p><em>以下语句为基本函数类 <code>basic_module</code> 初始化必需,若未出现则自行补上</em></p>
+<p><code>basic_module bm=new basic_module();</code></p>
+<ul>
+<li><h4 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//升序</span></span><br><span class="line">basic_module bm=<span class="keyword">new</span> basic_module();   <span class="comment">//基本函数类basic_module初始化，下同并省略</span></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;N ; i++) &#123;</span><br><span class="line">    <span class="keyword">int</span> min=i;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;N;j++)</span><br><span class="line">    &#123;</span><br><span class="line">       <span class="keyword">if</span>(bm.isSmaller(a[j],a[min])) min=j;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(min!=i) bm.swap(a,min,i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span> ; i &lt;a.length ; i++) &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> j=i;(j&gt;<span class="number">0</span>)&amp;&amp;(bm.isSmaller(a[j],a[j-<span class="number">1</span>]));j--)</span><br><span class="line">    &#123;</span><br><span class="line">        bm.swap(a,j,j-<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><h4 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h4><p><em>需要引用 包StdRandom，下载链接：<a href="https://github.com/histevehu/blog/blob/master/2019/08/14/Algorithm-Sorting/algs4.jar" target="_blank" rel="noopener">Algs4.jar</a></em></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span> a[])</span> </span>&#123;</span><br><span class="line">    StdRandom.shuffle(a);</span><br><span class="line">    sort(a,<span class="number">0</span>,a.length-<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(low&gt;=high) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> j=partition(a, low, high);</span><br><span class="line">    sort(a,low,j-<span class="number">1</span>);</span><br><span class="line">    sort(a,j+<span class="number">1</span>,high);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">partition</span><span class="params">(<span class="keyword">int</span> a[],<span class="keyword">int</span> lo,<span class="keyword">int</span> hi)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=lo,j=hi+<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> v=a[lo];</span><br><span class="line">    basic_module bm=<span class="keyword">new</span> basic_module();</span><br><span class="line">    <span class="keyword">while</span> (<span class="keyword">true</span>)&#123;</span><br><span class="line">        <span class="keyword">while</span>(bm.isSmaller(a[++i],v)) <span class="keyword">if</span>(i==hi) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">while</span>(bm.isLarger(a[--j],v)) <span class="keyword">if</span>(j==lo) <span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">if</span>(i&gt;=j) <span class="keyword">break</span>;</span><br><span class="line">        bm.swap(a, i, j);</span><br><span class="line">    &#125;</span><br><span class="line">    bm.swap(a, lo, j);</span><br><span class="line">    <span class="keyword">return</span> j;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="ToDo-List"><a href="#ToDo-List" class="headerlink" title="ToDo-List"></a><strong>ToDo-List</strong></h3><hr>
+<ul>
+<li style="list-style: none"><input type="checkbox"> 归并排序</li>
+<li style="list-style: none"><input type="checkbox"> 优先队列</li>
+</ul>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>整理</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>新的HiSteveHu.com!</title>
+    <url>/passages/New-HiSteveHu-com/</url>
+    <content><![CDATA[<p>距离HiSteveHu.com上线已经一年了。在这周年之际，我们也完成了对其年度维护和升级工作。</p>
+<p>更重要的是，这是一次<strong>重大更新</strong>，一起来看看有哪些令人振奋的新内容吧！</p>
+<a id="more"></a>
+<h3 id="更新内容"><a href="#更新内容" class="headerlink" title="更新内容"></a><strong>更新内容</strong></h3><ul>
+<li><p><strong>添加站内全局搜索，可根据关键字搜索全站分类、标签、归档、动态的全部内容，查找内容更高效</strong></p>
+<p><strong>(支持电脑端和iPad端，不支持移动端)</strong></p>
+</li>
+<li><p><strong>为更好地展示和传播内容，汉化了原先网站中所有文章动态和大部分网站内容，并将简体中文设为今后首选语言</strong></p>
+</li>
+<li><p>将主题由polarbear更换至hiero，更美，更强大。</p>
+</li>
+<li><p>主页根据文章数量自动分页</p>
+</li>
+<li><p>添加社交媒体联系方式</p>
+</li>
+<li><p>添加最新文章一栏，快速浏览新动态</p>
+</li>
+<li><p>添加标签云</p>
+</li>
+<li><p>全站添加“小火箭”一键到页首支持</p>
+</li>
+<li><p>主页文章提供快速预览和阅读全文选项</p>
+</li>
+<li><p>优化归档、分类、标签模块</p>
+</li>
+<li><p>优化全站布局排版</p>
+</li>
+<li><p>文章动态内提供独立悬浮的目录导航，条理更清晰</p>
+</li>
+<li><p>设计了新的网站图标</p>
+</li>
+</ul>
+<p><img data-src="1.png" alt=""></p>
+<p><img data-src="2.png" alt=""></p>
+<h3 id="维护内容"><a href="#维护内容" class="headerlink" title="维护内容"></a><strong>维护内容</strong></h3><ul>
+<li>域名续费</li>
+<li>备份并打扫了一些垃圾</li>
+</ul>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a><strong>最后</strong></h3><p><strong><em>这次更新花费我们不少时间，但为了更好地展示，更高效地记录和传播，我们相信一切都是值得的。</em></strong></p>
+<p><strong><em>希望你能喜欢这次更新，我们也将在新平台上提供更多有趣的内容。</em></strong></p>
+<p><strong><em>最后，希望能将 histevehu.com添加到你的收藏夹中！</em></strong></p>
+<p><strong><em>谢谢！</em></strong></p>
+<div style="text-align: right"> HiSteveHu.com 团队 </div>
+
+<div style="text-align: right"> 2019-8-14 1:20 </div>]]></content>
+      <categories>
+        <category>HiSteveHu.com</category>
+      </categories>
+      <tags>
+        <tag>声明</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>2019 Summer Professional Improvement Progress Tracking</title>
+    <url>/passages/2019-Summer-Professional-Improvement-Progress-Tracking/</url>
+    <content><![CDATA[<h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a><strong>Introduction</strong></h3><p>Here we will showcase our achievements in professional improvement during the summer vacation of 2019.</p>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a><strong>Summary</strong></h3><ul>
+<li><h4 id="Baidu-Brain-AI-Sample-Application"><a href="#Baidu-Brain-AI-Sample-Application" class="headerlink" title="Baidu Brain AI Sample Application"></a>Baidu Brain AI Sample Application</h4><blockquote>
+<p>After further consolidating the basics of Java, try to access some of the Java APIs of Baidu Brain AI and succeed.</p>
+<ul>
+<li><p>Image Recognition （July 19 2019）</p>
+<p><em>Normal Object,Dishes,</em> </p>
+</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Tracking</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CppToolBox(原CToolBox) Ver.0.0.0.3 更新</title>
+    <url>/passages/CppToolBox-Original-CToolBox-Ver-0-0-0-3-Update/</url>
+    <content><![CDATA[<h3 id="新内容"><a href="#新内容" class="headerlink" title="新内容"></a><strong>新内容</strong></h3><h4 id="Ver-0-0-0-3"><a href="#Ver-0-0-0-3" class="headerlink" title="Ver.0.0.0.3"></a><strong>Ver.0.0.0.3</strong></h4><ul>
+<li><p><strong>工程（原：CToolBox）从C头文件更新到C ++头文件</strong></p>
+</li>
+<li><p><strong>对 C++ 进行适配</strong></p>
+</li>
+<li><p><strong>bool file_copy(string ori, string tgt)</strong></p>
+<a id="more"></a>
+<blockquote>
+<p>参数1：输入原始（输入）文件路径</p>
+<p>参数2：输入目标（输出）文件路径</p>
+<p>retrun true：成功   false：失败</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Github"><a href="#Github" class="headerlink" title="Github"></a><strong>Github</strong></h3><p><a href="https://github.com/histevehu/cpptoolbox" target="_blank" rel="noopener">https://github.com/histevehu/cpptoolbox</a></p>
+]]></content>
+      <categories>
+        <category>CPPTB</category>
+      </categories>
+      <tags>
+        <tag>声明</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cpp 问题：派生类初始化时构造函如何处理基类数据成员</title>
+    <url>/passages/Cpp-Issure-About-the-initialization-of-derived-classes-in-virtual-functions/</url>
+    <content><![CDATA[<h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a><strong>问题：</strong></h3><hr>
+<blockquote>
+<p>这是一个展示虚函数的程序，由class.h，class.cpp，main.cpp 组成。Class.h 用于声明类， class.cpp 用于定义类，main.cpp 是主程序文件。</p>
+<p>以下是 class.h 和 class.cpp 中与问题相关的代码的一部分</p>
+<a id="more"></a>
+<p>class.h</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">&gt; <span class="class"><span class="keyword">class</span> <span class="title">circle</span></span></span><br><span class="line"><span class="class">&gt; &#123;</span></span><br><span class="line">&gt;   <span class="keyword">public</span>:</span><br><span class="line">&gt;     circle(<span class="keyword">double</span> r);</span><br><span class="line">&gt;     <span class="function"><span class="keyword">virtual</span> <span class="keyword">double</span> <span class="title">area</span><span class="params">()</span></span>; <span class="comment">//virtual fuction</span></span><br><span class="line">&gt;     <span class="function"><span class="keyword">void</span> <span class="title">show_area</span><span class="params">()</span></span>;</span><br><span class="line">&gt;   <span class="keyword">protected</span>:</span><br><span class="line">&gt;     <span class="keyword">double</span> radius;</span><br><span class="line">&gt; &#125;;</span><br><span class="line">&gt; </span><br><span class="line">&gt; <span class="class"><span class="keyword">class</span> <span class="title">cylinder</span> :</span> <span class="keyword">public</span> circle</span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt;   <span class="keyword">public</span>:</span><br><span class="line">&gt;     cylinder(<span class="keyword">double</span> r, <span class="keyword">double</span> h);</span><br><span class="line">&gt;     <span class="function"><span class="keyword">virtual</span> <span class="keyword">double</span> <span class="title">area</span><span class="params">()</span></span>;</span><br><span class="line">&gt;   <span class="keyword">private</span>:</span><br><span class="line">&gt;     <span class="keyword">double</span> height;</span><br><span class="line">&gt; &#125;;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>class.cpp</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">&gt; circle::circle(<span class="keyword">double</span> r) : radius(r)</span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; cylinder::cylinder(<span class="keyword">double</span> r, <span class="keyword">double</span> h) : circle(r), height(h) <span class="comment">//correct</span></span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt; cylinder::cylinder(<span class="keyword">double</span> r, <span class="keyword">double</span> h) : radius(r), height(h) <span class="comment">//wrong</span></span><br><span class="line">&gt; &#123;</span><br><span class="line">&gt; &#125;</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p>既然类cylinder是从类circle继承的派生类，并且类circle中的半径被声明为受保护，为什么在初始化类cylinder时不能使用 radius(r), 而要使用circle（r）？</p>
+<p>错误提示：radius不是非静态数据成员或类cylinder的基类</p>
+</blockquote>
+<h3 id="回答"><a href="#回答" class="headerlink" title="回答:"></a><strong>回答:</strong></h3><hr>
+<p><strong>以下是一些重要规则</strong></p>
+<ol>
+<li><p>C ++语言规定派生类的构造函数初始化基类成员函数时必须使用<strong>初始化列表</strong>和<strong>基类构造函数</strong></p>
+</li>
+<li><p>构造函数不是继承的。 因此，派生类的构造函数必须通过调用基类的构造函数来初始化基类成员。 无法在派生类初始化列表中直接初始化基类的成员。 这称为“跳跃级初始化”。</p>
+<p><strong><em>常见的派生类构造函数</em></strong></p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line">派生类类名（参数列表）：基类名（参数列表），派生类数据成员</span><br><span class="line">&#123;···&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Cpp</category>
+      </categories>
+      <tags>
+        <tag>问题</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>三种常用排序算法的简单比较（冒泡，选择，快速）</title>
+    <url>/passages/A-simple-comparison-of-three-commonly-used-sorting-algorithms/</url>
+    <content><![CDATA[<p>我们都知道或熟悉一些常见的排序算法，但我们可能无法清楚地了解性能差距。</p>
+<p>在这个简单的小实验中我们能初步给出答案。</p>
+<p>这是一个小实验。 我们比较了三种常见的排序算法：冒泡排序算法，选择排序算法和快速排序算法。</p>
+<a id="more"></a>
+<p>为了提高定时精度，CPU时钟周期（时间戳）的数量专门用于实现微秒级的定时精度。</p>
+<p>结果出人意料并令人震惊。 </p>
+<p>随着测试数据的大小增加，冒泡和选择排序的时间急剧增加，特别是当数据达到100,000级时，冒泡、选择排序时间几乎增加到难以忍受的半分钟。 虽然快速排序比冒泡和选择排序算法更复杂，但显然它在处理大规模数据时具有优势。</p>
+<p><img data-src="1552664352667.jpeg" alt=""></p>
+<p>因此，在处理小规模数据时，使用冒泡和选择排序显然可以提高开发效率，但在处理大型数据时，使用快速排序或其他更先进的算法是明智的。 （冒泡排序算法可以通过改进提高性能）</p>
+<p><img data-src="1552664355802.jpeg" alt=""></p>
+<p>确实，这个小实验有太多缺陷，例如只使用少量实验数据，只测试整数数据而不是探索其他数据类型，如浮点型等。但得出的结论并不缺乏参考价值。</p>
+<p>日后我们将做出一个更科学全面的比较实验。</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>实验</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CToolBox: 项目建立</title>
+    <url>/passages/CToolBox-Project-Establishment/</url>
+    <content><![CDATA[<h3 id="项目-Github-主页"><a href="#项目-Github-主页" class="headerlink" title="项目 Github 主页"></a><strong>项目 Github 主页</strong></h3><p><a href="https://github.com/histevehu/cpptoolbox" target="_blank" rel="noopener">https://github.com/histevehu/cpptoolbox</a></p>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h3><p>为了提高编程效率，提高代码可读性并减少维护难度，我们创建了一个C头文件项目。</p>
+<p>现在很高兴展示该项目的0.0.0.1版本。</p>
+<a id="more"></a>
+<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><ol>
+<li><p>下载头文件 (<strong>ctb.h</strong>), 放入和你的C程序项目同一目录下.</p>
+<p><img data-src="img1.JPG" alt=""></p>
+</li>
+<li><p>在你的C的程序头部加入以下语句：</p>
+</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ctb.h"</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><ul>
+<li><p><strong>sort_bubble(int array[], int total, int order)</strong></p>
+<blockquote>
+<p>参数1：输入整数数组</p>
+<p>参数2：数组长度</p>
+<p>参数3：排列顺序（1：顺序（从小到大）2：反向顺序（从大到小））其他：原始数组输出</p>
+</blockquote>
+</li>
+<li><p><strong>sort_select(int array[], int total, int order)</strong></p>
+<blockquote>
+<p>参数1：输入整数数组</p>
+<p>参数2：数组长度</p>
+<p>参数3：排列顺序（1：顺序（从小到大）2：反向顺序（从大到小））其他：原始数组输出</p>
+</blockquote>
+</li>
+<li><p><strong>judge_number_perfect(int num)</strong></p>
+<blockquote>
+<p>输入一个整数并判断它是否是一个完整的数字</p>
+<p>返回值：1：是   0：否</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>CPPTB</category>
+      </categories>
+      <tags>
+        <tag>声明</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何使用Hexo和Github Pages搭建网站</title>
+    <url>/passages/Building-a-Website-with-the-Hexo-Framework-and-Github-Pages/</url>
+    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h3><p>这里我们将展示如何使用Hexo框架和Github Pages服务构建网站的方法。</p>
+<a id="more"></a>
+<blockquote>
+<p><strong>Hexo framework</strong></p>
+<p>快速，简单，高效的博客框架</p>
+<p><a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a></p>
+<p><strong>Github Pages 服务</strong></p>
+<p><a href="https://pages.github.com/" target="_blank" rel="noopener">Github Pages</a></p>
+</blockquote>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><h4 id="1-Github-注册"><a href="#1-Github-注册" class="headerlink" title="1. Github 注册"></a>1. Github 注册</h4><p>首先注册Github帐户。 如果你有一个，则可以跳过此步骤。 </p>
+<p>然后新建一个仓库作为网站存放仓库。</p>
+<p>记住你申请时填写的Github用户名和电子邮件地址，以及新建的仓库名字。 这些将在下面使用。</p>
+<h4 id="2-Git-node-js-安装"><a href="#2-Git-node-js-安装" class="headerlink" title="2. Git, node.js 安装"></a>2. Git, node.js 安装</h4><ol>
+<li><p>Git</p>
+<ol>
+<li><p><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">https://git-scm.com/downloads</a></p>
+</li>
+<li><p><strong>验证安装是否成功：</strong></p>
+<p>右键单击桌面，单击“Git Bash”，然后拉出一个类似的命令行窗口，表明Git已成功安装</p>
+<p><img data-src="img_3.JPG" alt=""></p>
+</li>
+<li><p>Git 基本设置</p>
+<p>在 <strong>Git</strong> 终端窗口, 输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;Your Name“</span><br><span class="line">git config --global user.email &quot;email@example.com&quot;</span><br></pre></td></tr></table></figure>
+<p><em>输入 <strong>Github用户名 </strong>和 <strong>电子邮件地址</strong></em></p>
+</li>
+</ol>
+</li>
+<li><p>Node.js</p>
+<ol>
+<li><p><a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">https://nodejs.org/en/download/</a></p>
+</li>
+<li><p><strong>验证安装是否成功：</strong></p>
+<p><strong>Win+R </strong> &gt; “cmd” &gt; “node –version”, 如果你能看到版本信息，表明Git已成功安装。</p>
+<p><img data-src="img_4.JPG" alt="">    </p>
+</li>
+</ol>
+</li>
+</ol>
+<h4 id="3-Hexo-安装"><a href="#3-Hexo-安装" class="headerlink" title="3. Hexo 安装"></a>3. Hexo 安装</h4><ol>
+<li><p>如果您不是中国用户，可以跳过安装 <strong>Cnpm</strong> 进入第2小步。</p>
+<p>Cnpm 是淘宝的镜像服务，在中国的访问速度比 npm 快。 </p>
+<p><strong>建议中国用户使用Cnpm 。</strong></p>
+<p>打开 Git 终端，输入以下内容进行安装：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果你使用 <strong>Cnpm</strong>, 键入:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cnpm install hexo</span><br></pre></td></tr></table></figure>
+<p>如果你不使用 <strong>Cnpm</strong>, 键入:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="4-基本配置"><a href="#4-基本配置" class="headerlink" title="4. 基本配置"></a>4. 基本配置</h4><ol>
+<li><p>创建一个新文件夹作为站点根目录</p>
+</li>
+<li><p>打开文件夹，右键单击并选择 <strong>Git Bash Here</strong></p>
+</li>
+<li><p>在 <strong>Git 终端窗口在中</strong>, 输入:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后我们需要安装插件和主题，这里以hexo-theme-even主题为例，继续输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install hexo-renderer-scss --save</span><br><span class="line">npm install hexo-deployer-git --save</span><br><span class="line">git clone https://gitee.com/xiuxiuing/hexo-theme-even themes/even</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<strong>站点根目录</strong>中找到 <strong>_ config.yml</strong> <strong>文件</strong> 并打开它。 将文件的 <strong>deploy</strong> 和<strong>＃URL</strong> 部分的内容更改为：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span> </span><br><span class="line"><span class="attr">  type:</span> <span class="string">git</span> </span><br><span class="line"><span class="attr">  repo:</span> <span class="attr">https://github/username/website_repository_name.git</span> </span><br><span class="line"><span class="attr">  branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#URL</span></span><br><span class="line"><span class="attr">url:</span>  <span class="attr">https://username.github.io/website_repository_name</span></span><br><span class="line"><span class="attr">root:</span> <span class="string">/blog</span></span><br></pre></td></tr></table></figure>
+<p><strong><em>例:</em></strong> <em>如果你的用户名是“histevehu”并且你的网站Github仓库名是“hi”，那么您的 repo项目和 url项目应为：</em></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">repo:</span> <span class="attr">https://github/histevehu/hi.git</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">url:</span> <span class="attr">https://histevehu.github.io/hi</span></span><br></pre></td></tr></table></figure>
+<p><strong>&lt;!&gt; 注意：冒号后面必须有空格，否则无法正确识别。</strong></p>
+</li>
+</ol>
+<h4 id="5-部署"><a href="#5-部署" class="headerlink" title="5. 部署"></a>5. 部署</h4><ol>
+<li><p>在 <strong>Git 终端</strong>, 继续输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>部署网站，第一次需要在终端中输入帐户和密码。</p>
+</li>
+</ol>
+<h4 id="6-配置Github页面服务"><a href="#6-配置Github页面服务" class="headerlink" title="6. 配置Github页面服务"></a>6. 配置Github页面服务</h4><ol>
+<li><p>进入你的网站的Github仓库页面，转到 <strong>Settings</strong> 选项卡，找到<strong>Github Pages</strong> 项目，启用该服务。</p>
+<p><img data-src="img_1.JPG" alt=""></p>
+</li>
+<li><p>您还可以绑定自定义域名。例如：</p>
+<p><img data-src="img_2.JPG" alt=""></p>
+</li>
+</ol>
+<h3 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h3><h4 id="1-更改主题"><a href="#1-更改主题" class="headerlink" title="1.更改主题"></a>1.更改主题</h4><ol>
+<li><p>下载主题，例如从：<a href="https://hexo.io/themes/" target="_blank" rel="noopener">https://hexo.io/themes/</a></p>
+</li>
+<li><p>提取到网站根目录下的  <strong>themes</strong>文件夹内的新单独子文件夹中用于存放主题。</p>
+</li>
+<li><p>Configure themes as the theme name in <strong>_config.yml</strong> in the <strong>root directory</strong></p>
+<p><strong><em>例：</em></strong> <em>如果你更改成名为 “hiero”的主题，那么你应该在 <strong>网站根目录的 _ config.yml</strong> 中配置 <strong>theme</strong> 项，如下所示：</em></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">theme:</span> <span class="string">hiero</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在根目录右键单击，单击“Git Bash”，键入以下内容并执行：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="2-常用-Hexo-命令"><a href="#2-常用-Hexo-命令" class="headerlink" title="2.常用 Hexo 命令"></a>2.常用 Hexo 命令</h4><ul>
+<li><p><strong>hexo -g</strong></p>
+<p>生成网站</p>
+</li>
+<li><p><strong>hexo -d</strong></p>
+<p>部署网站</p>
+</li>
+<li><p><strong>hexo g -d</strong></p>
+<p>生成并部署网站</p>
+</li>
+<li><p><strong>hexo server</strong></p>
+<p>打开本地服务，允许用户在本地预览网站。</p>
+<p><strong><em>P.S</em></strong>: <em>如果默认本地端口被占用，你可以在 <strong>网站根目录中的 _ config.yml </strong>中进行修改</em></p>
+<p><strong><em>例 :</em></strong> 更改本地端口为 9090</p>
+<p>​    添加以下代码块到  <strong>_config.yml</strong> 文件中：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">server:</span></span><br><span class="line"><span class="attr">  port:</span> <span class="number">9090</span></span><br><span class="line"><span class="attr">  compress:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">  header:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>然后测试一下。 在 <strong>Git Terminal</strong> 中输入命令:</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>如果终端显示此信息，则表示默认本地端口修改成功。<img data-src="img_5.JPG" alt=""></p>
+<ul>
+<li><p><strong>hexo clean</strong></p>
+<p>清理站点缓存，尤其是在您更改主题后应使用此命令</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>如何使用Google Chrome原生功能对整个网页截图</title>
+    <url>/passages/How-to-Screenshot-the-Full-Page-with-Google-Chrome-Native-Feature/</url>
+    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h3><p>有很多方法可以截取网页截图。 使用系统附带的屏幕截图软件或Chrome扩展程序。 在这里，我们想分享一种更方便，更先进的方法。</p>
+<a id="more"></a>
+<p>与其他方法相比，它：</p>
+<p>1.只需要Chrome，不需要其他Chrome扩展程序<br>2.从渲染输出，更好的拍摄质量</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li><p>浏览长网页时，按 <strong>F12</strong> 进入<strong>Chrome开发者模式</strong>。</p>
+<p><img data-src="img_1.jpg" alt=""></p>
+</li>
+<li><p>按<strong>Shift + Ctrl + P</strong> 打开命令文本框，输入命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Capture full size screenshot</span><br></pre></td></tr></table></figure>
+<p><strong>回车</strong></p>
+<p><img data-src="img_2.jpg" alt=""></p>
+</li>
+<li><p>Chrome会自动保存这个网页截图。</p>
+<p><img data-src="img_3.jpg" alt=""></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Chrome</category>
+      </categories>
+      <tags>
+        <tag>教程</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>VSCode C语言开发环境配置 (C)</title>
+    <url>/passages/Visualstudio-Code-Configuration-C/</url>
+    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h3><p>VSCode是一个轻量级，开源和流行的编辑器，支持主流编程语言。 当然，也支持C语言。</p>
+<p>在使用之前只需要做一些配置。</p>
+<a id="more"></a>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li><p>在VSCode中安装<strong>Microsoft</strong>提供的<strong>C / C ++支持插件</strong></p>
+<p><img data-src="img_1.jpg" alt=""></p>
+</li>
+<li><p>安装 <strong><a href="http://mingw.org/" target="_blank" rel="noopener">MingGW</a></strong> 并执行下列操作:</p>
+<ol>
+<li><p>打开MingGW勾选下列必须组件: </p>
+<p><strong>gdb-gcc(bin)</strong>, <strong>gdb-gcc-g++(bin)</strong>, </p>
+<p>然后点击顶端菜单左上角 <strong>Installation &gt; Apply Changes </strong> 进行安装</p>
+</li>
+<li><p>配置系统环境变量, 将MingGW安装目录下<strong>bin文件夹</strong>的完整路径(例如：C:\MinGW\bin)添加到 <strong>系统变量</strong>的<strong>path</strong> 一项</p>
+</li>
+<li><p>重启VSCode</p>
+</li>
+</ol>
+</li>
+<li><p>使用VSCode打开一个文件夹。 编写一个简单的C程序（如打印“HelloWorld！”）并将其保存为<strong>.c</strong>文件。 单击 <strong>Debug </strong>图标，在选项卡的下拉菜单中选择 <strong>C ++（GDB）</strong>，然后单击<strong>齿轮图标</strong> 。VSCode将自动在当前目录中新建.vscode文件夹并在其中生成 <strong>launch.json 启动配置文件</strong>。</p>
+<p><img data-src="img_2.jpg" alt=""></p>
+<p><strong><em>注意：VSCode调试需要在打开的文件夹中完成（即首先应该用VSCode打开经过上述过程配置的文件夹，再调试其中的程序。打开一个独立的 C 程序会因为缺少.vscode目录即其中的配置文件而无法调试。这与DevCpp、C-Free等可以调试单个 C 程序不同）</em></strong></p>
+</li>
+<li><p>打开目录下 <strong>.vscode文件夹 </strong>中自动生成的 <strong>launch.json</strong> 文件, 然后清空，用一下代码代替，保存:</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"0.2.0"</span>,</span><br><span class="line">    <span class="attr">"configurations"</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="attr">"name"</span>: <span class="string">"(gdb) Launch"</span>, </span><br><span class="line">            <span class="attr">"type"</span>: <span class="string">"cppdbg"</span>, </span><br><span class="line">            <span class="attr">"request"</span>: <span class="string">"launch"</span>,   </span><br><span class="line">            <span class="attr">"program"</span>: <span class="string">"$&#123;workspaceRoot&#125;/$&#123;fileBasenameNoExtension&#125;.exe"</span>, </span><br><span class="line">            <span class="attr">"args"</span>: [], </span><br><span class="line">            <span class="attr">"stopAtEntry"</span>: <span class="literal">false</span>,   </span><br><span class="line">            <span class="attr">"cwd"</span>: <span class="string">"$&#123;workspaceRoot&#125;"</span>, </span><br><span class="line">            <span class="attr">"environment"</span>: [],</span><br><span class="line">            <span class="attr">"externalConsole"</span>: <span class="literal">true</span>, </span><br><span class="line">            <span class="attr">"MIMode"</span>: <span class="string">"gdb"</span>,</span><br><span class="line">            "miDebuggerPath": "C:\\MinGW\\bin\\gdb.exe", // The path of the miDebugger, note that it corresponds to the path of MinGw</span><br><span class="line">            "preLaunchTask": "gcc", // C++:g++, C:gcc  </span><br><span class="line">            "setupCommands": [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="attr">"description"</span>: <span class="string">"Enable pretty-printing for gdb"</span>,</span><br><span class="line">                    <span class="attr">"text"</span>: <span class="string">"-enable-pretty-printing"</span>,</span><br><span class="line">                    <span class="attr">"ignoreFailures"</span>: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>转到刚才编写的C程序, 按 <strong>F5</strong> 进行调试，然后将出现一个消息框警告你配置任务。 单击 <strong>Debug Anyway</strong>。</p>
+<p><img data-src="img_3.jpg" alt=""></p>
+</li>
+<li><p>从下拉菜单中选择:  <strong>Create from a blank template &gt; Others</strong>. 然后VSCode将生成一个 <strong>Tasks.json</strong> 配置文件在 .vscode 目录中.<img data-src="img_4.jpg" alt=""></p>
+</li>
+<li><p>打开 <strong>Tasks.json</strong> 文件，清空，用以下代码替换，保存:</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"version"</span>: <span class="string">"2.0.0"</span>,</span><br><span class="line">    <span class="attr">"command"</span>: <span class="string">"gcc"</span>,</span><br><span class="line">    <span class="attr">"args"</span>: [</span><br><span class="line">        <span class="string">"-g"</span>,</span><br><span class="line">        <span class="string">"$&#123;file&#125;"</span>,</span><br><span class="line">        <span class="string">"-o"</span>,</span><br><span class="line">        <span class="string">"$&#123;fileBasenameNoExtension&#125;.exe"</span></span><br><span class="line">    ], </span><br><span class="line">    <span class="attr">"problemMatcher"</span>: &#123;</span><br><span class="line">        <span class="attr">"owner"</span>: <span class="string">"cpp"</span>,</span><br><span class="line">        <span class="attr">"fileLocation"</span>: [</span><br><span class="line">            <span class="string">"relative"</span>,</span><br><span class="line">            <span class="string">"$&#123;workspaceRoot&#125;"</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="attr">"pattern"</span>: &#123;</span><br><span class="line">            <span class="attr">"regexp"</span>: <span class="string">"^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$"</span>,</span><br><span class="line">            <span class="attr">"file"</span>: <span class="number">1</span>,</span><br><span class="line">            <span class="attr">"line"</span>: <span class="number">2</span>,</span><br><span class="line">            <span class="attr">"column"</span>: <span class="number">3</span>,</span><br><span class="line">            <span class="attr">"severity"</span>: <span class="number">4</span>,</span><br><span class="line">            <span class="attr">"message"</span>: <span class="number">5</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h3><ol>
+<li>由于需要为每个文件夹单独配置，因此建议将<strong>. vscode 文件夹</strong> 放在工作目录的根目录，这样就不需要逐一配置。</li>
+<li>建议备份 <strong>.vscode文件夹</strong>（其中包含您刚刚修改的配置文件），这样当您在新路径中时，您只需将备份.vscode文件夹复制到该目录即可快速开始工作。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>VSCode</category>
+      </categories>
+      <tags>
+        <tag>配置</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>READ ME</title>
+    <url>/passages/Read-Me/</url>
+    <content><![CDATA[<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>此页面将说明网站上基本常见内容的含义。</p>
+<a id="more"></a>
+<h4 id="标签"><a href="#标签" class="headerlink" title="标签"></a><strong>标签</strong></h4><ul>
+<li><p><strong>声明</strong></p>
+<p>网站事项，项目、工程事项，描述，备忘录</p>
+</li>
+<li><p><strong>教程</strong></p>
+<p>实用有趣的课程，适合需要的人</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>整理</strong></p>
+<p>实用知识的总结归纳</p>
+</li>
+<li><p><strong>配置</strong></p>
+<p>软件，开发环境等配置的备忘录</p>
+</li>
+<li><p><strong>实验</strong></p>
+<p>空余时间进行的一些小活动记录</p>
+</li>
+<li><p><strong>追踪</strong></p>
+<p>持续更新以展示一些长期计划的实施进度</p>
+</li>
+<li><p><strong>问题</strong></p>
+<p>展示一些经典问题并给出解答</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>HiSteveHu.com</category>
+      </categories>
+      <tags>
+        <tag>声明</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>你好，世界！</title>
+    <url>/passages/Hello-World/</url>
+    <content><![CDATA[<h2 id="HiSteveHu-网站-amp-HEXO-框架-重构测试"><a href="#HiSteveHu-网站-amp-HEXO-框架-重构测试" class="headerlink" title="HiSteveHu 网站 &amp; HEXO 框架 重构测试"></a>HiSteveHu 网站 &amp; HEXO 框架 重构测试</h2><p>我们注意到我们的网站<a href="http://histevehu.com" target="_blank">（HiSteveHu.com）</a>发生了一些可怕的事情。</p>
+<h3 id="致歉"><a href="#致歉" class="headerlink" title="致歉"></a>致歉</h3><p>前段时间暂停运行的具体原因是由于中国工业和信息化部的启动所有在中国设置的网站都应该注册的要求。 由于我们之前没有这样做，我们被迫停止运行。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>为了确保网站内容和信息的自由，我们没有注册的计划。</p>
+<p>幸运的是，我们找到了解决当前问题的出色解决方案。</p>
+<a id="more"></a>
+<ol>
+<li><p><strong>我们已将网站从FQIDC移至Github Page进行托管。</strong></p>
+<p>GitHub是世界领先的代码托管平台。我们相信它将为我们的网站带来更好的访问体验。</p>
+<p>值得注意的是，由于GitHub服务器没有在中国大陆设置，中国用户在访问网站时可能会遇到稳定性和速度问题。但是，由于Github采用了CDN加速服务，这些缺点得以缓解。</p>
+<p>好消息是，重新运营的新网站使用了一些新技术，详情如下。</p>
+</li>
+<li><p><strong>我们已经重构了整个网站。</strong></p>
+<p>我们将新网站定义为一个平台，专注于共享信息技术体验，发布一些有趣的东西和自由思想的地方。</p>
+<p>因此，这意味着我们已从原始网站删除了其他可能精彩的内容，对此我们深表歉意。但是，我们相信更有针对性的方向可以带来更高质量的内容。</p>
+</li>
+</ol>
+<h3 id="还有一件事"><a href="#还有一件事" class="headerlink" title="还有一件事"></a><strong>还有一件事</strong></h3><p>如上所述，我们在重新运行的新网站中使用了以下技术来改善整体性能和体验：</p>
+<ul>
+<li><p><strong>Github主机/页面服务</strong></p>
+<p><em>稳定，受欢迎，安全。</em></p>
+</li>
+<li><p><strong>HTTPS加密连接</strong></p>
+<p><em>提高连接安全性</em></p>
+</li>
+<li><p><strong>CDN加速</strong></p>
+<p><em>提高访问速度，特别是对中国用户</em></p>
+</li>
+<li><p><strong>HEXO框架</strong></p>
+<p><em>快速，简洁，高效的框架，使我们能够更专注于高质量的内容。</em></p>
+</li>
+<li><p><strong>北极熊主题</strong></p>
+<p><em>一组简单的主题模板</em></p>
+</li>
+<li><p><strong>新网站图标</strong></p>
+<p><strong>……</strong></p>
+</li>
+</ul>
+<h3 id="我们希望您喜欢这些新的变化，并将此网站添加到您的收藏夹。"><a href="#我们希望您喜欢这些新的变化，并将此网站添加到您的收藏夹。" class="headerlink" title="我们希望您喜欢这些新的变化，并将此网站添加到您的收藏夹。"></a><strong><em>我们希望您喜欢这些新的变化，并将此网站添加到您的收藏夹。</em></strong></h3><h3 id="谢谢-！"><a href="#谢谢-！" class="headerlink" title="谢谢 ！"></a><strong><em>谢谢 ！</em></strong></h3>]]></content>
+      <categories>
+        <category>HiSteveHu.com</category>
+      </categories>
+      <tags>
+        <tag>声明</tag>
+      </tags>
+  </entry>
+</search>
