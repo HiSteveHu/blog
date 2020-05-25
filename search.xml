@@ -137,7 +137,7 @@ list    列出包含条件的包（已安装，可升级等）
 <h3 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a><strong>大功告成</strong></h3><hr>
 <p>运行游戏，完美！</p>
 <p>至此游戏的制作大功告成，你可以选择打包生成可执行文件分享给你的好友。打包生成详见前导教程中的分享一节。</p>
-<p><strong>另附上游戏的完整工程文件，如果你中途遇到困难可供参考：</strong><a href="https://github.com/histevehu/blog/raw/master/2020/02/08/Unity-Playground-Practice/Playground2D.zip" target="_blank" rel="noopener">Playground2D.zip</a></p>
+<p><strong>另附上游戏的完整工程文件，如果你中途遇到困难可供参考：</strong><a href="https://github.com/histevehu/blog/raw/master/passages/Unity-Playground-Practice/Playground2D.zip" target="_blank" rel="noopener">Playground2D.zip</a></p>
 ]]></content>
       <categories>
         <category>Unity</category>
@@ -308,7 +308,7 @@ list    列出包含条件的包（已安装，可升级等）
 <h3 id="分享"><a href="#分享" class="headerlink" title="分享"></a><strong>分享</strong></h3><p>至此游戏的制作大功告成。如果你想把自己的游戏分享给你的朋友，可以选择打包生成</p>
 <p>点击菜单File，Build Settings，确认所有需要的场景均被勾选。在下面选择目标平台及相关设置，点击Build按钮即可</p>
 <p><img data-src="23.jpg" style="zoom:50%;"></p>
-<p><strong>另附上游戏的完整工程文件，如果你中途遇到困难可供参考：</strong><a href="https://github.com/histevehu/blog/raw/master/2020/02/02/Unity-Create-Ball-Game/BallMoveGame.zip" target="_blank" rel="noopener">BallMoveGame.zip</a></p>
+<p><strong>另附上游戏的完整工程文件，如果你中途遇到困难可供参考：</strong><a href="https://raw.githubusercontent.com/histevehu/blog/master/passages/Unity-Create-Ball-Game/BallMoveGame.zip" target="_blank" rel="noopener">BallMoveGame.zip</a></p>
 ]]></content>
       <categories>
         <category>Unity</category>
