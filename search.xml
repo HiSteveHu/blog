@@ -822,32 +822,6 @@ list    列出包含条件的包（已安装，可升级等）
       </tags>
   </entry>
   <entry>
-    <title>CppToolBox(原CToolBox) Ver.0.0.0.3 更新</title>
-    <url>/passages/CppToolBox-Original-CToolBox-Ver-0-0-0-3-Update/</url>
-    <content><![CDATA[<h3 id="新内容"><a href="#新内容" class="headerlink" title="新内容"></a><strong>新内容</strong></h3><h4 id="Ver-0-0-0-3"><a href="#Ver-0-0-0-3" class="headerlink" title="Ver.0.0.0.3"></a><strong>Ver.0.0.0.3</strong></h4><ul>
-<li><p><strong>工程（原：CToolBox）从C头文件更新到C ++头文件</strong></p>
-</li>
-<li><p><strong>对 C++ 进行适配</strong></p>
-</li>
-<li><p><strong>bool file_copy(string ori, string tgt)</strong></p>
-<a id="more"></a>
-<blockquote>
-<p>参数1：输入原始（输入）文件路径</p>
-<p>参数2：输入目标（输出）文件路径</p>
-<p>retrun true：成功   false：失败</p>
-</blockquote>
-</li>
-</ul>
-<h3 id="Github"><a href="#Github" class="headerlink" title="Github"></a><strong>Github</strong></h3><p><a href="https://github.com/histevehu/cpptoolbox" target="_blank" rel="noopener">https://github.com/histevehu/cpptoolbox</a></p>
-]]></content>
-      <categories>
-        <category>CPPTB</category>
-      </categories>
-      <tags>
-        <tag>声明</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Cpp 问题：派生类初始化时构造函如何处理基类数据成员</title>
     <url>/passages/Cpp-Issure-About-the-initialization-of-derived-classes-in-virtual-functions/</url>
     <content><![CDATA[<h3 id="问题："><a href="#问题：" class="headerlink" title="问题："></a><strong>问题：</strong></h3><hr>
@@ -905,51 +879,6 @@ list    列出包含条件的包（已安装，可升级等）
       </categories>
       <tags>
         <tag>实验</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CToolBox: 项目建立</title>
-    <url>/passages/CToolBox-Project-Establishment/</url>
-    <content><![CDATA[<h3 id="项目-Github-主页"><a href="#项目-Github-主页" class="headerlink" title="项目 Github 主页"></a><strong>项目 Github 主页</strong></h3><p><a href="https://github.com/histevehu/cpptoolbox" target="_blank" rel="noopener">https://github.com/histevehu/cpptoolbox</a></p>
-<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a><strong>简介</strong></h3><p>为了提高编程效率，提高代码可读性并减少维护难度，我们创建了一个C头文件项目。</p>
-<p>现在很高兴展示该项目的0.0.0.1版本。</p>
-<a id="more"></a>
-<h3 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h3><ol>
-<li><p>下载头文件 (<strong>ctb.h</strong>), 放入和你的C程序项目同一目录下.</p>
-<p><img data-src="img1.JPG" alt=""></p>
-</li>
-<li><p>在你的C的程序头部加入以下语句：</p>
-</li>
-</ol>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"ctb.h"</span></span></span><br></pre></td></tr></table></figure>
-<h3 id="API"><a href="#API" class="headerlink" title="API"></a>API</h3><ul>
-<li><p><strong>sort_bubble(int array[], int total, int order)</strong></p>
-<blockquote>
-<p>参数1：输入整数数组</p>
-<p>参数2：数组长度</p>
-<p>参数3：排列顺序（1：顺序（从小到大）2：反向顺序（从大到小））其他：原始数组输出</p>
-</blockquote>
-</li>
-<li><p><strong>sort_select(int array[], int total, int order)</strong></p>
-<blockquote>
-<p>参数1：输入整数数组</p>
-<p>参数2：数组长度</p>
-<p>参数3：排列顺序（1：顺序（从小到大）2：反向顺序（从大到小））其他：原始数组输出</p>
-</blockquote>
-</li>
-<li><p><strong>judge_number_perfect(int num)</strong></p>
-<blockquote>
-<p>输入一个整数并判断它是否是一个完整的数字</p>
-<p>返回值：1：是   0：否</p>
-</blockquote>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>CPPTB</category>
-      </categories>
-      <tags>
-        <tag>声明</tag>
       </tags>
   </entry>
   <entry>
